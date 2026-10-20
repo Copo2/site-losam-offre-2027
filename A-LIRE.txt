@@ -1,0 +1,25 @@
+OFFRE PARTENAIRES LOSAM 2027 : MISE EN LIGNE
+============================================
+
+Contenu du dossier
+- index.html : la page (un seul fichier, styles et logos intégrés).
+- documents/ : présentations 2027 (PDF) et listes d'inscrits 2026 anonymisées (société et fonction, Excel).
+- photos/ : photos de soirées du carrousel et des fiches.
+
+Mise en ligne
+1. Déposer le dossier tel quel sur le site, par exemple dans https://www.losam.fr/offre-2027/
+   (index.html doit rester à côté des dossiers documents/ et photos/).
+2. Ouvrir l'adresse dans un navigateur : la page s'affiche, les documents se téléchargent.
+
+Envoi des récaps par e-mail
+- Le formulaire envoie chaque récap à nils.vancaeneghem@losam.fr via FormSubmit (formsubmit.co), sans serveur à installer,
+  avec en copie le commercial de chaque maison choisie (Finance : mohamed@ ; Tech et HR : geoffroy.eynard@ ;
+  Marketing et Gouvernance : sabrina.touzanu@ ; Ops : nils.vancaeneghem@).
+- Au premier envoi depuis le site, FormSubmit peut envoyer un e-mail « Activate Form » à cette adresse :
+  cliquer sur le bouton, puis renvoyer le récap. Les envois suivants arrivent directement.
+
+Modifier la page
+- Tout se règle dans le bloc CONFIGURATION en haut de index.html : destinataire des récaps,
+  documents à télécharger, photos et accroches du carrousel.
+- Polices : la page utilise Acumin Pro Wide et Basic Gothic si le site les charge déjà (Adobe Fonts),
+  sinon une police de remplacement intégrée.
