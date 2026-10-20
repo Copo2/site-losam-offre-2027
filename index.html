@@ -24,7 +24,8 @@
      PHOTOS : photos de soirées, rangées dans le dossier photos/ à côté de la page (JPEG, 1600 px de large suffisent).
        Une ligne par photo : { src, legende, accroche, soirees, reservee }.
        accroche : phrase affichée en grand sur le carrousel de l'accueil ; seules les photos qui en ont une y figurent,
-         dans l'ordre de la liste (5 à 7 photos, la plus forte en premier).
+         dans l'ordre de la liste (5 à 7 photos, la plus forte en premier). Une diapositive par format Losam :
+         format = nom du format affiché au-dessus de l'accroche, chiffre = indicateur clé affiché dessous.
        soirees : identifiants des soirées (ceux de DOCUMENTATION) dont la fiche ouvre sur cette photo ;
          les fiches défilent ensuite sur les autres photos.
        reservee : true si la photo ne doit apparaître que dans ses soirées. Éviter les photos où le nom d'un
@@ -78,12 +79,16 @@
     'sustainability': { inscrits: '' }  // Future of Sustainability · hors calendrier 2027
   };
   const PHOTOS = [
-    { src: 'photos/salle-ecran.jpg', legende: 'Table ronde au cœur du dîner', accroche: 'Toute votre cible, réunie dans la même salle', soirees: ['industry', 'p2p'] },
-    { src: 'photos/partenaire-scene.jpg', legende: 'Table ronde en partenariat exclusif', accroche: 'Votre marque à l’écran, votre expert sur scène', soirees: ['procurement'] },
-    { src: 'photos/echanges-a-table.jpg', legende: 'Échanges à table', accroche: 'Des échanges directs avec les décideurs que vous visez', soirees: ['pe'] },
-    { src: 'photos/keynote.jpg', legende: 'Interview partenaire en plénière', accroche: 'Prenez la parole devant une audience qualifiée', soirees: ['pe'] },
-    { src: 'photos/cocktail.jpg', legende: 'Cocktail networking', accroche: 'Un networking qui se transforme en rendez-vous d’affaires', soirees: ['pe'] },
-    { src: 'photos/table-ronde-scene.jpg', legende: 'Prise de parole d’un dirigeant', accroche: 'Un contenu porté par les dirigeants eux-mêmes', soirees: ['industry', 'cyber'] },
+    { src: 'photos/partenaire-scene.jpg', format: 'Conférences « Future of »', legende: 'Table ronde en partenariat exclusif', accroche: 'Votre expert sur scène, devant toute votre cible', chiffre: 'Jusqu’à 1 000 participants', soirees: ['procurement'] },
+    { src: 'photos/salle-ecran.jpg', format: 'Soirées de benchmark', legende: 'Table ronde au cœur du dîner', accroche: 'Présentez votre solution à 100 décideurs, table par table', chiffre: '8 à 12 décideurs par table', soirees: ['industry', 'p2p'] },
+    { src: 'photos/slide-vip-dinner.jpg', format: 'VIP dinners', legende: 'Dîner entre dirigeants', accroche: '8 décideurs à votre table, choisis par vous', chiffre: 'Une seule discussion, animée par vous', soirees: ['exec-fi', 'exec-ai', 'exec-ai-maroc', 'exec-rh', 'exec-fraude'], reservee: true },
+    { src: 'photos/slide-think-tank.jpg', format: 'Think Tank sur-mesure', legende: 'Think tank entre dirigeants', accroche: 'Entrez en amont des réflexions de votre cible', chiffre: '115+ think tanks déjà animés', reservee: true },
+    { src: 'photos/slide-task-force.jpg', format: 'Task Force', legende: 'Atelier Task Force chez Losam', accroche: 'Co-construisez des projets concrets avec vos cibles', chiffre: '6 mois aux côtés des mêmes décideurs', reservee: true },
+    { src: 'photos/slide-content.jpg', format: 'Content', legende: 'Livres blancs et manifestes Losam', accroche: 'Votre expertise, signée et diffusée auprès de vos cibles', chiffre: 'Livres blancs · manifestes · baromètres', pos: '74% 50%', reservee: true },
+    { src: 'photos/echanges-a-table.jpg', legende: 'Échanges à table', soirees: ['pe'] },
+    { src: 'photos/keynote.jpg', legende: 'Interview partenaire en plénière', soirees: ['pe'] },
+    { src: 'photos/cocktail.jpg', legende: 'Cocktail networking', soirees: ['pe'] },
+    { src: 'photos/table-ronde-scene.jpg', legende: 'Prise de parole d’un dirigeant', soirees: ['industry', 'cyber'] },
     { src: 'photos/salle-diner.jpg', legende: 'Dîner en tables rondes', soirees: ['cx', 'supplychain'] },
     { src: 'photos/pleniere.jpg', legende: 'Table ronde en plénière', soirees: ['pe'] },
     { src: 'photos/diner-entre-pairs.jpg', legende: 'Dîner entre pairs', soirees: ['pe'] }
@@ -473,6 +478,7 @@ button.lo-ev:hover .lo-ev-name { text-decoration: underline; text-decoration-col
 .lo-car-kicker { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); }
 .lo-car-kicker::before { content: ""; flex: none; width: 28px; height: 1px; background: currentColor; }
 .lo-car-title { margin-top: 14px; font-family: var(--font-display); font-stretch: 125%; font-size: clamp(26px, calc(1.5vw + 17px), 40px); line-height: 1.14; font-weight: 500; letter-spacing: -.01em; color: #fff; text-wrap: balance; }
+.lo-car-kpi { display: inline-block; margin-top: 18px; padding: 7px 14px; border: 1px solid rgba(215,208,190,.55); border-radius: 2px; background: rgba(14,28,28,.4); font-size: 13.5px; font-weight: 600; letter-spacing: .04em; color: var(--sand); }
 .lo-car-slide.is-on .lo-car-txt { animation: lo-car-in .9s var(--ease) .3s both; }
 @keyframes lo-car-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .lo-car-foot { position: absolute; z-index: 3; left: 48px; right: 48px; bottom: 36px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
@@ -618,6 +624,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 @media (max-width: 760px) {
   .lo { font-size: 16px; }
   .lo-car--home { --inset: 20px; height: 500px; }
+  .lo-car--home .lo-car-slide::after { background: linear-gradient(0deg, rgba(14,28,28,.96) 0%, rgba(14,28,28,.86) 42%, rgba(14,28,28,.25) 72%, rgba(14,28,28,0) 85%), linear-gradient(180deg, rgba(14,28,28,.5) 0%, rgba(14,28,28,0) 18%); }
   .lo-car-txt { bottom: 96px; }
   .lo-car-cta { display: none; }
   .lo-car-n { min-width: 0; }
@@ -720,7 +727,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         <ul class="lo-figures" aria-label="Losam en chiffres">
           <li><span class="lo-fig-n">2017</span><span class="lo-fig-l">Année de création, par Loïc Vuichard</span></li>
           <li><span class="lo-fig-n">450</span><span class="lo-fig-l">Événements par an</span></li>
-          <li><span class="lo-fig-n">70</span><span class="lo-fig-l">Experts dans l’équipe</span></li>
+          <li><span class="lo-fig-n">12&#8239;000</span><span class="lo-fig-l">Dirigeants actifs dans nos communautés</span></li>
           <li><span class="lo-fig-n">130<em>+</em></span><span class="lo-fig-l">Partenaires accompagnés</span></li>
         </ul>
         <div class="lo-progs" id="lo-progs"></div>
@@ -1611,12 +1618,12 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     return '<div class="lo-car ' + (o.home ? 'lo-car--home' : 'lo-car--hero') + '" role="region" aria-roledescription="carrousel" aria-label="' + esc(o.label) + '" style="--d:' + o.delay + 'ms">' +
       '<div class="lo-car-slides">' + list.map(function (p, i) {
         return '<div class="lo-car-slide' + (i ? '' : ' is-on') + '" role="group" aria-roledescription="diapositive" aria-label="' + (i + 1) + ' sur ' + n + '"' + (i ? ' aria-hidden="true" inert' : '') + '>' +
-          '<img src="' + esc(p.src) + '" alt="' + esc(p.legende || '') + '"' + (i ? ' loading="lazy"' : '') + ' decoding="async">' +
-          (o.home ? '<div class="lo-car-txt"><p class="lo-car-kicker">' + esc(p.legende) + '</p><p class="lo-car-title">' + esc(p.accroche) + '</p></div>' : '') +
+          '<img src="' + esc(p.src) + '" alt="' + esc(p.legende || '') + '"' + (p.pos ? ' style="object-position:' + esc(p.pos) + '"' : '') + (i ? ' loading="lazy"' : '') + ' decoding="async">' +
+          (o.home ? '<div class="lo-car-txt"><p class="lo-car-kicker">' + esc(p.format || p.legende) + '</p><p class="lo-car-title">' + esc(p.accroche) + '</p>' + (p.chiffre ? '<p class="lo-car-kpi">' + esc(p.chiffre) + '</p>' : '') + '</div>' : '') +
         '</div>';
       }).join('') + '</div>' +
       (n > 1 ? '<div class="lo-car-bars">' + (o.home ? '' : pause) + list.map(function (p, i) {
-        return '<button type="button" class="lo-car-bar' + (i ? '' : ' is-on') + '" data-car="' + i + '" aria-label="Photo ' + (i + 1) + ' : ' + esc(p.accroche || p.legende || '') + '"' + (i ? '' : ' aria-current="true"') + '><i></i></button>';
+        return '<button type="button" class="lo-car-bar' + (i ? '' : ' is-on') + '" data-car="' + i + '" aria-label="Photo ' + (i + 1) + ' : ' + esc(p.format ? p.format + ', ' + p.accroche : (p.accroche || p.legende || '')) + '"' + (i ? '' : ' aria-current="true"') + '><i></i></button>';
       }).join('') + '</div>' : '') +
       (o.home ? '<div class="lo-car-foot">' +
           '<button type="button" class="lo-btn lo-btn--sand lo-car-cta" data-go="1">Construire mon offre 2027<span class="lo-i-next">' + svg('next') + '</span></button>' +
