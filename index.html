@@ -17,6 +17,10 @@
      COPIE_COMMERCIAUX : true pour mettre en copie les commerciaux des maisons choisies (chacun une seule fois).
        Seul DESTINATAIRE active FormSubmit (un clic, une fois) ; les adresses en copie n'ont rien à faire.
      COMMERCIAUX : commercial de chaque maison Losam (indiqué dans le récap et mis en copie).
+     FORMULAIRE_LOSAM : sur losam.fr, placer le formulaire de contact du site sur la même page que cette offre
+       (shortcode [gravityform id="7" title="false" ajax="true"]). La page le détecte et l'utilise à la place de son
+       propre envoi : la demande arrive comme les contacts du site, avec les intérêts du partenaire en liste à puces
+       ajoutés au champ « Votre message ». choix : cases du formulaire cochées d'office (« Sponsoriser un de nos événements »).
      DOCUMENTATION : documents à télécharger (fiche de chaque soirée et liste « Documents à télécharger »).
        Chemin d'un fichier placé dans le dossier documents/ à côté de la page, ou lien https (SharePoint, Drive…)
        ouvert aux prospects ; laissé vide (''), le document est indiqué « sur demande ».
@@ -43,6 +47,7 @@
     finance: 'mohamed@losam.fr',
     gouvernance: 'sabrina.touzanu@losam.fr'
   };
+  const FORMULAIRE_LOSAM = { id: 7, message: 'input_4', choix: ['input_12.3'] };
   const DOCUMENTATION = {
     'epm': { slides: 'documents/Future-of-EPM-2027-Presentation.pdf', inscrits: 'documents/Future-of-EPM-2026-Inscrits.xlsx' },  // Future of EPM · 21 janv.
     'exec-rh': { slides: '', inscrits: '' },  // Exec RH · 23 févr.
@@ -568,6 +573,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-alert { display: flex; gap: 10px; margin-top: 32px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--line); box-shadow: inset 4px 0 0 var(--error); font-size: 15px; }
 .lo-alert svg { width: 18px; height: 18px; margin-top: 2px; color: var(--error); }
 
+.lo.is-gf .lo-form { display: block; }
+.lo.is-gf .lo-fields, .lo.is-gf .lo-submit { display: none; }
+.lo.is-gf .lo-recap { position: static; }
+.lo-gf { margin-top: 48px; }
+.lo-gf-note { margin: -12px 0 24px; font-size: 15px; color: var(--ink-2); }
 .lo-recap { grid-area: recap; position: sticky; top: 112px; padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: 2px; box-shadow: var(--shadow); }
 .lo-recap-h { display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); }
 .lo-recap-h svg { width: 18px; height: 18px; color: var(--copper-ink); }
@@ -896,6 +906,15 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             </div>
           </div>
         </form>
+
+        <div class="lo-gf" id="lo-gf-slot" hidden>
+          <h2 class="lo-h2">Vos coordonnées</h2>
+          <p class="lo-gf-note">Votre récap (cibles, rendez-vous, formats) est joint automatiquement à votre message.</p>
+          <div id="lo-gf-form"></div>
+          <div class="lo-nav">
+            <button type="button" class="lo-btn lo-btn--ghost" data-action="back-form"><span class="lo-i-prev" data-icon="prev"></span>Retour</button>
+          </div>
+        </div>
       </section>
 
       <!-- Confirmation -->
@@ -976,6 +995,16 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     { id: 'tech', label: 'Tech', roles: 'CIO, CTO, CISO, CDO, CDAI, architecture, cloud', icon: 'cpu' },
     { id: 'marketing', label: 'Marketing', roles: 'CMO, CSO, CRO, communication, expérience client', icon: 'trend' },
     { id: 'hr', label: 'HR', roles: 'CHRO, talent, recrutement, paie, learning', icon: 'userCheck' }
+  ];
+
+  // Formats que le partenaire peut cocher dans son récap (repris dans l'e-mail).
+  const FORMATS = [
+    { id: 'future-of', label: 'Conférences « Future of »' },
+    { id: 'benchmark', label: 'Soirées de benchmark' },
+    { id: 'vip', label: 'VIP dinners' },
+    { id: 'think-tank', label: 'Think Tank sur-mesure' },
+    { id: 'task-force', label: 'Task Force' },
+    { id: 'content', label: 'Content' }
   ];
 
   const YEAR = 2027;
@@ -1148,12 +1177,14 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
   /* ---------- État ---------- */
   const state = {
-    step: 0, houses: new Set(), excluded: new Set(),
+    step: 0, houses: new Set(), excluded: new Set(), formats: new Set(),
     returnStep: null, pickHouses: false, sentVia: null, mailto: ''
   };
 
   const root = document.getElementById('losam-offre');
   const form = document.getElementById('lo-form');
+  // Formulaire de contact du site (Gravity Forms), présent seulement quand la page est intégrée à losam.fr.
+  const gfForm = document.getElementById('gform_' + FORMULAIRE_LOSAM.id);
   const $ = function (sel) { return root.querySelector(sel); };
   const $$ = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
   const mqMobile = window.matchMedia('(max-width: 760px)');
@@ -1261,7 +1292,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   }
 
   function restart() {
-    state.houses.clear(); state.excluded.clear();
+    state.houses.clear(); state.excluded.clear(); state.formats.clear();
     Object.assign(state, { returnStep: null, sentVia: null, mailto: '' });
     form.reset();
     $$('.lo-input').forEach(function (i) { i.removeAttribute('aria-invalid'); });
@@ -1853,9 +1884,12 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         (evs.length ? eventRows(evs) : '<p class="lo-recap-s">Aucun rendez-vous sélectionné.</p>') + '</div>';
     }
 
+    // Formats qui intéressent le partenaire
+    html += '<div class="lo-recap-row">' + checks('formats', FORMATS, state.formats, 'Formats qui vous intéressent', false) + '</div>';
+
     // Destinataire
     html += '<div class="lo-recap-row"><div class="lo-recap-k"><span>Envoyé à</span></div>' +
-      '<p class="lo-recap-to">' + dest.to.concat(dest.cc).map(esc).join('<br>') + '</p></div>';
+      '<p class="lo-recap-to">' + (gfForm ? 'L’équipe Losam' : dest.to.concat(dest.cc).map(esc).join('<br>')) + '</p></div>';
 
     $('#lo-recap').innerHTML = html;
   }
@@ -1907,31 +1941,40 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     return e.fullName + '\u00a0: ' + parts.join(', ') + ' (' + evHouseLabels(e).join(', ') + ')';
   }
 
+  // Intérêts du partenaire en liste à puces : corps de l'e-mail et message du formulaire losam.fr.
+  function interestsText(message) {
+    const houses = selHouses(), evs = selEvents();
+    const fm = FORMATS.filter(function (f) { return state.formats.has(f.id); });
+    const lines = ['Intérêts pour l’offre partenaires Losam ' + YEAR + ' :',
+      '• Cibles : ' + (houses.length ? houses.map(function (h) { return h.label + ' (' + h.roles + ')'; }).join(' ; ') : 'à définir avec le commercial')];
+    if (evs.length) {
+      lines.push('• Rendez-vous souhaités (' + evs.length + ') :');
+      evs.forEach(function (e) { lines.push('   – ' + eventLine(e)); });
+    } else lines.push('• Rendez-vous souhaités : à définir avec le commercial');
+    if (fm.length) lines.push('• Formats : ' + fm.map(function (f) { return f.label; }).join(', '));
+    if (houses.length) lines.push('• Commerciaux concernés : ' + houses.map(function (h) { return h.label + ' → ' + COMMERCIAUX[h.id]; }).join(' ; '));
+    if (message) lines.push('• Message : ' + message);
+    lines.push('(Calendrier ' + YEAR + ' prévisionnel, dates à confirmer.)');
+    return lines.join('\n');
+  }
+
   function buildPayload(v) {
     const houses = selHouses(), evs = selEvents();
     const subject = 'Offre Losam 2027 - ' + houses.map(function (h) { return h.label; }).join(' / ') + ' - ' + v.societe;
-    const lines = ['Bonjour,', '', 'Voici le récapitulatif de mon offre Losam 2027.', '', 'CIBLES']
-      .concat(houses.map(function (h) { return '- ' + h.label + ' : ' + h.roles; }))
-      .concat(['', 'RENDEZ-VOUS (' + evs.length + ')'])
-      .concat(evs.length ? evs.map(function (e) { return '- ' + eventLine(e); }) : ['Aucun rendez-vous sélectionné'])
-      .concat([
-        '(Calendrier 2027 prévisionnel, dates à confirmer.)',
-        '',
-        'COORDONNÉES',
-        v.prenom + ' ' + v.nom,
-        v.fonction + ', ' + v.societe,
-        'E-mail : ' + v.email,
-        'Téléphone : ' + (v.telephone || 'non renseigné'),
-        '',
-        'MESSAGE',
-        v.message || 'Aucun message.'
-      ]);
+    const interests = interestsText(v.message);
+    const lines = ['Bonjour,', '', interests, '',
+      v.prenom + ' ' + v.nom,
+      v.fonction + ', ' + v.societe,
+      'E-mail : ' + v.email,
+      'Téléphone : ' + (v.telephone || 'non renseigné')];
     const dest = recipients();
     return {
       to: dest.to,
       cc: dest.cc,
       subject: subject,
       body: lines.join('\n'),
+      interests: interests,
+      formats: FORMATS.filter(function (f) { return state.formats.has(f.id); }).map(function (f) { return f.label; }),
       targets: houses.map(function (h) { return { id: h.id, label: h.label, roles: h.roles, commercial: COMMERCIAUX[h.id] }; }),
       events: evs.map(function (e) {
         return {
@@ -1952,32 +1995,21 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       'subject=' + encodeURIComponent(payload.subject) + '&body=' + encodeURIComponent(payload.body.replace(/\n/g, '\r\n'));
   }
 
-  // FormSubmit attend des champs à plat : chacun devient une ligne du tableau reçu par e-mail.
+  // FormSubmit : un bloc « Demande » (intérêts en liste à puces) et les coordonnées du partenaire.
   function requestBody(p) {
     if (ENDPOINT.indexOf('formsubmit.co') === -1) return p;
     const f = {
       _subject: p.subject,
-      _template: 'table',
+      _template: 'box',
       _captcha: 'false',
       _replyto: p.contact.email,
       // Sans adresse web (page ouverte en fichier local), FormSubmit refuse l'envoi : on lui indique l'URL du site.
       _url: /^https?:/.test(window.location.href) ? window.location.href : 'https://www.losam.fr/',
-      'Cibles': p.targets.map(function (t) { return t.label; }).join(', '),
-      'Commerciaux concernés': p.targets.map(function (t) { return t.label + ' : ' + t.commercial; }).join(' | '),
-      'Nombre de rendez-vous': String(p.events.length)
-    };
-    p.events.forEach(function (e, i) {
-      f['Rendez-vous ' + (i < 9 ? '0' : '') + (i + 1)] = e.line;
-    });
-    Object.assign(f, {
-      'Prénom': p.contact.prenom,
-      'Nom': p.contact.nom,
-      'Société': p.contact.societe,
-      'Fonction': p.contact.fonction,
+      'Demande': p.interests,
+      'Contact': p.contact.prenom + ' ' + p.contact.nom + ', ' + p.contact.fonction + ' – ' + p.contact.societe,
       'E-mail': p.contact.email,
-      'Téléphone': p.contact.telephone || 'Non renseigné',
-      'Message': p.message || 'Aucun message'
-    });
+      'Téléphone': p.contact.telephone || 'Non renseigné'
+    };
     if (p.cc.length) f._cc = p.cc.join(',');
     return f;
   }
@@ -2036,7 +2068,9 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       $('#lo-done-text').innerHTML = 'Votre messagerie s’est ouverte avec le récap prérempli à l’attention de ' + to + '&nbsp;: il ne reste qu’à l’envoyer. Rien ne s’est ouvert&nbsp;? <a href="' + esc(state.mailto) + '">Ouvrir l’e-mail à nouveau</a>.';
     } else {
       $('#lo-done-kicker').textContent = 'Récap envoyé';
-      $('#lo-done-text').innerHTML = 'Votre récap et vos rendez-vous ont bien été envoyés à l’équipe Losam (' + to + ').';
+      $('#lo-done-text').innerHTML = state.sentVia === 'gf'
+        ? 'Votre récap et vos rendez-vous ont bien été envoyés à l’équipe Losam.'
+        : 'Votre récap et vos rendez-vous ont bien été envoyés à l’équipe Losam (' + to + ').';
     }
   }
 
@@ -2113,6 +2147,13 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   form.addEventListener('change', function (e) {
     const t = e.target, kind = t.dataset.pick;
     if (!kind) return;
+    if (kind === 'formats') {
+      if (state.formats.has(t.value)) state.formats.delete(t.value); else state.formats.add(t.value);
+      renderRecap();
+      const back = $('#' + t.id);
+      if (back) back.focus();
+      return;
+    }
     toggleHouse(t.value);
     syncButtons();
     renderStepper();
@@ -2160,6 +2201,36 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   };
   if ('ResizeObserver' in window) new ResizeObserver(onResize).observe($('#lo-timeline'));
   else window.addEventListener('resize', onResize);
+
+  /* ---------- Envoi par le formulaire de contact losam.fr ---------- */
+  // La page reprend le formulaire du site : le visiteur y saisit ses coordonnées (et le captcha), ses intérêts
+  // sont ajoutés en liste à puces au champ « Votre message » au moment de l'envoi.
+  const GF_MARK = '— Offre partenaires Losam ' + YEAR + ' —';
+  if (gfForm) {
+    const slot = $('#lo-gf-slot');
+    $('#lo-gf-form').appendChild(document.getElementById('gform_wrapper_' + FORMULAIRE_LOSAM.id) || gfForm);
+    slot.hidden = false;
+    root.classList.add('is-gf');
+    FORMULAIRE_LOSAM.choix.forEach(function (n) {
+      const c = gfForm.querySelector('[name="' + n + '"]');
+      if (c) c.checked = true;
+    });
+    // Capture sur l'emplacement : le formulaire peut être réaffiché par Gravity Forms après une erreur de saisie.
+    slot.addEventListener('submit', function (e) {
+      const ta = e.target.querySelector('[name="' + FORMULAIRE_LOSAM.message + '"]');
+      if (!ta) return;
+      const own = ta.value.split(GF_MARK)[0].trim();
+      ta.value = (own ? own + '\n\n' : '') + GF_MARK + '\n' + interestsText('');
+    }, true);
+    if (window.jQuery) {
+      window.jQuery(document).on('gform_confirmation_loaded', function (ev, id) {
+        if (String(id) !== String(FORMULAIRE_LOSAM.id)) return;
+        state.sentVia = 'gf';
+        renderDone();
+        go(4);
+      });
+    }
+  }
 
   /* ---------- Initialisation ---------- */
   $$('[data-icon]').forEach(function (el) { el.innerHTML = svg(el.dataset.icon); });

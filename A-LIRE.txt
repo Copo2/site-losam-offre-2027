@@ -23,3 +23,19 @@ Modifier la page
   documents à télécharger, photos et accroches du carrousel.
 - Polices : la page utilise Acumin Pro Wide et Basic Gothic si le site les charge déjà (Adobe Fonts),
   sinon une police de remplacement intégrée.
+
+Utiliser le formulaire de contact du site losam.fr (recommandé)
+- Intégrer la page dans une page WordPress (bloc « HTML personnalisé » ou widget HTML Elementor, en y collant
+  le contenu de index.html), puis ajouter sur la même page le shortcode :
+      [gravityform id="7" title="false" ajax="true"]
+- La page détecte ce formulaire et l'utilise à la place de son propre envoi : la demande arrive comme les contacts
+  du site. Les intérêts du partenaire (cibles, rendez-vous datés, formats, commerciaux concernés) sont ajoutés en
+  liste à puces dans « Votre message », et la case « Sponsoriser un de nos événements » est cochée d'office.
+- Déposer les dossiers documents/ et photos/ à côté de la page (même adresse, par exemple /offre-2027/documents/).
+- Envoi aux commerciaux : dans Gravity Forms > Formulaire 7 > Paramètres > Notifications, ajouter une notification
+  par commercial avec la condition « Votre message contient » :
+      « Finance → »      envoyer à mohamed@losam.fr
+      « Tech → » ou « HR → »                 envoyer à geoffroy.eynard@losam.fr
+      « Marketing → » ou « Gouvernance → »   envoyer à sabrina.touzanu@losam.fr
+      « Ops → »          envoyer à nils.vancaeneghem@losam.fr
+
