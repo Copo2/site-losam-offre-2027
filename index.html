@@ -189,7 +189,11 @@ html, body { margin: 0; background: #F3EFE7; }
 .lo-step-btn.is-done .n, .lo-step-btn.is-current .n { color: var(--copper); }
 .lo-step-btn.is-current { color: #fff; }
 .lo-step-btn.is-current::after { transform: scaleX(1); }
-.lo-header .lo-btn { margin-left: auto; min-height: 44px; padding: 0 20px; font-size: 15px; font-weight: 500; border-radius: 2px; }
+.lo-header-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.lo-header .lo-btn { min-height: 44px; padding: 0 20px; font-size: 15px; font-weight: 500; border-radius: 2px; }
+.lo-btn--line { background: transparent; color: var(--sand); border-color: rgba(215,208,190,.45); }
+.lo-btn--line:hover { color: #fff; border-color: var(--sand); }
+.lo-only-sm { display: none; }
 .lo-header :focus-visible, .lo-hero :focus-visible, .lo-footer :focus-visible { outline-color: var(--sand); }
 
 /* Pied de page vert, comme losam.fr */
@@ -300,6 +304,13 @@ html, body { margin: 0; background: #F3EFE7; }
 .lo-offer-b { padding: 22px 24px 26px; }
 .lo-offer-t { font-size: 19px; line-height: 1.3; font-weight: 500; color: var(--teal); }
 .lo-offer-d { margin-top: 8px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.lo-offer { position: relative; }
+.lo-offer-b { display: flex; flex-direction: column; flex: 1 1 auto; }
+.lo-offer-kpi { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; gap: 8px 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+.lo-offer-d { margin-bottom: 18px; }
+.lo-offer-kpi li { display: contents; }
+.lo-offer-kpi span { font-size: 14px; line-height: 1.35; color: var(--ink-2); }
+.lo-offer-kpi strong { font-family: var(--font-display); font-stretch: 125%; font-size: 16px; font-weight: 600; color: var(--copper-ink); white-space: nowrap; }
 /* Content : trois couvertures de livrables en éventail */
 .lo-offer-ph--covers { background: radial-gradient(circle at 50% 120%, #2E5050 0%, var(--teal) 70%); }
 .lo-offer-ph--covers img { position: absolute; left: 50%; top: 50%; width: 34%; height: auto; border-radius: 2px; box-shadow: 0 14px 30px -10px rgba(0,0,0,.55); transition: transform .8s var(--ease); }
@@ -427,6 +438,8 @@ button.lo-ev:hover .lo-ev-name { text-decoration: underline; text-decoration-col
 .lo-doc-row .lo-link svg { width: 15px; height: 15px; }
 .lo-doc-na { flex: none; font-size: 14px; color: var(--ink-2); }
 .lo-doc-note { margin-top: 14px; font-size: 14px; color: var(--ink-2); }
+.lo-lists-intro { margin-top: 18px; font-size: 15px; color: var(--ink-2); }
+.lo-lists-date { display: block; font-size: 13px; font-weight: 400; color: var(--ink-2); }
 .lo-doc-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 
 /* Carrousels photo : accueil (accroches partenaires) et en-tête des fiches */
@@ -612,6 +625,10 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   .lo-header-in { flex-wrap: wrap; gap: 0 16px; min-height: 0; padding-top: 12px; }
   .lo-logo { width: 94px; height: 26px; }
   .lo-header .lo-btn { min-height: 42px; padding: 0 14px; font-size: 14.5px; }
+  .lo-header-actions { gap: 8px; }
+  .lo-header .lo-btn--line { width: 42px; padding: 0; }
+  .lo-hide-sm { display: none; }
+  .lo-only-sm { display: inline; }
   .lo-steps { order: 3; flex-basis: 100%; justify-content: flex-start; margin-top: 4px; }
   .lo-steps li + li::before { width: 22px; margin: 0 12px; }
   .lo-step-btn { padding: 8px 0 12px; }
@@ -685,7 +702,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           <li><button type="button" class="lo-step-btn" data-go="2"><span class="n">03</span><span class="l">Rendez-vous</span></button></li>
         </ol>
       </nav>
-      <button type="button" class="lo-btn lo-btn--sand" data-action="rdv"><span data-icon="calendar"></span>Prendre rendez-vous</button>
+      <div class="lo-header-actions"><button type="button" class="lo-btn lo-btn--line" data-action="lists" aria-haspopup="dialog" aria-label="Listes d’inscrits"><span data-icon="download"></span><span class="lo-hide-sm">Listes d’inscrits</span></button><button type="button" class="lo-btn lo-btn--sand" data-action="rdv"><span data-icon="calendar"></span><span class="lo-hide-sm">Prendre rendez-vous</span><span class="lo-only-sm">Rendez-vous</span></button></div>
     </div>
   </header>
 
@@ -697,8 +714,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       <section class="lo-step" data-step="0" aria-labelledby="lo-h-0">
         <div class="lo-hero">
         <p class="lo-kicker">Devenir partenaire en 2027</p>
-        <h1 class="lo-h1" id="lo-h-0" tabindex="-1">450 événements par an pour connecter nos partenaires aux décideurs</h1>
-        <p class="lo-lead">Nous réunissons des dirigeants de grandes entreprises autour de leurs enjeux de transformation, et nos partenaires autour de ces dirigeants.</p>
+        <h1 class="lo-h1" id="lo-h-0" tabindex="-1">Quels dirigeants voulez&#8209;vous rencontrer en 2027&nbsp;?</h1>
+        <p class="lo-lead">450 événements par an, plus de 130 partenaires accompagnés. Et vous, où vous situez-vous&nbsp;? Nous réunissons les dirigeants des grandes entreprises autour de leurs enjeux, et nos partenaires autour d’eux.</p>
 
         <ul class="lo-figures" aria-label="Losam en chiffres">
           <li><span class="lo-fig-n">2017</span><span class="lo-fig-l">Année de création, par Loïc Vuichard</span></li>
@@ -732,27 +749,27 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           <ul class="lo-offers">
             <li class="lo-offer">
               <div class="lo-offer-ph"><span class="lo-offer-badge">Offre phare</span><img src="photos/format-think-tank.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Think Tank sur-mesure</h3><p class="lo-offer-d">Des laboratoires à idées entre pairs, pour être intégré en amont des réflexions de votre cible.</p></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Think Tank sur-mesure</h3><p class="lo-offer-d">Des laboratoires à idées entre pairs, pour être intégré en amont des réflexions de votre cible.</p><ul class="lo-offer-kpi"><li><strong>115+</strong><span>think tanks déjà animés</span></li><li><strong>Suivi</strong><span>rendez-vous one-to-one avec vos cibles</span></li><li><strong>Contenu</strong><span>co-produit avec les membres</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/format-task-force.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Task Force</h3><p class="lo-offer-d">Des porteurs de projets réunis pour résoudre une problématique précise, jusqu’à un rapport de préconisations.</p></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Task Force</h3><p class="lo-offer-d">Des porteurs de projets réunis pour résoudre une problématique précise, jusqu’à un rapport de préconisations.</p><ul class="lo-offer-kpi"><li><strong>6 mois</strong><span>aux côtés des mêmes décideurs</span></li><li><strong>2</strong><span>workshops de 12 à 20 participants</span></li><li><strong>1</strong><span>rapport de préconisations</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph lo-offer-ph--covers"><img src="photos/content-livre-blanc.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-manifeste.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-ebook.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Content</h3><p class="lo-offer-d">Livres blancs, manifestes, baromètres&nbsp;: un contenu de haut niveau, rédigé par d’anciens consultants et journalistes et diffusé auprès de vos cibles.</p></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Content</h3><p class="lo-offer-d">Livres blancs, manifestes, baromètres&nbsp;: un contenu de haut niveau, rédigé par d’anciens consultants et journalistes et diffusé auprès de vos cibles.</p><ul class="lo-offer-kpi"><li><strong>1</strong><span>livrable à votre nom</span></li><li><strong>Ciblé</strong><span>diffusé auprès de vos décideurs prioritaires</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/diner-entre-pairs.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Soirées de benchmark</h3><p class="lo-offer-d">Un cadre confidentiel et exclusif pour présenter votre solution à des porteurs de projets de transformation.</p></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Soirées de benchmark</h3><p class="lo-offer-d">Un cadre confidentiel et exclusif pour présenter votre solution à des porteurs de projets de transformation.</p><ul class="lo-offer-kpi"><li><strong>100</strong><span>décideurs réunis</span></li><li><strong>8 à 12</strong><span>décideurs par table</span></li><li><strong>16</strong><span>décideurs rencontrés à vos tables</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/pleniere.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Conférences «&nbsp;Future of&nbsp;»</h3><p class="lo-offer-d">Fédérer votre écosystème et projeter votre vision devant une large audience de décideurs.</p></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Conférences «&nbsp;Future of&nbsp;»</h3><p class="lo-offer-d">Fédérer votre écosystème et projeter votre vision devant une large audience de décideurs.</p><ul class="lo-offer-kpi"><li><strong>1&#8239;000</strong><span>participants au maximum</span></li><li><strong>250</strong><span>CxO à Future of AI 2026</span></li><li><strong>Scène</strong><span>prise de parole devant votre cible</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/format-diner-exec.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Dîners Exec</h3><p class="lo-offer-d">Une vingtaine de dirigeants autour d’une table, dans les plus belles adresses de Paris.</p></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">VIP dinners</h3><p class="lo-offer-d">Des dîners qui réunissent des dirigeants exécutifs, à des tables sur mesure aux côtés de vos cibles prioritaires&nbsp;: une seule discussion par table, animée par vous.</p><ul class="lo-offer-kpi"><li><strong>8</strong><span>décideurs à votre table</span></li><li><strong>Sur mesure</strong><span>vos cibles prioritaires, choisies par vous</span></li></ul></div>
             </li>
           </ul>
         </div>
@@ -767,7 +784,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       <section class="lo-step" data-step="1" aria-labelledby="lo-h-1" hidden>
         <p class="lo-kicker">Vos cibles</p>
         <h1 class="lo-h1" id="lo-h-1" tabindex="-1">Choisissez vos cibles parmi nos 130+ communautés de décideurs</h1>
-        <p class="lo-lead">Six maisons Losam, chacune déclinée en soirées «&nbsp;Future of&nbsp;» et «&nbsp;Exec&nbsp;». Plusieurs choix possibles.</p>
+        <p class="lo-lead">Six maisons Losam, chacune déclinée en soirées «&nbsp;Future of&nbsp;» et en «&nbsp;VIP dinners&nbsp;». Plusieurs choix possibles.</p>
         <ul class="lo-grid lo-grid--3" id="lo-houses" aria-label="Maisons Losam"></ul>
         <div class="lo-nav">
           <button type="button" class="lo-btn lo-btn--ghost" data-go="0"><span class="lo-i-prev" data-icon="prev"></span>Retour</button>
@@ -893,6 +910,10 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         <div class="lo-dialog-in" id="lo-doc-body"></div>
       </dialog>
 
+      <dialog class="lo-dialog" id="lo-lists" aria-labelledby="lo-lists-title">
+        <div class="lo-dialog-in" id="lo-lists-body"></div>
+      </dialog>
+
       <div class="lo-sr" id="lo-live" aria-live="polite"></div>
     </div>
   </main>
@@ -956,8 +977,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   const WEEKDAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
   const DAYS = MONTHS.map(function (_, m) { return new Date(YEAR, m + 1, 0).getDate(); });
 
-  // Deux formats de soirée : « Future of » et « Exec ».
-  const KINDS = { fo: { prefix: 'Future of' }, exec: { prefix: 'Exec' } };
+  // Deux formats de soirée : « Future of » et « VIP dinner » (dîners de dirigeants).
+  const KINDS = { fo: { prefix: 'Future of' }, exec: { prefix: 'VIP dinner' } };
 
   // Charte des programmes (planche « Générateur Charte Graphique » Losam) : couleur principale, claire, neutre ; logo blanc et fond.
   const BRAND_IMG = {
@@ -1037,7 +1058,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   };
   // Logos propres à une soirée : EPM (présentation 2026), Conso et Treasury (même dessin), executive dinner Finance (logo FoF).
   const EVENT_LOGO = { 'epm': 'logo-epm', 'conso': 'logo-conso', 'treasury': 'logo-treasury', 'exec-fi': 'logo-finance' };
-  const LOGO_SUFFIX = { 'risk': '& Fraud', 'exec-fi': 'Executive dinner' };
+  const LOGO_SUFFIX = { 'risk': '& Fraud', 'exec-fi': 'VIP dinner' };
   // Programme de chaque soirée (les autres prennent les couleurs Losam).
   const PROGRAMME_OF = {
     'ai': 'ai', 'ai-eti': 'ai', 'exec-ai': 'ai', 'exec-ai-maroc': 'ai', 'cloud': 'cloud', 'cx': 'cx', 'cyber': 'cyber', 'data': 'data',
@@ -1211,6 +1232,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
   function openForm() {
     if (docDialog.open) closeDoc();
+    if (listsDialog.open) closeLists();
     if (state.step === 3) { form.elements.nom.focus(); return; }
     go(3);
   }
@@ -1676,6 +1698,38 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     return own.concat(rest.slice(start), rest.slice(0, start)).slice(0, 5);
   }
 
+  /* ---------- Listes d'inscrits (bouton de l'en-tête) ---------- */
+  const listsDialog = document.getElementById('lo-lists');
+
+  function openLists() {
+    const evs = EVENTS.filter(function (e) { return docPath(e, 'inscrits'); });
+    $('#lo-lists-body').innerHTML =
+      '<div class="lo-doc-hero" style="--prog:#203A3A;--pale:#D7D0BE">' +
+        '<img class="lo-doc-mono" src="' + BRAND_IMG.mono + '" alt="">' +
+        '<button type="button" class="lo-dialog-x" data-action="close-lists" autofocus>' + svg('close') + '<span class="lo-sr">Fermer</span></button>' +
+        '<p class="lo-doc-pre">Inscrits de l’édition ' + (YEAR - 1) + '</p>' +
+        '<h2 class="lo-doc-title" id="lo-lists-title">Qui était dans la salle&nbsp;?</h2>' +
+      '</div>' +
+      '<div class="lo-doc-main">' +
+        '<p class="lo-lists-intro">Listes anonymisées (société et fonction) des soirées ' + (YEAR - 1) + '. Téléchargez celles qui vous intéressent.</p>' +
+        '<ul class="lo-doc-list">' + evs.map(function (e) {
+          return '<li class="lo-doc-row">' + svg('list') + '<span class="lo-doc-l">' + esc(e.name) +
+            '<span class="lo-lists-date">' + (e.dated ? esc(cap(e.dateLong)) + ' ' + YEAR : 'Hors calendrier ' + YEAR) + '</span></span>' + dlLink(e, 'inscrits') + '</li>';
+        }).join('') + '</ul>' +
+        '<p class="lo-doc-note">Les autres listes vous sont transmises sur demande par votre commercial.</p>' +
+        '<div class="lo-doc-actions">' +
+          '<button type="button" class="lo-btn lo-btn--primary" data-action="rdv">' + svg('calendar') + 'Prendre rendez-vous</button>' +
+          '<button type="button" class="lo-btn lo-btn--ghost" data-action="close-lists">Fermer</button>' +
+        '</div></div>';
+    if (listsDialog.showModal) listsDialog.showModal(); else listsDialog.setAttribute('open', '');
+  }
+
+  function closeLists() {
+    if (listsDialog.close) listsDialog.close(); else listsDialog.removeAttribute('open');
+  }
+
+  listsDialog.addEventListener('click', function (e) { if (e.target === listsDialog) closeLists(); });
+
   /* ---------- Documentation d'une soirée ---------- */
   const docDialog = document.getElementById('lo-doc');
   let docEventId = null;
@@ -2070,6 +2124,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     else if (t.dataset.action === 'restart') restart();
     else if (t.dataset.action === 'copy') copyRecap();
     else if (t.dataset.action === 'close-doc') closeDoc();
+    else if (t.dataset.action === 'lists') openLists();
+    else if (t.dataset.action === 'close-lists') closeLists();
   });
 
   const onMedia = function () { renderTimeline(); };
