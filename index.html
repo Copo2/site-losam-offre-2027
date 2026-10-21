@@ -447,9 +447,12 @@ html, body { margin: 0; background: #F3EFE7; }
 /* Étape 0 : qui est Losam, verbatims clients */
 .lo-who .lo-sec-head { max-width: 760px; }
 .lo-who .lo-know-lead { max-width: 64ch; }
-.lo-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 36px; }
+.lo-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; margin-top: 36px; }
 .lo-quotes-h { padding-bottom: 12px; border-bottom: 1px solid var(--line-strong); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--copper-ink); }
-.lo-quote { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.lo-quote { padding: 22px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; }
+.lo-quotes > div { display: grid; grid-template-rows: subgrid; grid-row: span 5; }
+.lo-quotes > div > ul { display: contents; }
+.lo-quote .lo-quote-who { margin-top: auto; padding-top: 14px; }
 .lo-quote blockquote { margin: 0; }
 .lo-quote blockquote p { font-size: 16px; line-height: 1.55; color: var(--ink); }
 .lo-quote blockquote p::before { content: "« "; color: var(--copper-ink); }
@@ -458,7 +461,7 @@ html, body { margin: 0; background: #F3EFE7; }
 .lo-quote-who img { flex: none; width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; background: var(--sand-2, #ece7da); }
 .lo-quote-who strong { display: block; font-size: 14.5px; font-weight: 600; color: var(--teal); }
 .lo-quote-who span { display: block; font-size: 13.5px; color: var(--ink-2); }
-@media (max-width: 760px) { .lo-quotes { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) { .lo-quotes { grid-template-columns: minmax(0, 1fr); } .lo-quotes > div + div { margin-top: 32px; } }
 
 .lo-req { color: #B4462E; font-weight: 700; }
 .lo-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 32px; }
