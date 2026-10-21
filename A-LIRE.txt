@@ -13,8 +13,8 @@ Mise en ligne
 
 Envoi des récaps par e-mail
 - Le formulaire envoie chaque récap à nils.vancaeneghem@losam.fr via FormSubmit (formsubmit.co), sans serveur à installer,
-  avec en copie le commercial de chaque maison choisie (Finance : mohamed@ ; Tech et HR : geoffroy.eynard@ ;
-  Marketing et Gouvernance : sabrina.touzanu@ ; Ops : nils.vancaeneghem@).
+  avec en copie le commercial de chaque programme choisi (Finance : mohamed@ ; Tech et HR : geoffroy.eynard@ ;
+  Marketing et Gouvernance : sabrina.touzani@ ; Ops : nils.vancaeneghem@).
 - Au premier envoi depuis le site, FormSubmit peut envoyer un e-mail « Activate Form » à cette adresse :
   cliquer sur le bouton, puis renvoyer le récap. Les envois suivants arrivent directement.
 
@@ -36,6 +36,6 @@ Utiliser le formulaire de contact du site losam.fr (recommandé)
   par commercial avec la condition « Votre message contient » :
       « Finance → »      envoyer à mohamed@losam.fr
       « Tech → » ou « HR → »                 envoyer à geoffroy.eynard@losam.fr
-      « Marketing → » ou « Gouvernance → »   envoyer à sabrina.touzanu@losam.fr
+      « Marketing → » ou « Gouvernance → »   envoyer à sabrina.touzani@losam.fr
       « Ops → »          envoyer à nils.vancaeneghem@losam.fr
 
