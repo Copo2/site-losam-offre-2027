@@ -48,12 +48,29 @@
     gouvernance: 'sabrina.touzani@losam.fr'
   };
   const FORMULAIRE_LOSAM = { id: 7, message: 'input_4', choix: ['input_12.3'] };
+  // Partenaires de l'édition 2026 (logos des présentations 2027), affichés en clair sous chaque soirée.
+  const PARTENAIRES_2026 = {
+    'epm': ['SAP', 'Oracle', 'IBM', 'Workday', 'OneStream', 'CCH Tagetik', 'Board', 'Workiva', 'Jedox', 'Pigment', 'LucaNet', 'Prophix', 'insightsoftware'],
+    'conso': ['SAP', 'Oracle', 'Workiva', 'OneStream', 'Anaplan', 'CCH Tagetik', 'Board', 'Pigment', 'LucaNet', 'insightsoftware', 'Amelkis', 'Regnology', 'Pomelo Paradigm', 'Talentia'],
+    'treasury': ['FIS', 'Revolut', 'Ebury', 'Kantox', 'Astran', 'Diapason', 'SisID'],
+    'industry': ['IBM', 'Appian', 'IFS'],
+    'procurement': ['Coupa', 'Ivalua', 'EcoVadis', 'Zycus', 'Sirion', 'Zip', 'SpendHQ', 'MEO Group', 'Omnea', 'IntegrityNext', 'Provigis', 'FCM', 'Fluxym', 'Naboo', 'Oro Labs', 'Positive Company'],
+    'p2p': ['Coupa', 'Ivalua', 'Basware', 'Zip', 'Medius', 'Tungsten Automation', 'Seeburger', 'Cegedim Business Services', 'Omnea', 'Onventis', 'Fakto', 'Runview', 'Symtrax'],
+    'supplychain': ['AWS', 'Oracle', 'SAS', 'Blue Yonder', 'Coupa', 'Appian', 'Alteryx', 'o9', 'Relex', 'OMP', 'Exotec', 'KBRW', 'Optilogic', 'osapiens', 'Elisa IndustrIQ'],
+    'ai': ['Devoteam (co-organisateur)', 'Alteryx', 'Appian', 'AWS', 'Datadog', 'Digital Realty', 'Dust', 'Google Cloud', 'IFS', 'Microsoft', 'MuleSoft', 'OutSystems', 'Palo Alto Networks', 'Ringover', 'Salesforce', 'SAS', 'Sidetrade', 'Snowflake', 'SoftwareOne', 'Tableau'],
+    'cloud': ['Red Hat', 'MongoDB', 'Pure Storage', 'Okta', 'HashiCorp', 'Apptio', 'SoftwareOne', 'S3NS'],
+    'cyber': ['CrowdStrike', 'Palo Alto Networks × AWS', 'Datadog', 'Hitachi', 'Rapid7', 'Commvault', 'Rubrik', 'HashiCorp', 'Tata Communications', 'Wallix', 'Everpure', 'Chainguard', 'Dust'],
+    'data': ['Alteryx', 'Fivetran', 'Cyera', 'Dust', 'Everpure', 'AdvanThink'],
+    'cx': ['Adobe', 'AWS', 'ElevenLabs', 'Genesys', 'Hightouch', 'NICE Cognigy', 'Okta', 'Parloa', 'Tata Communications'],
+    'risk': ['SAS', 'Diligent', 'Archer', 'Tungsten Automation', 'Resistant AI', 'Signaturit Group', 'Oneytrust', 'Trustfull', 'Eye2Scan', 'Sixthfin', 'AdvanThink'],
+    'legal': ['Hogan Lovells Cadwalader', 'Harvey', 'LexisNexis', 'Septeo', 'Vae Solis Communications', 'Workday']
+  };
   const DOCUMENTATION = {
-    'epm': { slides: 'documents/Future-of-EPM-2027-Presentation.pdf', inscrits: 'documents/Future-of-EPM-2026-Inscrits.xlsx' },  // Future of EPM · 21 janv.
+    'epm': { slides: 'documents/Future-of-EPM-2027-Presentation.pdf', inscrits: 'documents/Future-of-EPM-2026-Inscrits.xlsx' },  // Future of EPM · 26 janv.
     'exec-rh': { slides: '', inscrits: '' },  // Exec RH · 23 févr.
     'industry': { slides: 'documents/Future-of-Industry-2027-Presentation.pdf', inscrits: 'documents/Future-of-Industry-2026-Inscrits.xlsx' },  // Future of Industry · 10 mars
     'pe': { slides: 'documents/Future-of-Private-Equity-2027-Presentation.pdf', inscrits: '' },  // Future of Private Equity · 18 mars
-    'conso': { slides: 'documents/Future-of-Conso-2027-Presentation.pdf', inscrits: '' },  // Future of Conso · 25 mars
+    'conso': { slides: 'documents/Future-of-Conso-2027-Presentation.pdf', inscrits: '' },  // Future of Conso · 1er avr.
     'exec-ai-maroc': { slides: '' },  // Exec AI · Maroc · 6 avr. · nouveauté
     'finance-maroc': { slides: '' },  // Future of Finance · Maroc · 7 avr. · nouveauté
     'ai': { slides: 'documents/Future-of-AI-2027-Presentation.pdf', inscrits: 'documents/Future-of-AI-2026-Inscrits.xlsx' },  // Future of AI · 19-20 avr.
@@ -85,8 +102,8 @@
   };
   const PHOTOS = [
     { src: 'photos/cocktail.jpg', format: 'Les offres Losam', legende: 'Cocktail networking', accroche: 'Think tanks, task forces, soirées de benchmark, summits, exec dinners et contenus', chiffre: 'En France et à l’international', soirees: ['pe'] },
-    { src: 'photos/slide-think-tank.jpg', format: 'Think Tank sur-mesure', legende: 'Think tank entre dirigeants', accroche: 'Créez une intimité relationnelle unique et captez les enjeux de votre cible prioritaire, dans un cadre intimiste et exclusif', chiffre: '115+ think tanks déjà animés', reservee: true },
-    { src: 'photos/slide-task-force.jpg', format: 'Task Force', legende: 'Atelier Task Force chez Losam', accroche: 'Co-designez un rapport de préconisations avec vos décideurs prioritaires', chiffre: '6 mois aux côtés des mêmes décideurs', reservee: true },
+    { src: 'photos/slide-think-tank.jpg', format: 'Think Tank sur-mesure', legende: 'Think tank entre dirigeants', accroche: 'Créez une intimité relationnelle unique et captez les enjeux de votre cible prioritaire, dans un cadre intimiste et exclusif', chiffre: '12 mois, 5 rencontres · 115+ think tanks déjà animés', reservee: true },
+    { src: 'photos/slide-task-force.jpg', format: 'Task Force', legende: 'Atelier Task Force chez Losam', accroche: 'Co-designez un rapport de préconisations avec vos décideurs prioritaires', chiffre: '6 mois, 3 rencontres avec les mêmes décideurs', reservee: true },
     { src: 'photos/salle-ecran.jpg', format: 'Soirées de benchmark', legende: 'Table ronde au cœur du dîner', accroche: 'Présentez votre offre à un panel d’une centaine de décideurs clés et networkez table par table', chiffre: '8 à 12 décideurs par table', soirees: ['industry', 'p2p'] },
     { src: 'photos/partenaire-scene.jpg', format: 'Summits et conférences', legende: 'Table ronde en partenariat exclusif', accroche: 'Votre expertise présentée devant votre audience prioritaire', chiffre: 'Jusqu’à 1 000 participants', soirees: ['procurement'] },
     { src: 'photos/slide-vip-dinner.jpg', format: 'Exec dinners', legende: 'Dîner entre dirigeants', accroche: 'Échangez avec vos top C-level prioritaires dans un cadre unique et restreint', chiffre: '8 décideurs à votre table', soirees: ['exec-fi', 'exec-ai', 'exec-ai-maroc', 'exec-rh', 'exec-fraude'], reservee: true },
@@ -540,6 +557,9 @@ button.lo-ev:hover .lo-ev-name { text-decoration: underline; text-decoration-col
 .lo-docs-n .lo-ev-badge { margin-left: 8px; vertical-align: 2px; }
 .lo-docs-c { display: flex; min-width: 0; }
 .lo-docs-note { margin-top: 12px; font-size: 14px; color: var(--ink-2); }
+.lo-docs-sp { grid-column: 2 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 2px 0 4px; }
+.lo-docs-sp strong { margin-right: 6px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--copper-ink); }
+.lo-docs-sp span { padding: 4px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); }
 .lo-dl { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--teal); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: border-color .2s, background-color .2s; }
 .lo-dl:hover { border-color: var(--teal); background: var(--tint); }
 .lo-dl svg { width: 16px; height: 16px; flex: none; }
@@ -581,7 +601,7 @@ button.lo-ev:hover .lo-ev-name { text-decoration: underline; text-decoration-col
 .lo-chip[aria-pressed="true"] .lo-chip-state { background: var(--teal); border-color: var(--teal); color: #fff; }
 
 /* Étape 4 : formulaire + récap */
-.lo-form { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); grid-template-areas: "fields recap" "submit recap"; grid-template-rows: auto 1fr; gap: 0 56px; margin-top: 56px; align-items: start; }
+.lo-form { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); grid-template-areas: "fields recap" "extras recap" "submit recap"; grid-template-rows: auto auto 1fr; gap: 0 56px; margin-top: 56px; align-items: start; }
 .lo-fields { grid-area: fields; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; }
 .lo-fields .lo-h2 { grid-column: 1 / -1; margin-bottom: 0; }
 .lo-field { display: flex; flex-direction: column; gap: 8px; }
@@ -605,6 +625,12 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo.is-gf .lo-form { display: block; }
 .lo.is-gf .lo-fields, .lo.is-gf .lo-submit { display: none; }
 .lo.is-gf .lo-recap { position: static; }
+.lo.is-gf .lo-extras { margin: 0 0 40px; }
+.lo-extras { grid-area: extras; display: flex; flex-direction: column; gap: 14px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--line); }
+.lo-extras .lo-h2 { margin-bottom: 0; }
+.lo-extras-p { font-size: 15px; color: var(--ink-2); }
+.lo-extras textarea.lo-input { min-height: 112px; }
+.lo-extras .lo-optin { margin-top: 10px; }
 .lo-gf { margin-top: 48px; }
 .lo-gf-note { margin: -12px 0 24px; font-size: 15px; color: var(--ink-2); }
 .lo-recap { grid-area: recap; position: sticky; top: 112px; padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: 2px; box-shadow: var(--shadow); }
@@ -651,7 +677,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   .lo-header-in { gap: 28px; }
   .lo-know { grid-template-columns: minmax(0, 1fr); }
   .lo-know .lo-sec-head { position: static; }
-  .lo-form { grid-template-columns: minmax(0, 1fr); grid-template-areas: "fields" "recap" "submit"; grid-template-rows: none; gap: 48px; }
+  .lo-form { grid-template-columns: minmax(0, 1fr); grid-template-areas: "fields" "extras" "recap" "submit"; grid-template-rows: none; gap: 48px; }
   .lo-recap { position: static; }
   .lo-submit .lo-nav { margin-top: 0; }
 }
@@ -715,6 +741,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   .lo-docs-row { grid-template-columns: 64px minmax(0, 1fr); gap: 6px 12px; }
   .lo-docs-c { grid-column: 2; }
   .lo-docs-c:empty { display: none; }
+  .lo-docs-sp { grid-column: 1 / -1; }
 }
 @media (max-width: 520px) {
   .lo-doc-hero { padding: 26px 20px 22px; min-height: 130px; }
@@ -797,11 +824,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           <ul class="lo-offers">
             <li class="lo-offer">
               <div class="lo-offer-ph"><span class="lo-offer-badge">Offre phare</span><img src="photos/format-think-tank.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Think Tank sur-mesure</h3><p class="lo-offer-d">Des laboratoires à idées entre pairs, pour être intégré en amont des réflexions de votre cible.</p><ul class="lo-offer-kpi"><li><strong>115+</strong><span>think tanks déjà animés</span></li><li><strong>Suivi</strong><span>rendez-vous one-to-one avec vos cibles</span></li><li><strong>Contenu</strong><span>co-produit avec les membres</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Think Tank sur-mesure</h3><p class="lo-offer-d">Des laboratoires à idées entre pairs, pour être intégré en amont des réflexions de votre cible. Plus de 115 think tanks déjà animés.</p><ul class="lo-offer-kpi"><li><strong>12 mois</strong><span>durée du dispositif</span></li><li><strong>5 rencontres</strong><span>1 dîner fondateur et 4 workshops de 15 à 25 dirigeants</span></li><li><strong>25 à 40</strong><span>rendez-vous one-to-one avec vos cibles</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/format-task-force.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Task Force</h3><p class="lo-offer-d">Des porteurs de projets réunis pour résoudre une problématique précise, jusqu’à un rapport de préconisations.</p><ul class="lo-offer-kpi"><li><strong>6 mois</strong><span>aux côtés des mêmes décideurs</span></li><li><strong>2</strong><span>workshops de 12 à 20 participants</span></li><li><strong>1</strong><span>rapport de préconisations</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Task Force</h3><p class="lo-offer-d">Des porteurs de projets réunis pour résoudre une problématique précise, jusqu’à un rapport de préconisations.</p><ul class="lo-offer-kpi"><li><strong>6 mois</strong><span>durée du dispositif</span></li><li><strong>3 rencontres</strong><span>1 dîner fondateur et 2 workshops de 12 à 20 participants</span></li><li><strong>1</strong><span>rapport de préconisations co-signé avec vos cibles</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph lo-offer-ph--covers"><img src="photos/content-livre-blanc.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-manifeste.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-ebook.jpg" alt="" loading="lazy" decoding="async"></div>
@@ -858,8 +885,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         </div>
 
         <div class="lo-docs" id="lo-docs" hidden>
-          <h2 class="lo-docs-h">Documents à télécharger</h2>
-          <p class="lo-docs-p">Présentations 2027 et inscrits de l’édition 2026 (listes anonymisées&nbsp;: société et fonction).</p>
+          <h2 class="lo-docs-h">Partenaires 2026 et documents</h2>
+          <p class="lo-docs-p">Ils étaient partenaires de l’édition 2026. Présentations 2027 et inscrits 2026 à télécharger (listes anonymisées&nbsp;: société et fonction).</p>
           <ul class="lo-docs-list" id="lo-docs-list"></ul>
           <p class="lo-docs-note" id="lo-docs-note"></p>
         </div>
@@ -917,12 +944,17 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             </div>
             <div class="lo-field lo-field--full">
               <label class="lo-label" for="lo-message">Message <span class="opt">(facultatif)</span></label>
-              <textarea class="lo-input" id="lo-message" name="message" rows="5" placeholder="Vos enjeux, un événement qui vous intéresse, vos disponibilités…"></textarea>
-            </div>
-            <div class="lo-field lo-field--full">
-              <label class="lo-optin" for="lo-content"><input type="checkbox" id="lo-content" name="contenu" value="oui"><span><strong>Souhaitez-vous échanger sur notre offre contenu&nbsp;?</strong><span>Webinars, baromètres, manifestes, livres blancs, podcasts&nbsp;: cochez, votre commercial vous en parle lors de votre échange.</span></span></label>
+              <textarea class="lo-input" id="lo-message" name="message" rows="5" placeholder="Vos enjeux, vos disponibilités pour un échange…"></textarea>
             </div>
             <p class="lo-form-note"><span class="lo-req" aria-hidden="true">*</span> Champs obligatoires.</p>
+          </div>
+
+          <div class="lo-extras" role="group" aria-labelledby="lo-extras-h">
+            <h2 class="lo-h2" id="lo-extras-h">Au-delà de notre agenda, quels sont vos besoins&nbsp;?</h2>
+            <p class="lo-extras-p">Un dîner one-shot avec vos clients, une cible ou un pays absent du calendrier, un format sur-mesure&nbsp;: dites-le-nous, nous le construisons avec vous.</p>
+            <label class="lo-sr" for="lo-besoins">Vos besoins au-delà de notre agenda (facultatif)</label>
+            <textarea class="lo-input" id="lo-besoins" name="besoins" rows="4" placeholder="Ex. : un dîner privé avec 15 directeurs financiers de vos comptes clés, en marge de Future of Finance"></textarea>
+            <label class="lo-optin" for="lo-content"><input type="checkbox" id="lo-content" name="contenu" value="oui"><span><strong>Souhaitez-vous échanger sur notre offre contenu&nbsp;?</strong><span>Webinars, baromètres, manifestes, livres blancs, podcasts&nbsp;: cochez, votre commercial vous en parle lors de votre échange.</span></span></label>
           </div>
 
           <aside class="lo-recap" id="lo-recap" aria-labelledby="lo-recap-h"></aside>
@@ -939,7 +971,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
         <div class="lo-gf" id="lo-gf-slot" hidden>
           <h2 class="lo-h2">Vos coordonnées</h2>
-          <p class="lo-gf-note">Votre récap (cibles, rendez-vous, formats) est joint automatiquement à votre message.</p>
+          <p class="lo-gf-note">Votre récap (cibles, rendez-vous, formats, besoins) est joint automatiquement à votre message.</p>
           <div id="lo-gf-form"></div>
           <div class="lo-nav">
             <button type="button" class="lo-btn lo-btn--ghost" data-action="back-form"><span class="lo-i-prev" data-icon="prev"></span>Retour</button>
@@ -1150,11 +1182,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   // cible = fonctions visées par la soirée (sous le nom, sur la carte). Documents de chaque soirée : DOCUMENTATION, en haut du fichier.
   // Sans date : thématique sans édition en 2027, présentée hors frise.
   const EVENTS = [
-    { id: 'epm', kind: 'fo', topic: 'EPM', cible: 'CFO, directeurs FP&A', houses: ['finance'], m: 0, d: 21 },
+    { id: 'epm', kind: 'fo', topic: 'EPM', cible: 'CFO, directeurs FP&A', houses: ['finance'], m: 0, d: 26 },
     { id: 'exec-rh', kind: 'exec', topic: 'RH', cible: 'DRH de grands groupes', houses: ['hr'], m: 1, d: 23 },
     { id: 'industry', kind: 'fo', topic: 'Industry', cible: 'Directeurs industriels, COO', houses: ['ops'], m: 2, d: 10 },
     { id: 'pe', kind: 'fo', topic: 'Private Equity', cible: 'Associés de fonds de private equity', houses: ['gouvernance'], m: 2, d: 18 },
-    { id: 'conso', kind: 'fo', topic: 'Conso', cible: 'Directeurs consolidation et reporting', houses: ['finance'], m: 2, d: 25 },
+    { id: 'conso', kind: 'fo', topic: 'Conso', cible: 'Directeurs consolidation et reporting', houses: ['finance'], m: 3, d: 1 },
     { id: 'exec-ai-maroc', kind: 'exec', topic: 'AI · Maroc', cible: 'Chief AI Officers, CDO, CIO', houses: ['tech', 'marketing'], m: 3, d: 6, nouveau: true },
     { id: 'finance-maroc', kind: 'fo', topic: 'Finance · Maroc', cible: 'Directions financières au Maroc', houses: ['finance'], m: 3, d: 7, nouveau: true },
     { id: 'ai', kind: 'fo', topic: 'AI', cible: 'CDO, CIO, responsables IA et data', houses: ['tech', 'marketing'], m: 3, d: 19, d2: 20 },
@@ -1666,7 +1698,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   }
 
   function renderDocs() {
-    const evs = selEvents().filter(function (e) { return docKinds(e).some(function (k) { return docPath(e, k); }); });
+    const evs = selEvents().filter(function (e) { return PARTENAIRES_2026[e.id] || docKinds(e).some(function (k) { return docPath(e, k); }); });
     const others = selEvents().length - evs.length;
     $('#lo-docs').hidden = !evs.length;
     $('#lo-docs-list').innerHTML = evs.map(function (e) {
@@ -1674,6 +1706,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         '<span class="lo-docs-d">' + (e.dated ? esc(e.date) : 'Hors cal.') + '</span>' +
         '<span class="lo-docs-n">' + esc(e.name) + (e.nouveau ? '<span class="lo-ev-badge">Nouveau</span>' : '') + '</span>' +
         ['slides', 'inscrits'].map(function (k) { return '<span class="lo-docs-c">' + (docKinds(e).indexOf(k) !== -1 ? dlLink(e, k) : '') + '</span>'; }).join('') +
+        (PARTENAIRES_2026[e.id] ? '<p class="lo-docs-sp"><strong>' + PARTENAIRES_2026[e.id].length + ' partenaires ' + (YEAR - 1) + '</strong>' +
+          PARTENAIRES_2026[e.id].map(function (n) { return '<span>' + esc(n) + '</span>'; }).join('') + '</p>' : '') +
       '</li>';
     }).join('');
     $('#lo-docs-note').textContent = others ? plural(others, 'autre rendez-vous', 'autres rendez-vous') + ' de votre sélection : documents sur demande auprès de votre commercial.' : '';
@@ -1984,6 +2018,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     if (fm.length) lines.push('• Formats : ' + fm.map(function (f) { return f.label; }).join(', '));
     const ct = document.getElementById('lo-content');
     if (ct && ct.checked) lines.push('• Offre contenu : souhaite échanger (webinars, baromètres, manifestes…)');
+    const bs = document.getElementById('lo-besoins');
+    if (bs && bs.value.trim()) lines.push('• Besoins au-delà de l’agenda : ' + bs.value.trim().replace(/\s*\n\s*/g, ' / '));
     if (houses.length) lines.push('• Commerciaux concernés : ' + houses.map(function (h) { return h.label + ' → ' + COMMERCIAUX[h.id]; }).join(' ; '));
     if (message) lines.push('• Message : ' + message);
     lines.push('(Calendrier ' + YEAR + ' prévisionnel, dates à confirmer.)');
@@ -2008,6 +2044,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       interests: interests,
       formats: FORMATS.filter(function (f) { return state.formats.has(f.id); }).map(function (f) { return f.label; }),
       contentOffer: !!(document.getElementById('lo-content') || {}).checked,
+      besoins: ((document.getElementById('lo-besoins') || {}).value || '').trim(),
       targets: houses.map(function (h) { return { id: h.id, label: h.label, roles: h.roles, commercial: COMMERCIAUX[h.id] }; }),
       events: evs.map(function (e) {
         return {
