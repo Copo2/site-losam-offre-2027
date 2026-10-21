@@ -691,10 +691,10 @@ button.lo-ev:hover .lo-ev-name { text-decoration: underline; text-decoration-col
 .lo-logos li { display: flex; align-items: center; justify-content: center; height: 60px; padding: 10px 14px; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
 .lo-logos img { display: block; max-width: 100%; max-height: 34px; width: auto; height: auto; object-fit: contain; }
 .lo-logos li.is-txt { font-size: 14px; font-weight: 700; line-height: 1.2; text-align: center; color: var(--ink); }
-.lo-who { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
-.lo-who li { padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; box-shadow: inset 3px 0 0 var(--prog, var(--teal)); }
-.lo-who strong { display: block; font-size: 14.5px; color: var(--teal); }
-.lo-who span { display: block; margin-top: 2px; font-size: 13.5px; line-height: 1.35; color: var(--ink-2); }
+.lo-attendees { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.lo-attendees li { padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; box-shadow: inset 3px 0 0 var(--prog, var(--teal)); }
+.lo-attendees strong { display: block; font-size: 14.5px; color: var(--teal); }
+.lo-attendees span { display: block; margin-top: 2px; font-size: 13.5px; line-height: 1.35; color: var(--ink-2); }
 .lo-dl { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--teal); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: border-color .2s, background-color .2s; }
 .lo-dl:hover { border-color: var(--teal); background: var(--tint); }
 .lo-dl svg { width: 16px; height: 16px; flex: none; }
@@ -1850,7 +1850,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             const src = LOGOS_PARTENAIRES[n];
             return src ? '<li title="' + esc(n) + '"><img src="' + esc(src) + '" alt="' + esc(n) + '" loading="lazy" decoding="async"></li>' : '<li class="is-txt">' + esc(n) + '</li>';
           }).join('') + '</ul></div>' : '') +
-        (EXTRAITS_INSCRITS[e.id] ? '<div class="lo-docs-sp"><p class="lo-docs-k">Ils étaient inscrits en ' + (YEAR - 1) + ' (extrait)</p><ul class="lo-who">' +
+        (EXTRAITS_INSCRITS[e.id] ? '<div class="lo-docs-sp"><p class="lo-docs-k">Ils étaient inscrits en ' + (YEAR - 1) + ' (extrait)</p><ul class="lo-attendees">' +
           EXTRAITS_INSCRITS[e.id].map(function (r) { return '<li><strong>' + esc(r[0]) + '</strong><span>' + esc(r[1]) + '</span></li>'; }).join('') + '</ul></div>' : '') +
       '</li>';
     }).join('');
