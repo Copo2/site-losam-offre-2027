@@ -42,10 +42,10 @@
   const COMMERCIAUX = {
     tech: 'geoffroy.eynard@losam.fr',
     ops: 'nils.vancaeneghem@losam.fr',
-    marketing: 'sabrina.touzanu@losam.fr',
+    marketing: 'sabrina.touzani@losam.fr',
     hr: 'geoffroy.eynard@losam.fr',
     finance: 'mohamed@losam.fr',
-    gouvernance: 'sabrina.touzanu@losam.fr'
+    gouvernance: 'sabrina.touzani@losam.fr'
   };
   const FORMULAIRE_LOSAM = { id: 7, message: 'input_4', choix: ['input_12.3'] };
   const DOCUMENTATION = {
@@ -84,15 +84,15 @@
     'sustainability': { inscrits: '' }  // Future of Sustainability · hors calendrier 2027
   };
   const PHOTOS = [
-    { src: 'photos/partenaire-scene.jpg', format: 'Conférences « Future of »', legende: 'Table ronde en partenariat exclusif', accroche: 'Votre expert sur scène, devant toute votre cible', chiffre: 'Jusqu’à 1 000 participants', soirees: ['procurement'] },
-    { src: 'photos/salle-ecran.jpg', format: 'Soirées de benchmark', legende: 'Table ronde au cœur du dîner', accroche: 'Présentez votre solution à 100 décideurs, table par table', chiffre: '8 à 12 décideurs par table', soirees: ['industry', 'p2p'] },
-    { src: 'photos/slide-vip-dinner.jpg', format: 'VIP dinners', legende: 'Dîner entre dirigeants', accroche: '8 décideurs à votre table, choisis par vous', chiffre: 'Une seule discussion, animée par vous', soirees: ['exec-fi', 'exec-ai', 'exec-ai-maroc', 'exec-rh', 'exec-fraude'], reservee: true },
-    { src: 'photos/slide-think-tank.jpg', format: 'Think Tank sur-mesure', legende: 'Think tank entre dirigeants', accroche: 'Entrez en amont des réflexions de votre cible', chiffre: '115+ think tanks déjà animés', reservee: true },
-    { src: 'photos/slide-task-force.jpg', format: 'Task Force', legende: 'Atelier Task Force chez Losam', accroche: 'Co-construisez des projets concrets avec vos cibles', chiffre: '6 mois aux côtés des mêmes décideurs', reservee: true },
-    { src: 'photos/slide-content.jpg', format: 'Content', legende: 'Livres blancs et manifestes Losam', accroche: 'Votre expertise, signée et diffusée auprès de vos cibles', chiffre: 'Livres blancs · manifestes · baromètres', pos: '74% 50%', reservee: true },
+    { src: 'photos/cocktail.jpg', format: 'Les offres Losam', legende: 'Cocktail networking', accroche: 'Think tanks, task forces, soirées de benchmark, summits, exec dinners et contenus', chiffre: 'En France et à l’international', soirees: ['pe'] },
+    { src: 'photos/slide-think-tank.jpg', format: 'Think Tank sur-mesure', legende: 'Think tank entre dirigeants', accroche: 'Créez une intimité relationnelle unique et captez les enjeux de votre cible prioritaire, dans un cadre intimiste et exclusif', chiffre: '115+ think tanks déjà animés', reservee: true },
+    { src: 'photos/slide-task-force.jpg', format: 'Task Force', legende: 'Atelier Task Force chez Losam', accroche: 'Co-designez un rapport de préconisations avec vos décideurs prioritaires', chiffre: '6 mois aux côtés des mêmes décideurs', reservee: true },
+    { src: 'photos/salle-ecran.jpg', format: 'Soirées de benchmark', legende: 'Table ronde au cœur du dîner', accroche: 'Présentez votre offre à un panel d’une centaine de décideurs clés et networkez table par table', chiffre: '8 à 12 décideurs par table', soirees: ['industry', 'p2p'] },
+    { src: 'photos/partenaire-scene.jpg', format: 'Summits et conférences', legende: 'Table ronde en partenariat exclusif', accroche: 'Votre expertise présentée devant votre audience prioritaire', chiffre: 'Jusqu’à 1 000 participants', soirees: ['procurement'] },
+    { src: 'photos/slide-vip-dinner.jpg', format: 'Exec dinners', legende: 'Dîner entre dirigeants', accroche: 'Échangez avec vos top C-level prioritaires dans un cadre unique et restreint', chiffre: '8 décideurs à votre table', soirees: ['exec-fi', 'exec-ai', 'exec-ai-maroc', 'exec-rh', 'exec-fraude'], reservee: true },
+    { src: 'photos/slide-content.jpg', format: 'Content', legende: 'Livres blancs et manifestes Losam', accroche: 'Votre expertise, signée et diffusée auprès de vos décideurs clés', chiffre: 'Livres blancs · manifestes · baromètres · podcasts · cahiers de tendances', pos: '74% 50%', reservee: true },
     { src: 'photos/echanges-a-table.jpg', legende: 'Échanges à table', soirees: ['pe'] },
     { src: 'photos/keynote.jpg', legende: 'Interview partenaire en plénière', soirees: ['pe'] },
-    { src: 'photos/cocktail.jpg', legende: 'Cocktail networking', soirees: ['pe'] },
     { src: 'photos/table-ronde-scene.jpg', legende: 'Prise de parole d’un dirigeant', soirees: ['industry', 'cyber'] },
     { src: 'photos/salle-diner.jpg', legende: 'Dîner en tables rondes', soirees: ['cx', 'supplychain'] },
     { src: 'photos/pleniere.jpg', legende: 'Table ronde en plénière', soirees: ['pe'] },
@@ -299,6 +299,24 @@ html, body { margin: 0; background: #F3EFE7; }
 .lo-know-t { font-size: 19px; line-height: 1.3; font-weight: 500; color: var(--teal); }
 .lo-know-d { max-width: 54ch; margin-top: 6px; font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
 
+/* Étape 0 : qui est Losam, verbatims clients */
+.lo-who .lo-sec-head { max-width: 760px; }
+.lo-who .lo-know-lead { max-width: 64ch; }
+.lo-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 36px; }
+.lo-quotes-h { padding-bottom: 12px; border-bottom: 1px solid var(--line-strong); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--copper-ink); }
+.lo-quote { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.lo-quote blockquote { margin: 0; }
+.lo-quote blockquote p { font-size: 16px; line-height: 1.55; color: var(--ink); }
+.lo-quote blockquote p::before { content: "« "; color: var(--copper-ink); }
+.lo-quote blockquote p::after { content: " »"; color: var(--copper-ink); }
+.lo-quote-who { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.lo-quote-who img { flex: none; width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; background: var(--sand-2, #ece7da); }
+.lo-quote-who strong { display: block; font-size: 14.5px; font-weight: 600; color: var(--teal); }
+.lo-quote-who span { display: block; font-size: 13.5px; color: var(--ink-2); }
+@media (max-width: 760px) { .lo-quotes { grid-template-columns: minmax(0, 1fr); } }
+
+.lo-req { color: #B4462E; font-weight: 700; }
+
 /* Étape 0 : formats, en une phrase */
 .lo-reach .lo-h2 { margin-bottom: 20px; }
 .lo-reach-t { max-width: 30ch; font-size: clamp(26px, calc(2vw + 14px), 44px); line-height: 1.22; font-weight: 400; letter-spacing: -.01em; color: var(--teal); text-wrap: balance; }
@@ -476,6 +494,8 @@ button.lo-ev:hover .lo-ev-name { text-decoration: underline; text-decoration-col
 .lo-car-btn:hover { background: rgba(255,255,255,.16); border-color: #fff; }
 .lo-car-btn svg { width: 18px; height: 18px; }
 /* Accueil : grand format, accroche par photo, bouton d'action */
+.lo .lo-car-cta, .lo .lo-cta-big { min-height: 60px; padding: 0 34px; font-size: 18px; font-weight: 700; letter-spacing: .01em; box-shadow: 0 10px 28px rgba(0,0,0,.28); }
+.lo .lo-cta-big { box-shadow: 0 10px 24px rgba(15,46,46,.22); }
 .lo-car--home { --inset: max(40px, calc(50% - 550px)); height: clamp(460px, 44vw, 640px); margin-inline: calc(50% - 50vw); }
 .lo-car--home .lo-car-bars, .lo-car--home .lo-car-txt, .lo-car--home .lo-car-foot { left: var(--inset); right: var(--inset); }
 .lo-car--home .lo-car-slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(14,28,28,.92) 0%, rgba(14,28,28,.6) 30%, rgba(14,28,28,0) 62%), linear-gradient(180deg, rgba(14,28,28,.5) 0%, rgba(14,28,28,0) 20%); }
@@ -636,7 +656,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   .lo-car--home { --inset: 20px; height: 500px; }
   .lo-car--home .lo-car-slide::after { background: linear-gradient(0deg, rgba(14,28,28,.96) 0%, rgba(14,28,28,.86) 42%, rgba(14,28,28,.25) 72%, rgba(14,28,28,0) 85%), linear-gradient(180deg, rgba(14,28,28,.5) 0%, rgba(14,28,28,0) 18%); }
   .lo-car-txt { bottom: 96px; }
-  .lo-car-cta { display: none; }
+  .lo-car-cta { width: 100%; }
   .lo-car-n { min-width: 0; }
   .lo-wrap { padding: 0 20px; }
   .lo-header-in { flex-wrap: wrap; gap: 0 16px; min-height: 0; padding-top: 12px; }
@@ -730,35 +750,33 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       <!-- Étape 0 : Losam en bref -->
       <section class="lo-step" data-step="0" aria-labelledby="lo-h-0">
         <div class="lo-hero">
-        <p class="lo-kicker">Devenir partenaire en 2027</p>
-        <h1 class="lo-h1" id="lo-h-0" tabindex="-1">Quels dirigeants voulez&#8209;vous rencontrer en 2027&nbsp;?</h1>
-        <p class="lo-lead">450 événements par an, plus de 130 partenaires accompagnés. Et vous, où vous situez-vous&nbsp;? Nous réunissons les dirigeants des grandes entreprises autour de leurs enjeux, et nos partenaires autour d’eux.</p>
+        <p class="lo-kicker">Devenir partenaire Losam en 2027</p>
+        <h1 class="lo-h1" id="lo-h-0" tabindex="-1">Quels dirigeants prioritaires souhaitez&#8209;vous rencontrer en 2027&nbsp;?</h1>
+        <p class="lo-lead">500 événements, 210 partenaires accompagnés. Et vous, où vous situez-vous&nbsp;? Nous réunissons les plus grands dirigeants des grandes et moyennes entreprises autour de leurs enjeux, et nos partenaires autour d’eux.</p>
 
         <ul class="lo-figures" aria-label="Losam en chiffres">
-          <li><span class="lo-fig-n">2017</span><span class="lo-fig-l">Année de création, par Loïc Vuichard</span></li>
-          <li><span class="lo-fig-n">450</span><span class="lo-fig-l">Événements par an</span></li>
-          <li><span class="lo-fig-n">12&#8239;000</span><span class="lo-fig-l">Dirigeants actifs dans nos communautés</span></li>
-          <li><span class="lo-fig-n">130<em>+</em></span><span class="lo-fig-l">Partenaires accompagnés</span></li>
+          <li><span class="lo-fig-n">2017</span><span class="lo-fig-l">Année de création</span></li>
+          <li><span class="lo-fig-n">500<em>+</em></span><span class="lo-fig-l">Événements à l’année</span></li>
+          <li><span class="lo-fig-n">13&#8239;000</span><span class="lo-fig-l">Dirigeants actifs au sein de la communauté Losam</span></li>
+          <li><span class="lo-fig-n">210<em>+</em></span><span class="lo-fig-l">Partenaires accompagnés</span></li>
         </ul>
         <div class="lo-progs" id="lo-progs"></div>
         </div>
 
+        <div class="lo-block lo-who">
+          <div class="lo-sec-head">
+            <h2 class="lo-h2">Qui est Losam</h2>
+            <p class="lo-sec-title">Animer et fédérer la plus grande communauté européenne de dirigeants</p>
+            <p class="lo-know-lead">Depuis 2017, nous réunissons les dirigeants des grandes et moyennes entreprises, en France et à l’international, autour de leurs enjeux&nbsp;: nos partenaires les rencontrent dans des formats conçus pour créer la confiance, pas pour vendre.</p>
+          </div>
+          <div class="lo-quotes">
+            <div><h3 class="lo-quotes-h">Ce que disent nos partenaires</h3><ul><li class="lo-quote"><blockquote><p>Nous avons choisi de prolonger notre partenariat avec LOSAM pour trois ans, en reconnaissance de leur engagement et de la qualité de la prestation.</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/dupont-noel.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>David Dupont-Noel</strong><span>CEO Deloitte France et Afrique francophone, Deloitte</span></p></div></li><li class="lo-quote"><blockquote><p>Avec LOSAM, nous avons trouvé bien plus qu’un partenaire&nbsp;: un véritable cercle de confiance, où exigence professionnelle et échanges sincères nous font progresser ensemble.</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/cotte.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>Hubert Cotté</strong><span>Country Manager, Workday</span></p></div></li><li class="lo-quote"><blockquote><p>Le travail de LOSAM est extraordinaire. Les cercles sont uniques, et ce que vous avez accompli sur Future of Finance est inédit. J’aimerais voir ce modèle se déployer à l’international. Bravo&nbsp;!</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/crespo.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>Eléonore Crespo</strong><span>Co-Founder and Co-CEO, Pigment</span></p></div></li><li class="lo-quote"><blockquote><p>Avec LOSAM, nous avançons dans une roadmap ambitieuse, au cœur d’un écosystème en mouvement, qui rend chaque étape stimulante.</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/grand-rive.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>Thibaut de La Grand’Rive</strong><span>Directeur général, Delos</span></p></div></li></ul></div>
+            <div><h3 class="lo-quotes-h">Ce que disent les dirigeants de nos communautés</h3><ul><li class="lo-quote"><blockquote><p>Un format de convivialité et d’efficacité au sein duquel je me retrouve. Un format unique sur le marché.</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/cotillard.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>Thierry Cotillard</strong><span>Président, Les Mousquetaires</span></p></div></li><li class="lo-quote"><blockquote><p>Les débats ont été très intéressants, avec une vraie liberté et diversité d’opinions. L’animation avec les post-it, cela marche bien. Gardez la formule&nbsp;!</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/pouyanne.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>Patrick Pouyanné</strong><span>Président-directeur général, TotalEnergies</span></p></div></li><li class="lo-quote"><blockquote><p>À partir du contact humain, vous arrivez à créer une véritable créativité dans les échanges.</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/martinez.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>Enrique Martinez</strong><span>Président-directeur général, Fnac Darty</span></p></div></li><li class="lo-quote"><blockquote><p>Absolument super. Un dialogue libre, avec un affûtage de neurones constant et beaucoup de dynamisme grâce au modèle d’animation.</p></blockquote><div class="lo-quote-who"><img src="photos/temoins/dumazy.png" alt="" width="48" height="48" loading="lazy" decoding="async"><p><strong>Bertrand Dumazy</strong><span>Président-directeur général, Edenred</span></p></div></li></ul></div>
+          </div>
+        </div>
+
         <div id="lo-car-home"></div>
 
-        <div class="lo-block lo-know">
-          <div class="lo-sec-head">
-            <h2 class="lo-h2">Notre savoir-faire</h2>
-            <p class="lo-sec-title">Animer la plus grande communauté de décideurs</p>
-            <p class="lo-know-lead">Depuis 2017, nous réunissons les dirigeants des grandes entreprises autour de leurs enjeux, et nos partenaires autour d’eux.</p>
-          </div>
-          <ol class="lo-know-list">
-            <li><span class="lo-know-n">01</span><div><h3 class="lo-know-t">Animer des communautés</h3><p class="lo-know-d">Plus de 130 communautés de dirigeants, réunies et animées toute l’année par nos équipes.</p></div></li>
-            <li><span class="lo-know-n">02</span><div><h3 class="lo-know-t">Qualifier l’audience</h3><p class="lo-know-d">Chaque invité est choisi pour sa fonction et son entreprise&nbsp;: vous rencontrez vos cibles, pas un public.</p></div></li>
-            <li><span class="lo-know-n">03</span><div><h3 class="lo-know-t">Faciliter les échanges</h3><p class="lo-know-d">Plans de table, tables rondes, temps de networking&nbsp;: nous créons les conditions de la rencontre.</p></div></li>
-            <li><span class="lo-know-n">04</span><div><h3 class="lo-know-t">Produire du contenu</h3><p class="lo-know-d">Livres blancs, baromètres, podcasts&nbsp;: vos prises de parole prolongées bien après l’événement.</p></div></li>
-            <li><span class="lo-know-n">05</span><div><h3 class="lo-know-t">Marque blanche</h3><p class="lo-know-d">Nous concevons et organisons aussi vos propres événements, à vos couleurs.</p></div></li>
-          </ol>
-        </div>
 
         <div class="lo-block lo-reach">
           <h2 class="lo-h2">Nos formats</h2>
@@ -782,17 +800,17 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/pleniere.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Conférences «&nbsp;Future of&nbsp;»</h3><p class="lo-offer-d">Fédérer votre écosystème et projeter votre vision devant une large audience de décideurs.</p><ul class="lo-offer-kpi"><li><strong>1&#8239;000</strong><span>participants au maximum</span></li><li><strong>250</strong><span>CxO à Future of AI 2026</span></li><li><strong>Scène</strong><span>prise de parole devant votre cible</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Summits et conférences</h3><p class="lo-offer-d">Fédérer votre écosystème et projeter votre vision devant une large audience de décideurs.</p><ul class="lo-offer-kpi"><li><strong>1&#8239;000</strong><span>participants au maximum</span></li><li><strong>250</strong><span>CxO à Future of AI 2026</span></li><li><strong>Scène</strong><span>prise de parole devant votre cible</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/format-diner-exec.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">VIP dinners</h3><p class="lo-offer-d">Des dîners qui réunissent des dirigeants exécutifs, à des tables sur mesure aux côtés de vos cibles prioritaires&nbsp;: une seule discussion par table, animée par vous.</p><ul class="lo-offer-kpi"><li><strong>8</strong><span>décideurs à votre table</span></li><li><strong>Sur mesure</strong><span>vos cibles prioritaires, choisies par vous</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Exec dinners</h3><p class="lo-offer-d">Des dîners qui réunissent des dirigeants exécutifs, à des tables sur mesure aux côtés de vos cibles prioritaires&nbsp;: une seule discussion par table, animée par vous.</p><ul class="lo-offer-kpi"><li><strong>8</strong><span>décideurs à votre table</span></li><li><strong>Sur mesure</strong><span>vos cibles prioritaires, choisies par vous</span></li></ul></div>
             </li>
           </ul>
         </div>
 
         <div class="lo-nav lo-nav--start">
-          <button type="button" class="lo-btn lo-btn--primary" data-go="1">Construire mon offre 2027<span class="lo-i-next" data-icon="next"></span></button>
+          <button type="button" class="lo-btn lo-btn--primary lo-cta-big" data-go="1">Construire mon offre 2027<span class="lo-i-next" data-icon="next"></span></button>
           <p class="lo-nav-hint">Cibles, rendez-vous, récap&nbsp;: votre offre 2027 en trois étapes.</p>
         </div>
       </section>
@@ -800,9 +818,9 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       <!-- Étape 1 : maisons Losam (plusieurs choix) -->
       <section class="lo-step" data-step="1" aria-labelledby="lo-h-1" hidden>
         <p class="lo-kicker">Vos cibles</p>
-        <h1 class="lo-h1" id="lo-h-1" tabindex="-1">Choisissez vos cibles parmi nos 130+ communautés de décideurs</h1>
-        <p class="lo-lead">Six maisons Losam, chacune déclinée en soirées «&nbsp;Future of&nbsp;» et en «&nbsp;VIP&nbsp;dinners&nbsp;». Plusieurs choix possibles.</p>
-        <ul class="lo-grid lo-grid--3" id="lo-houses" aria-label="Maisons Losam"></ul>
+        <h1 class="lo-h1" id="lo-h-1" tabindex="-1">Choisissez vos cibles prioritaires</h1>
+        <p class="lo-lead">Six programmes Losam, chacun décliné sur nos différents modèles d’animation et d’activation. Plusieurs choix possibles.</p>
+        <ul class="lo-grid lo-grid--3" id="lo-houses" aria-label="Programmes Losam"></ul>
         <div class="lo-nav">
           <button type="button" class="lo-btn lo-btn--ghost" data-go="0"><span class="lo-i-prev" data-icon="prev"></span>Retour</button>
           <div class="lo-nav-end">
@@ -852,34 +870,34 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       <!-- Étape 3 : formulaire et envoi -->
       <section class="lo-step" data-step="3" aria-labelledby="lo-h-3" hidden>
         <p class="lo-kicker">Votre récap</p>
-        <h1 class="lo-h1" id="lo-h-3" tabindex="-1">Envoyez votre récap à votre commercial</h1>
+        <h1 class="lo-h1" id="lo-h-3" tabindex="-1">Envoyez votre demande à l’équipe Losam</h1>
         <p class="lo-lead" id="lo-form-intro"></p>
 
         <form class="lo-form" id="lo-form" novalidate>
           <div class="lo-fields" role="group" aria-labelledby="lo-fields-h">
             <h2 class="lo-h2" id="lo-fields-h">Vos coordonnées</h2>
             <div class="lo-field">
-              <label class="lo-label" for="lo-nom">Nom</label>
+              <label class="lo-label" for="lo-nom">Nom <span class="lo-req" aria-hidden="true">*</span></label>
               <input class="lo-input" id="lo-nom" name="nom" type="text" autocomplete="family-name" required aria-describedby="err-nom">
               <p class="lo-error" id="err-nom" hidden></p>
             </div>
             <div class="lo-field">
-              <label class="lo-label" for="lo-prenom">Prénom</label>
+              <label class="lo-label" for="lo-prenom">Prénom <span class="lo-req" aria-hidden="true">*</span></label>
               <input class="lo-input" id="lo-prenom" name="prenom" type="text" autocomplete="given-name" required aria-describedby="err-prenom">
               <p class="lo-error" id="err-prenom" hidden></p>
             </div>
             <div class="lo-field">
-              <label class="lo-label" for="lo-societe">Société</label>
+              <label class="lo-label" for="lo-societe">Société <span class="lo-req" aria-hidden="true">*</span></label>
               <input class="lo-input" id="lo-societe" name="societe" type="text" autocomplete="organization" required aria-describedby="err-societe">
               <p class="lo-error" id="err-societe" hidden></p>
             </div>
             <div class="lo-field">
-              <label class="lo-label" for="lo-fonction">Fonction</label>
+              <label class="lo-label" for="lo-fonction">Fonction <span class="lo-req" aria-hidden="true">*</span></label>
               <input class="lo-input" id="lo-fonction" name="fonction" type="text" autocomplete="organization-title" required aria-describedby="err-fonction">
               <p class="lo-error" id="err-fonction" hidden></p>
             </div>
             <div class="lo-field">
-              <label class="lo-label" for="lo-email">E-mail</label>
+              <label class="lo-label" for="lo-email">E-mail <span class="lo-req" aria-hidden="true">*</span></label>
               <input class="lo-input" id="lo-email" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" required aria-describedby="err-email">
               <p class="lo-error" id="err-email" hidden></p>
             </div>
@@ -892,7 +910,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
               <label class="lo-label" for="lo-message">Message <span class="opt">(facultatif)</span></label>
               <textarea class="lo-input" id="lo-message" name="message" rows="5" placeholder="Vos enjeux, un événement qui vous intéresse, vos disponibilités…"></textarea>
             </div>
-            <p class="lo-form-note">Tous les champs sont obligatoires, sauf mention «&nbsp;facultatif&nbsp;».</p>
+            <p class="lo-form-note"><span class="lo-req" aria-hidden="true">*</span> Champs obligatoires.</p>
           </div>
 
           <aside class="lo-recap" id="lo-recap" aria-labelledby="lo-recap-h"></aside>
@@ -902,7 +920,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             <div class="lo-alert" id="lo-send-error" role="alert" hidden></div>
             <div class="lo-nav">
               <button type="button" class="lo-btn lo-btn--ghost" data-action="back-form"><span class="lo-i-prev" data-icon="prev"></span>Retour</button>
-              <button type="submit" class="lo-btn lo-btn--primary" id="lo-send"><span data-icon="mail"></span><span id="lo-send-label">Envoyer mon récap à mon commercial</span></button>
+              <button type="submit" class="lo-btn lo-btn--primary" id="lo-send"><span data-icon="mail"></span><span id="lo-send-label">Envoyer ma demande à l’équipe LOSAM</span></button>
             </div>
           </div>
         </form>
@@ -999,9 +1017,9 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
   // Formats que le partenaire peut cocher dans son récap (repris dans l'e-mail).
   const FORMATS = [
-    { id: 'future-of', label: 'Conférences « Future of »' },
+    { id: 'future-of', label: 'Summits et conférences' },
     { id: 'benchmark', label: 'Soirées de benchmark' },
-    { id: 'vip', label: 'VIP dinners' },
+    { id: 'vip', label: 'Exec dinners' },
     { id: 'think-tank', label: 'Think Tank sur-mesure' },
     { id: 'task-force', label: 'Task Force' },
     { id: 'content', label: 'Content' }
@@ -1014,7 +1032,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   const DAYS = MONTHS.map(function (_, m) { return new Date(YEAR, m + 1, 0).getDate(); });
 
   // Deux formats de soirée : « Future of » et « VIP dinner » (dîners de dirigeants).
-  const KINDS = { fo: { prefix: 'Future of' }, exec: { prefix: 'VIP dinner' } };
+  const KINDS = { fo: { prefix: 'Future of' }, exec: { prefix: 'Exec dinner' } };
 
   // Charte des programmes (planche « Générateur Charte Graphique » Losam) : couleur principale, claire, neutre ; logo blanc et fond.
   const BRAND_IMG = {
@@ -1106,7 +1124,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   };
   // Logos propres à une soirée : EPM (présentation 2026), Conso et Treasury (même dessin), executive dinner Finance (logo FoF).
   const EVENT_LOGO = { 'epm': 'logo-epm', 'conso': 'logo-conso', 'treasury': 'logo-treasury', 'exec-fi': 'logo-finance' };
-  const LOGO_SUFFIX = { 'risk': '& Fraud', 'exec-fi': 'VIP dinner' };
+  const LOGO_SUFFIX = { 'risk': '& Fraud', 'exec-fi': 'Exec dinner' };
   // Programme de chaque soirée (les autres prennent les couleurs Losam).
   const PROGRAMME_OF = {
     'ai': 'ai', 'ai-eti': 'ai', 'exec-ai': 'ai', 'exec-ai-maroc': 'ai', 'cloud': 'cloud', 'cx': 'cx', 'cyber': 'cyber', 'data': 'data',
@@ -1266,7 +1284,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     $$('[data-group]').forEach(function (b) { b.setAttribute('aria-pressed', String(state.houses.has(b.dataset.id))); });
     $$('[data-requires]').forEach(function (b) { b.disabled = !state[b.dataset.requires].size; });
     const nh = state.houses.size;
-    $('#lo-house-count').textContent = nh ? plural(nh, 'maison sélectionnée', 'maisons sélectionnées') + ' · ' + plural(datedOnly(selEvents()).length, 'rendez-vous', 'rendez-vous') : 'Sélectionnez au moins une maison';
+    $('#lo-house-count').textContent = nh ? plural(nh, 'programme sélectionné', 'programmes sélectionnés') + ' · ' + plural(datedOnly(selEvents()).length, 'rendez-vous', 'rendez-vous') : 'Sélectionnez au moins un programme';
   }
 
   // Sélection multiple : un clic ajoute ou retire la maison.
@@ -1813,7 +1831,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         '<dt>' + svg('calendar') + '<span class="lo-sr">Date</span></dt><dd>' +
           (e.dated ? '<strong>' + esc(cap(e.dateLong)) + ' ' + YEAR + '</strong>' + (e.d2 ? ' · sur deux jours' : '') : 'Pas d’édition en ' + YEAR + ', parlons-en avec votre commercial') + '</dd>' +
         '<dt>' + svg('users') + '<span class="lo-sr">Cible</span></dt><dd><strong>' + esc(e.cible) + '</strong></dd>' +
-        '<dt>' + svg('tag') + '<span class="lo-sr">Maison</span></dt><dd>' + (houses.length > 1 ? 'Maisons ' : 'Maison ') + esc(joinFr(houses)) + '</dd>' +
+        '<dt>' + svg('tag') + '<span class="lo-sr">Programme</span></dt><dd>' + (houses.length > 1 ? 'Programmes ' : 'Programme ') + esc(joinFr(houses)) + '</dd>' +
       '</dl>' +
       '<h3 class="lo-doc-h">Documentation</h3>' +
       '<ul class="lo-doc-list">' + items.map(function (k) {
@@ -1859,8 +1877,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   function renderRecap() {
     const houses = selHouses(), evs = selEvents(), dest = recipients();
     const labels = joinFr(houses.map(function (h) { return h.label; }));
-    $('#lo-h-3').textContent = houses.length > 1 ? 'Envoyez votre récap à vos commerciaux' : 'Envoyez votre récap à votre commercial';
-    $('#lo-send-label').textContent = !ENDPOINT ? 'Préparer mon e-mail' : houses.length > 1 ? 'Envoyer mon récap à mes commerciaux' : 'Envoyer mon récap à mon commercial';
+    $('#lo-h-3').textContent = 'Envoyez votre demande à l’équipe Losam';
+    $('#lo-send-label').textContent = 'Envoyer ma demande à l’équipe LOSAM';
     $('#lo-form-intro').innerHTML = houses.length
       ? 'Votre récap sera transmis à l’équipe Losam&nbsp;: ' + (houses.length > 1 ? 'vos commerciaux' : 'votre commercial') + ' <strong>' + esc(labels) + '</strong> ' + (houses.length > 1 ? 'reviendront' : 'reviendra') + ' vers vous sous 48&nbsp;h.'
       : 'Indiquez vos cibles&nbsp;: votre récap sera transmis à l’équipe Losam, qui vous mettra en relation avec les bons commerciaux.';
@@ -1924,7 +1942,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     const err = $('#err-houses');
     if (!err) return state.houses.size > 0;
     const ok = state.houses.size > 0;
-    setError(null, err, ok ? '' : 'Choisissez au moins une maison pour être mis en relation avec le bon commercial.');
+    setError(null, err, ok ? '' : 'Choisissez au moins un programme pour être mis en relation avec le bon commercial.');
     return ok;
   }
 
