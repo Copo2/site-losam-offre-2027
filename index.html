@@ -316,6 +316,15 @@ html, body { margin: 0; background: #F3EFE7; }
 @media (max-width: 760px) { .lo-quotes { grid-template-columns: minmax(0, 1fr); } }
 
 .lo-req { color: #B4462E; font-weight: 700; }
+.lo-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 32px; }
+.lo-hero-hint { font-size: 15px; color: var(--on-dark-2); }
+@media (max-width: 760px) { .lo-hero-cta .lo-btn { width: 100%; } }
+.lo-optin { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface, #fff); cursor: pointer; transition: border-color .2s, background .2s; }
+.lo-optin:hover { border-color: var(--teal); }
+.lo-optin:has(input:checked) { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 6%, #fff); }
+.lo-optin input { flex: none; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--teal); }
+.lo-optin strong { display: block; font-size: 16px; color: var(--teal); }
+.lo-optin span span { display: block; margin-top: 4px; font-size: 14.5px; color: var(--ink-2); }
 
 /* Étape 0 : formats, en une phrase */
 .lo-reach .lo-h2 { margin-bottom: 20px; }
@@ -754,6 +763,10 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         <h1 class="lo-h1" id="lo-h-0" tabindex="-1">Quels dirigeants prioritaires souhaitez&#8209;vous rencontrer en 2027&nbsp;?</h1>
         <p class="lo-lead">500 événements, 210 partenaires accompagnés. Et vous, où vous situez-vous&nbsp;? Nous réunissons les plus grands dirigeants des grandes et moyennes entreprises autour de leurs enjeux, et nos partenaires autour d’eux.</p>
 
+        <div class="lo-hero-cta">
+          <button type="button" class="lo-btn lo-btn--sand lo-cta-big" data-go="1">Construire mon offre 2027<span class="lo-i-next" data-icon="next"></span></button>
+          <p class="lo-hero-hint">Cibles, rendez-vous, récap&nbsp;: votre offre 2027 en trois étapes.</p>
+        </div>
         <ul class="lo-figures" aria-label="Losam en chiffres">
           <li><span class="lo-fig-n">2017</span><span class="lo-fig-l">Année de création</span></li>
           <li><span class="lo-fig-n">500<em>+</em></span><span class="lo-fig-l">Événements à l’année</span></li>
@@ -809,10 +822,6 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           </ul>
         </div>
 
-        <div class="lo-nav lo-nav--start">
-          <button type="button" class="lo-btn lo-btn--primary lo-cta-big" data-go="1">Construire mon offre 2027<span class="lo-i-next" data-icon="next"></span></button>
-          <p class="lo-nav-hint">Cibles, rendez-vous, récap&nbsp;: votre offre 2027 en trois étapes.</p>
-        </div>
       </section>
 
       <!-- Étape 1 : maisons Losam (plusieurs choix) -->
@@ -909,6 +918,9 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             <div class="lo-field lo-field--full">
               <label class="lo-label" for="lo-message">Message <span class="opt">(facultatif)</span></label>
               <textarea class="lo-input" id="lo-message" name="message" rows="5" placeholder="Vos enjeux, un événement qui vous intéresse, vos disponibilités…"></textarea>
+            </div>
+            <div class="lo-field lo-field--full">
+              <label class="lo-optin" for="lo-content"><input type="checkbox" id="lo-content" name="contenu" value="oui"><span><strong>Souhaitez-vous échanger sur notre offre contenu&nbsp;?</strong><span>Webinars, baromètres, manifestes, livres blancs, podcasts&nbsp;: cochez, votre commercial vous en parle lors de votre échange.</span></span></label>
             </div>
             <p class="lo-form-note"><span class="lo-req" aria-hidden="true">*</span> Champs obligatoires.</p>
           </div>
@@ -1970,6 +1982,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       evs.forEach(function (e) { lines.push('   – ' + eventLine(e)); });
     } else lines.push('• Rendez-vous souhaités : à définir avec le commercial');
     if (fm.length) lines.push('• Formats : ' + fm.map(function (f) { return f.label; }).join(', '));
+    const ct = document.getElementById('lo-content');
+    if (ct && ct.checked) lines.push('• Offre contenu : souhaite échanger (webinars, baromètres, manifestes…)');
     if (houses.length) lines.push('• Commerciaux concernés : ' + houses.map(function (h) { return h.label + ' → ' + COMMERCIAUX[h.id]; }).join(' ; '));
     if (message) lines.push('• Message : ' + message);
     lines.push('(Calendrier ' + YEAR + ' prévisionnel, dates à confirmer.)');
@@ -1993,6 +2007,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       body: lines.join('\n'),
       interests: interests,
       formats: FORMATS.filter(function (f) { return state.formats.has(f.id); }).map(function (f) { return f.label; }),
+      contentOffer: !!(document.getElementById('lo-content') || {}).checked,
       targets: houses.map(function (h) { return { id: h.id, label: h.label, roles: h.roles, commercial: COMMERCIAUX[h.id] }; }),
       events: evs.map(function (e) {
         return {
