@@ -768,7 +768,19 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-extras .lo-h2 { margin-bottom: 0; }
 .lo-extras-p { font-size: 15px; color: var(--ink-2); }
 .lo-extras textarea.lo-input { min-height: 112px; }
-.lo-extras .lo-optin { margin-top: 10px; }
+.lo-content-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 20px 28px; margin-top: 24px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 4px; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+.lo-content-card:hover { border-color: var(--teal); }
+.lo-content-card:has(input:checked) { border-color: var(--teal); box-shadow: inset 4px 0 0 var(--teal); }
+.lo-content-covers { display: flex; }
+.lo-content-covers img { width: 52px; height: 72px; object-fit: cover; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.lo-content-covers img + img { margin-left: -14px; }
+.lo-content-txt strong { display: block; font-size: 17px; color: var(--teal); }
+.lo-content-txt > span:last-child { display: block; margin-top: 4px; font-size: 14.5px; color: var(--ink-2); }
+.lo-content-k { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--copper-ink); }
+.lo-content-check { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--line-strong); border-radius: 2px; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.lo-content-check input { width: 20px; height: 20px; accent-color: var(--teal); }
+.lo-content-card:has(input:checked) .lo-content-check { background: var(--teal); border-color: var(--teal); color: #fff; }
+@media (max-width: 760px) { .lo-content-card { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 20px; } .lo-content-check { justify-content: center; } }
 .lo-gf { margin-top: 48px; }
 .lo-gf-note { margin: -12px 0 24px; font-size: 15px; color: var(--ink-2); }
 .lo-recap { grid-area: recap; position: sticky; top: 112px; padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: 2px; box-shadow: var(--shadow); }
@@ -999,6 +1011,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         <h1 class="lo-h1" id="lo-h-1" tabindex="-1">Choisissez vos cibles prioritaires</h1>
         <p class="lo-lead">Six programmes Losam, chacun décliné sur nos différents modèles d’animation et d’activation. Plusieurs choix possibles.</p>
         <ul class="lo-grid lo-grid--3" id="lo-houses" aria-label="Programmes Losam"></ul>
+        <label class="lo-content-card" for="lo-content">
+          <span class="lo-content-covers" aria-hidden="true"><img src="photos/content-livre-blanc.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-manifeste.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-ebook.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="lo-content-txt"><span class="lo-content-k">Pour toutes vos cibles</span><strong>Souhaitez-vous échanger sur notre offre contenu&nbsp;?</strong><span>Webinars, baromètres, manifestes, livres blancs, podcasts&nbsp;: un contenu à votre nom, diffusé auprès de vos décideurs prioritaires.</span></span>
+          <span class="lo-content-check"><input type="checkbox" id="lo-content" name="contenu" value="oui"><span>Ça m’intéresse</span></span>
+        </label>
         <div class="lo-nav">
           <button type="button" class="lo-btn lo-btn--ghost" data-go="0"><span class="lo-i-prev" data-icon="prev"></span>Retour</button>
           <div class="lo-nav-end">
@@ -1096,7 +1113,6 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             <p class="lo-extras-p">Un dîner one-shot avec vos clients, une cible ou un pays absent du calendrier, un format sur-mesure&nbsp;: dites-le-nous, nous le construisons avec vous.</p>
             <label class="lo-sr" for="lo-besoins">Vos besoins au-delà de notre agenda (facultatif)</label>
             <textarea class="lo-input" id="lo-besoins" name="besoins" rows="4" placeholder="Ex. : un dîner privé avec 15 directeurs financiers de vos comptes clés, en marge de Future of Finance"></textarea>
-            <label class="lo-optin" for="lo-content"><input type="checkbox" id="lo-content" name="contenu" value="oui"><span><strong>Souhaitez-vous échanger sur notre offre contenu&nbsp;?</strong><span>Webinars, baromètres, manifestes, livres blancs, podcasts&nbsp;: cochez, votre commercial vous en parle lors de votre échange.</span></span></label>
           </div>
 
           <aside class="lo-recap" id="lo-recap" aria-labelledby="lo-recap-h"></aside>
@@ -1497,6 +1513,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
   function restart() {
     state.houses.clear(); state.excluded.clear(); state.formats.clear();
+    if ($('#lo-content')) $('#lo-content').checked = false;
     Object.assign(state, { returnStep: null, sentVia: null, mailto: '' });
     form.reset();
     $$('.lo-input').forEach(function (i) { i.removeAttribute('aria-invalid'); });
@@ -2366,6 +2383,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     if (!kind) return;
     if (kind === 'formats') {
       if (state.formats.has(t.value)) state.formats.delete(t.value); else state.formats.add(t.value);
+      if (t.value === 'content' && $('#lo-content')) $('#lo-content').checked = state.formats.has('content');
       renderRecap();
       const back = $('#' + t.id);
       if (back) back.focus();
@@ -2448,6 +2466,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       });
     }
   }
+
+  // Offre contenu (étape Cibles) : même choix que le format « Content » du récap.
+  $('#lo-content').addEventListener('change', function (e) {
+    if (e.target.checked) state.formats.add('content'); else state.formats.delete('content');
+  });
 
   /* ---------- Initialisation ---------- */
   $$('[data-icon]').forEach(function (el) { el.innerHTML = svg(el.dataset.icon); });
