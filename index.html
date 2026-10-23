@@ -184,6 +184,11 @@
   };
   // Extraits des inscrits 2026 (société et fonction, comme dans les listes anonymisées).
   const EXTRAITS_INSCRITS = {
+    'pe': [['Ardian', 'Head of Ardian Expansion France'], ['Eurazeo', 'Managing Partner'], ['Carlyle', 'Managing Director'], ['Tikehau Capital', 'Head of Private Equity'], ['Bridgepoint', 'Partner, Head of France'], ['BC Partners', 'Partner']],
+    'exec-fi': [['Accor', 'Group CFO'], ['Schneider Electric', 'VP Finance, CFO'], ['L’Oréal', 'DG Finance Opérationnelle Groupe'], ['SMCP', 'Group CFO'], ['Daher', 'Group CFO & M&A'], ['Suez', 'SVP Finance']],
+    'exec-rh': [['L’Oréal', 'CHRO, Directeur Général des Relations Humaines'], ['Engie', 'Directeur Général Adjoint en charge des RH'], ['Veolia', 'Directrice des Ressources Humaines du Groupe'], ['Nestlé', 'DGRH'], ['Club Med', 'DRH Groupe'], ['Air Liquide', 'DRH et Communication']],
+    'exec-ai': [['Orano', 'Chief AI Officer'], ['Orange', 'Chief Digital Officer'], ['Atos', 'Chief Technology Officer'], ['JCDecaux', 'Group Chief Data Officer'], ['Danone', 'Group CISO'], ['Carrefour', 'VP Engineering, IT & Digital Factory']],
+    'sustainability': [['Amundi', 'Chief Responsible Investment Officer'], ['Valeo', 'Group Chief Sustainability Officer'], ['Orange', 'Chief Sustainability Officer'], ['Arval', 'Chief Sustainability Officer'], ['Kering', 'Head of Sustainable Sourcing & Nature Initiatives'], ['Barclays', 'Head of Sustainability, Europe']],
     'conso': [['Arkema', 'CFO and VP Global Business Services'], ['Stellantis', 'CFO Group Owned Retail'], ['Carrefour', 'Directeur Transformation Finance Groupe'], ['Decathlon', 'Group Accounting & Finance IS Director'], ['Eutelsat', 'Directrice des comptabilités et de la consolidation Groupe'], ['JCDecaux', 'Director of Group Transformation of Financial Reporting']],
     'treasury': [['Schneider Electric', 'SVP Financing & Group Treasurer'], ['Accor', 'SVP Group Treasury & Financing'], ['Air Liquide', 'Deputy CFO'], ['OPmobility', 'Group VP Financing & Treasury'], ['Fareva', 'VP Group Treasurer'], ['Bureau Veritas', 'Group Cash Director']],
     'cloud': [['Thales', 'VP CIO Group'], ['BNP Paribas', 'Group Cloud & API CISO'], ['Docaposte', 'Group CTO'], ['Veolia', 'Chief of Staff to the Group CIO'], ['OPmobility', 'Group Chief Data & Analytics Officer'], ['Bouygues Telecom', 'DSI']],
@@ -201,14 +206,14 @@
   };
   const DOCUMENTATION = {
     'epm': { slides: 'documents/Future-of-EPM-2027-Presentation.pdf', inscrits: 'documents/Future-of-EPM-2026-Inscrits.xlsx' },  // Future of EPM · 26 janv.
-    'exec-rh': { slides: '', inscrits: '' },  // Exec RH · 23 févr.
+    'exec-rh': { slides: '', inscrits: 'documents/Exec-dinner-RH-2026-Inscrits.xlsx' },  // Exec RH · 23 févr.
     'industry': { slides: 'documents/Future-of-Industry-2027-Presentation.pdf', inscrits: 'documents/Future-of-Industry-2026-Inscrits.xlsx' },  // Future of Industry · 10 mars
-    'pe': { slides: 'documents/Future-of-Private-Equity-2027-Presentation.pdf', inscrits: '' },  // Future of Private Equity · 18 mars
+    'pe': { slides: 'documents/Future-of-Private-Equity-2027-Presentation.pdf', inscrits: 'documents/Future-of-Private-Equity-2026-Inscrits.xlsx' },  // Future of Private Equity · 18 mars
     'conso': { slides: 'documents/Future-of-Conso-2027-Presentation.pdf', inscrits: 'documents/Future-of-Conso-2026-Inscrits.xlsx' },  // Future of Conso · 1er avr.
     'exec-ai-maroc': { slides: '' },  // Exec AI · Maroc · 6 avr. · nouveauté
     'finance-maroc': { slides: '' },  // Future of Finance · Maroc · 7 avr. · nouveauté
     'ai': { slides: 'documents/Future-of-AI-2027-Presentation.pdf', inscrits: 'documents/Future-of-AI-2026-Inscrits.xlsx' },  // Future of AI · 19-20 avr.
-    'exec-fi': { slides: '', inscrits: '' },  // Exec Finance (executive dinner Future of Finance) · 27 avr.
+    'exec-fi': { slides: '', inscrits: 'documents/Exec-dinner-Finance-2026-Inscrits.xlsx' },  // Exec Finance (executive dinner Future of Finance) · 27 avr.
     'communication': { slides: '' },  // Future of Communication & Média · 11 mai · nouveauté
     'procurement': { slides: 'documents/Future-of-Procurement-2027-Presentation.pdf', inscrits: 'documents/Future-of-Procurement-2026-Inscrits.xlsx' },  // Future of Procurement · 13 mai
     'hr': { slides: '', inscrits: 'documents/Future-of-HR-2026-Inscrits.xlsx' },  // Future of HR · 26-27 mai
@@ -218,7 +223,7 @@
     'cx': { slides: 'documents/Future-of-CX-2027-Presentation.pdf', inscrits: 'documents/Future-of-CX-2026-Inscrits.xlsx' },  // Future of CX · 16 juin
     'transformation': { slides: '', inscrits: '' },  // Future of Transformation · 22 juin
     'ai-eti': { slides: '' },  // Future of AI · ETI · 24 juin · nouveauté
-    'exec-ai': { slides: '', inscrits: '' },  // Exec AI · 16 sept.
+    'exec-ai': { slides: '', inscrits: 'documents/Exec-dinner-AI-2026-Inscrits.xlsx' },  // Exec AI · 16 sept.
     'p2p': { slides: 'documents/Future-of-P2P-2027-Presentation.pdf', inscrits: 'documents/Future-of-P2P-2026-Inscrits.xlsx' },  // Future of P2P · 21 sept.
     'legal': { slides: 'documents/Future-of-Legal-2027-Presentation.pdf', inscrits: 'documents/Future-of-Legal-2026-Inscrits.xlsx' },  // Future of Legal · 23 sept.
     'cyber': { slides: 'documents/Future-of-Cyber-2027-Presentation.pdf', inscrits: 'documents/Future-of-Cyber-2026-Inscrits.xlsx' },  // Future of Cyber · 30 sept.
@@ -232,7 +237,7 @@
     'learning': { slides: '', inscrits: '' },  // Future of Learning · 23 nov.
     'shared': { slides: '', inscrits: '' },  // Future of Shared Services · 25 nov.
     'finance-uk': { slides: '', inscrits: '' },  // Future of Finance · UK · 2 déc.
-    'sustainability': { inscrits: '' }  // Future of Sustainability · hors calendrier 2027
+    'sustainability': { inscrits: 'documents/Future-of-Sustainability-2026-Inscrits.xlsx' }  // Future of Sustainability · hors calendrier 2027
   };
   const PHOTOS = [
     { src: 'photos/cocktail.jpg', format: 'Les offres Losam', legende: 'Cocktail networking', accroche: 'Think tanks, task forces, soirées de benchmark, summits, exec dinners et contenus', chiffre: 'En France et à l’international', soirees: ['pe'] },
