@@ -1,41 +1,42 @@
-OFFRE PARTENAIRES LOSAM 2027 : MISE EN LIGNE
-============================================
+AGENDA LOSAM 2027 : MISE EN LIGNE
+=================================
 
 Contenu du dossier
 - index.html : la page (un seul fichier, styles et logos intégrés).
-- documents/ : présentations 2027 (PDF) et listes d'inscrits 2026 anonymisées (société et fonction, Excel).
-- photos/ : photos de soirées du carrousel et des fiches.
+- photos/ : photos de soirées du carrousel, des vignettes de l'agenda et des fiches.
+- logos/ : logos des partenaires 2026 affichés dans les fiches.
+Aucune présentation, liste d'inscrits ni adresse interne ne doit être déposée avec la page : les présentations,
+le profil des participants et les modalités de partenariat sont remis par le Partenaire Losam lors de l'échange.
+
+Parcours
+Accueil → 1 · Cibles → 2 · Agenda 2027 (liste par mois ou frise, fiche de chaque rendez-vous) → 3 · Échange.
 
 Mise en ligne
 1. Déposer le dossier tel quel sur le site, par exemple dans https://www.losam.fr/offre-2027/
-   (index.html doit rester à côté des dossiers documents/ et photos/).
-2. Ouvrir l'adresse dans un navigateur : la page s'affiche, les documents se téléchargent.
+   (index.html doit rester à côté des dossiers photos/ et logos/).
+2. Ouvrir l'adresse dans un navigateur et dérouler le parcours jusqu'à l'envoi d'une demande test.
 
-Envoi des récaps par e-mail
-- Le formulaire envoie chaque récap à nils.vancaeneghem@losam.fr via FormSubmit (formsubmit.co), sans serveur à installer,
-  avec en copie le commercial de chaque programme choisi (Finance : mohamed@ ; Tech et HR : geoffroy.eynard@ ;
-  Marketing et Gouvernance : sabrina.touzani@ ; Ops : nils.vancaeneghem@).
-- Au premier envoi depuis le site, FormSubmit peut envoyer un e-mail « Activate Form » à cette adresse :
-  cliquer sur le bouton, puis renvoyer le récap. Les envois suivants arrivent directement.
+Envoi des demandes
+- Le formulaire envoie chaque demande à l'adresse DESTINATAIRE (bloc CONFIGURATION en haut de index.html),
+  via FormSubmit (formsubmit.co), sans serveur à installer. Utiliser une adresse générique ou HubSpot.
+- Au premier envoi depuis le site, FormSubmit envoie un e-mail « Activate Form » à cette adresse :
+  cliquer sur le bouton, puis renvoyer la demande. Les envois suivants arrivent directement.
 
-Modifier la page
-- Tout se règle dans le bloc CONFIGURATION en haut de index.html : destinataire des récaps,
-  documents à télécharger, photos et accroches du carrousel.
-- Polices : la page utilise Acumin Pro Wide et Basic Gothic si le site les charge déjà (Adobe Fonts),
-  sinon une police de remplacement intégrée.
+Compléter les fiches
+- Bloc FICHES en haut de index.html : positionnement, participants attendus, partenaires visés, lieu, intervenants.
+- Tant qu'un texte est vide, la page l'affiche entre crochets : à compléter avant diffusion aux prospects.
 
 Utiliser le formulaire de contact du site losam.fr (recommandé)
 - Intégrer la page dans une page WordPress (bloc « HTML personnalisé » ou widget HTML Elementor, en y collant
   le contenu de index.html), puis ajouter sur la même page le shortcode :
       [gravityform id="7" title="false" ajax="true"]
 - La page détecte ce formulaire et l'utilise à la place de son propre envoi : la demande arrive comme les contacts
-  du site. Les intérêts du partenaire (cibles, rendez-vous datés, formats, commerciaux concernés) sont ajoutés en
-  liste à puces dans « Votre message », et la case « Sponsoriser un de nos événements » est cochée d'office.
-- Déposer les dossiers documents/ et photos/ à côté de la page (même adresse, par exemple /offre-2027/documents/).
+  du site. La sélection du partenaire (cibles, rendez-vous retenus, formats, besoins) est ajoutée en liste à puces
+  dans « Votre message », et la case « Sponsoriser un de nos événements » est cochée d'office.
 - Envoi aux commerciaux : dans Gravity Forms > Formulaire 7 > Paramètres > Notifications, ajouter une notification
   par commercial avec la condition « Votre message contient » :
-      « Finance → »      envoyer à mohamed@losam.fr
-      « Tech → » ou « HR → »                 envoyer à geoffroy.eynard@losam.fr
-      « Marketing → » ou « Gouvernance → »   envoyer à sabrina.touzani@losam.fr
-      « Ops → »          envoyer à nils.vancaeneghem@losam.fr
-
+      « Finance → »                        commercial Finance
+      « Tech → » ou « HR → »               commercial Tech et HR
+      « Marketing → » ou « Gouvernance → » commercial Marketing et Gouvernance
+      « Ops → »                            commercial Ops
+  Les adresses se saisissent dans Gravity Forms uniquement, jamais dans la page.
