@@ -1841,7 +1841,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           '<span class="lo-ag-meta"><strong>' + (e.dated ? esc(cap(e.dateLong)) : 'Hors calendrier ' + YEAR) + '</strong><span aria-hidden="true">·</span><span>' + esc(e.prefix) + '</span>' +
             (e.nouveau ? '<span class="lo-ev-badge">Nouveau</span>' : '') + '</span>' +
           '<span class="lo-ag-t">' + esc(e.name) + '</span>' +
-          '<span class="lo-ag-pos">' + (f.positionnement ? esc(f.positionnement) : todo('Positionnement en une phrase : enjeu traité et promesse pour le partenaire')) + '</span>' +
+          (f.positionnement ? '<span class="lo-ag-pos">' + esc(f.positionnement) + '</span>' : '') +
           '<span class="lo-ag-f"><span><strong>Cible :</strong> ' + esc(e.cible) + '</span>' + (pl ? '<span>' + esc(pl) + '</span>' : '') + '</span>' +
         '</span>' +
         '<span class="lo-ag-check" aria-hidden="true">' + svg('check') + '</span>' +
