@@ -172,16 +172,99 @@
     "o9": 'logos/partenaires/o9.png',
     "osapiens": 'logos/partenaires/osapiens.png'
   };
-  // Fiches identité 2027 : à compléter à partir des fiches identité 2026 (exemple commenté pour Future of Private Equity).
+  // Fiches identité 2027 (textes de Loïc, 30 octobre 2026). Champs : positionnement (phrase de l'agenda), positionnementLong,
+  // cible (remplace la cible courte dans la fiche), participants, partenairesVises (paragraphes), intervenantsTexte, lieu,
+  // intervenants : [{ nom, fonction, annee: '2026' ou 'pressenti 2027', photo }]. Un texte absent s'affiche entre crochets.
   const FICHES = {
-    // 'pe': {
-    //   positionnement: '',
-    //   positionnementLong: '',
-    //   participants: '',
-    //   partenairesVises: '',
-    //   lieu: '',
-    //   intervenants: [{ nom: '', fonction: '', annee: '2026', photo: '' }]
-    // }
+    "audit": {
+      "positionnement": "La révolution IA du contrôle interne et de l’audit interne.",
+      "positionnementLong": "CSRD, Sapin II, DORA : le contrôle interne n’a jamais été aussi dense. Future of Internal Control & Audit est la soirée de benchmark qui réunit les directions du Contrôle interne et de l’Audit interne décidées à faire de l’IA leur levier d’efficience et d’automatisation, grâce aux outils et plateformes les plus innovants du marché. En une soirée : benchmark des solutions, cas clients et rencontres ciblées avec des décideurs qui préparent leurs choix.",
+      "cible": "Directeurs de l’Audit interne (CAE) et leurs N-1 du CAC 40 et du SBF 120, dans des groupes de plus de 5 000 salariés dotés d’équipes d’audit de 15 personnes et plus. Leurs homologues du Contrôle interne complètent la salle. Tous portent un projet d’audit analytics, d’IA ou de plateforme d’audit à 12-18 mois.",
+      "partenairesVises": [
+        "Les plateformes GRC et d’audit management qui unifient risques, contrôles et audit et y embarquent l’IA : AuditBoard, Diligent, ServiceNow IRM, MetricStream, Workiva, SAP GRC, Optimiso. Leur promesse : rencontrer en une soirée les directions qui sélectionnent leur prochaine plateforme."
+      ],
+      "intervenantsTexte": "Des directeurs de l’Audit interne ou de l’Inspection générale de groupes emblématiques (BNP Paribas, TotalEnergies, Airbus, AXA, EDF). Ils incarnent la demande, partagent leur feuille de route et font venir leurs pairs."
+    },
+    "communication": {
+      "positionnement": "Communication et médias : les nouveaux arbitrages de l’ère IA.",
+      "positionnementLong": "Moteurs de réponse IA, contenus générés à grande échelle, réputation exposée en temps réel : l’IA rebat toutes les cartes de la communication. Future of Communication & Media est la soirée de benchmark d’agences, de plateformes et d’outils capables d’accompagner les directions de la communication et des médias dans cette révolution IA. Une soirée pour comparer les approches avant de repenser la stratégie.",
+      "cible": "Directeurs de la communication groupe du CAC 40 et du SBF 120, qui portent les budgets agences, relations presse, veille et gestion de crise, aux côtés des directeurs achats médias qui arbitrent les investissements.",
+      "partenairesVises": [
+        "Les trois familles d’acteurs qui se partagent ces budgets, réunies sur un même plateau :",
+        "Groupes et agences : Publicis, Havas, Omnicom, WPP, agences de relations presse et de conseil en influence (Brunswick, Image 7, Havas Paris). Offre : stratégie, production, gestion de crise.",
+        "Martech et contenus IA : Adobe (GenStudio, Firefly), Canva Enterprise, Bynder, Aprimo, Meltwater, Cision, Brandwatch, Onclusive. Offre : production, gestion des actifs, veille et mesure.",
+        "Médias et plateformes : TF1 Pub, M6 Publicité, Les Echos Le Parisien, LinkedIn, Google, Meta, Amazon Ads. Offre : audience, formats de marque, retail media."
+      ],
+      "intervenantsTexte": "Des directeurs de la communication emblématiques (LVMH, TotalEnergies, SNCF) et le chef du service Viginum, sur la lutte contre la désinformation et les ingérences numériques."
+    },
+    "exec-fraude": {
+      "positionnement": "IA contre IA : les fraudeurs ont pris de l’avance, les directions Fraude reprennent la main.",
+      "positionnementLong": "Deepfakes, faux documents, usurpation d’identité : les fraudeurs ont adopté l’IA plus vite que les entreprises. L’Exec Fraud & Risk met un coup de projecteur sur les pratiques et les outils les plus innovants pour les directions des Risques et de la Fraude qui veulent accélérer l’intégration de l’IA dans leur fonction. Une soirée pour comparer les solutions, challenger les offreurs et repartir avec une short-list.",
+      "cible": "Directeurs des Risques et de la Fraude du CAC 40, du SBF 120 et des ETI de plus de 500 M€ de chiffre d’affaires, appuyés par la communauté du Cercle Fraude Losam.",
+      "partenairesVises": [
+        "Les leaders de la gestion des risques et de la fraude en temps réel, transactionnel et comportemental : Feedzai, Featurespace (Visa), NICE Actimize, SAS, BioCatch, FICO. Leur promesse : présenter leur IA de détection aux décideurs qui renforcent leur dispositif."
+      ],
+      "intervenantsTexte": "Les directeurs Risques et Fraude qui font référence : membres moteurs du Cercle Fraude et directeurs Fraude des grands réseaux bancaires (BNP Paribas, Société Générale, Crédit Agricole)."
+    },
+    "exec-ai-maroc": {
+      "lieu": "Casablanca, Four Seasons",
+      "positionnement": "Le Maroc 2030 se construit avec l’IA : place aux projets qui le prouvent.",
+      "positionnementLong": "Mondial 2030, infrastructures, services publics, tourisme : le Royaume engage une transformation sans précédent, avec l’IA au cœur de sa stratégie. Les AI Transformation Awards Maroc mettent un coup de projecteur sur les meilleures pratiques de transformation et les outils les plus innovants, en réunissant les dirigeants qui déploient l’IA et les acteurs technologiques qui les équipent. Benchmark des projets, remise des prix et rencontres ciblées en une soirée.",
+      "cible": "Directeurs généraux, CDO et DSI des grands groupes marocains : sociétés du MASI 20, OCP, banques, télécoms, ONCF, ONEE et offices publics. Ce sont les décideurs des plateformes IA et cloud du Royaume.",
+      "partenairesVises": [
+        "Les éditeurs qui embarquent l’IA au cœur des métiers : SAP, Salesforce, ServiceNow, UiPath et les startups IA marocaines les plus prometteuses. Ils rejoignent le co-organisateur Deloitte et le partenaire Platinum visé, Google Cloud. Leur promesse : présenter leurs cas d’usage en production aux décideurs qui industrialisent l’IA."
+      ],
+      "intervenantsTexte": "Mostafa Terrab (OCP Group) ou le président de l’UM6P, sur l’IA appliquée à l’industrie et à la recherche."
+    },
+    "finance-maroc": {
+      "lieu": "Casablanca, la même semaine que les AI Transformation Awards",
+      "positionnement": "La finance marocaine passe au numérique, et vite.",
+      "positionnementLong": "Migration de l’ERP vers le cloud, consolidation, pilotage de la performance, IA générative : les directions financières marocaines modernisent leur système d’information finance en accéléré. Le Future of Finance Summit Casablanca est la soirée de benchmark qui met en relation les porteurs de ces projets et les plateformes les plus innovantes du marché. Benchmark, meilleures pratiques de transformation Finance et rencontres ciblées.",
+      "cible": "Directeurs financiers et leurs N-1, issus des grands groupes marocains, des établissements publics et des filiales de multinationales.",
+      "participants": "100 participants attendus",
+      "partenairesVises": [
+        "Les éditeurs d’ERP, d’EPM et de consolidation qui équipent la fonction finance : SAP, Oracle, Microsoft, Board, Anaplan, Pigment, Sage, Amelkis. Leur promesse : rencontrer des directions financières en pleine refonte de leur SI."
+      ],
+      "intervenantsTexte": "Des directeurs financiers de référence : OCP, Attijariwafa bank, Maroc Telecom, Marsa Maroc. Ils incarnent la demande et font venir leurs pairs."
+    },
+    "sales": {
+      "positionnement": "L’IA qui disrupte les forces de vente.",
+      "positionnementLong": "Les agents IA prospectent, qualifient et préparent déjà les rendez-vous : la force de vente de 2027 ne ressemblera pas à celle de 2024. Future of Sales & Revenue est la soirée de benchmark où les directions commerciales en quête d’efficience découvrent les outils et plateformes IA les plus innovants du marché. Une soirée pour comparer les approches avant de déployer.",
+      "cible": "Directeurs commerciaux, CSO et CRO de grands groupes B2B et B2C (industrie, services, tech, énergie) de plus de 1 Md€ de chiffre d’affaires, à la tête de forces de vente de plus de 100 personnes.",
+      "partenairesVises": [
+        "Les éditeurs de sales tech et de données commerciales : Gong, Clari, Outreach, Highspot, Seismic, Lusha, Kaspr. Offre : productivité commerciale, intelligence conversationnelle, données de prospection. Leur promesse : démontrer un gain de productivité mesurable devant ceux qui pilotent les équipes."
+      ],
+      "intervenantsTexte": "Des directeurs commerciaux de grands comptes qui mènent la transformation de leurs ventes, par exemple chez Schneider Electric, Orange Business, Michelin ou Air Liquide."
+    },
+    "ai-eti": {
+      "positionnement": "L’IA à l’échelle, à la taille de l’ETI.",
+      "positionnementLong": "Les ETI ont compris le potentiel de l’IA ; il leur manque des solutions qui livrent des résultats rapides sans armée de data scientists. Future of AI – ETI est la soirée de benchmark des outils métiers et des plateformes IA qui aident les ETI à passer l’IA à l’échelle. Un benchmark concret, cas d’usage à l’appui.",
+      "cible": "DG, DSI et CDO d’ETI de 250 à 5 000 salariés, à la tête d’équipes IT de 10 à 100 personnes et en charge de la feuille de route data et IA.",
+      "partenairesVises": [
+        "Les plateformes d’IA générative prêtes à déployer : Microsoft (Copilot), Google (Gemini), Mistral AI, Dust, LightOn. Offre : assistants et agents directement opérationnels, mais aussi outils métiers pragmatiques. Leur promesse : convaincre un segment encore peu équipé, où les décisions se prennent vite."
+      ],
+      "intervenantsTexte": "Des DG, DSI et directeurs du digital d’ETI qui ont déjà industrialisé l’IA et partagent leurs bonnes pratiques : ce qui marche, ce que ça coûte, ce qu’ils referaient autrement."
+    },
+    "finance-uk": {
+      "lieu": "Londres",
+      "positionnement": "Connected planning, connected finance.",
+      "positionnementLong": "Planning can no longer stop at the finance department: sales, operations and workforce plans must now run on the same numbers. Future of EPM & Consolidation London is the benchmark evening where finance leaders rebuilding their planning stack meet the platforms and integrators shaping connected planning. One evening to compare before you commit.",
+      "cible": "Group Financial Controllers et Heads of Consolidation des groupes du FTSE 350 et des grandes sociétés non cotées, avec un reporting multi-entités et multi-normes.",
+      "partenairesVises": [
+        "Les éditeurs de consolidation et de reporting : OneStream, Oracle FCC, SAP Group Reporting, CCH Tagetik, Workiva. Offre : clôture, consolidation et reporting unifiés. Leur promesse : accéder aux décideurs finance d’un marché britannique où Losam apporte un réseau neuf."
+      ],
+      "intervenantsTexte": "Des CFO du FTSE 100 ayant mené une transformation de leur fonction finance (Unilever, Diageo, BT, GSK)."
+    },
+    "finance-lux": {
+      "lieu": "Luxembourg",
+      "positionnement": "Plus de reporting, autant d’équipes : l’automatisation devient vitale.",
+      "positionnementLong": "Reporting réglementaire, reporting investisseurs, consolidation : les sociétés de gestion et les groupes luxembourgeois produisent toujours plus de chiffres avec les mêmes équipes. Future of EPM & Consolidation Luxembourg est la soirée de benchmark qui met en relation les porteurs de projets d’automatisation et les éditeurs et intégrateurs les plus avancés du marché. Une soirée pour comparer avant d’investir.",
+      "cible": "Deux populations qui partagent le même défi : les CFO et Group Controllers des groupes et holdings établis au Luxembourg (multi-entités, multi-juridictions), et les CFO et COO des sociétés de gestion, AIFM et administrateurs de fonds.",
+      "partenairesVises": [
+        "Les éditeurs de consolidation, de conformité fiscale (Pillar Two) et de reporting réglementaire : OneStream, CCH Tagetik, Workiva, insightsoftware, Amelkis et les spécialistes du reporting fonds. Leur promesse : adresser en une soirée les deux marchés porteurs de la place."
+      ],
+      "intervenantsTexte": "Des CFO de référence de la place (ArcelorMittal, SES, Cargolux, un grand gestionnaire d’actifs) et, en ouverture, le directeur général de la CSSF sur les attentes du superviseur."
+    }
   };
   const PHOTOS = [
     { src: 'photos/cocktail.jpg', format: 'Les offres Losam', legende: 'Cocktail networking', accroche: 'Think tanks, task forces, soirées de benchmark, summits, exec dinners et contenus', chiffre: 'En France et à l’international', soirees: ['pe'] },
@@ -967,6 +1050,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-fiche-t { margin-top: 6px; font-family: var(--font-display); font-stretch: 125%; font-size: 30px; line-height: 1.15; font-weight: 600; color: var(--teal); text-wrap: balance; }
 .lo-fiche-t .lo-ev-badge { vertical-align: 6px; }
 .lo-fiche-k { margin: 26px 0 8px; font-family: var(--font-display); font-stretch: 125%; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--copper-ink); }
+.lo-fiche-main > p + p { margin-top: 8px; }
 .lo-fiche-main > p, .lo-fiche-main > .lo-fiche-k + p { font-size: 16px; line-height: 1.55; color: var(--ink); }
 .lo-speakers { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
 .lo-speaker { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
@@ -2136,6 +2220,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       return src ? '<li title="' + esc(n) + '"><img src="' + esc(src) + '" alt="' + esc(n) + '" loading="lazy" decoding="async"></li>' : '<li class="is-txt">' + esc(n) + '</li>';
     }).join('') + '</ul>' : '<p>' + todo('Logos des partenaires ' + (YEAR - 1)) + '</p>';
     const pos = f.positionnementLong || f.positionnement;
+    const vises = [].concat(f.partenairesVises || []).filter(Boolean);
 
     $('#lo-doc-body').innerHTML =
       '<div class="lo-doc-hero' + (shots.length ? ' has-photos' : '') + '" style="--prog:' + P.primary + ';--pale:' + P.pale + heroBg + '">' +
@@ -2153,9 +2238,10 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             ' · ' + esc(e.prefix) + ' · ' + (f.lieu ? esc(f.lieu) : todo('Lieu à confirmer')) + '</p>' +
           '<h2 class="lo-fiche-t" id="lo-doc-title">' + esc(e.name) + (e.nouveau ? ' <span class="lo-ev-badge">Nouveau</span>' : '') + '</h2>' +
           ficheSec('Positionnement', '<p>' + (pos ? esc(pos) : todo('Deux phrases : l’enjeu traité en ' + YEAR + ' et ce que la soirée apporte à sa cible. Reprendre la fiche identité ' + (YEAR - 1) + '.')) + '</p>') +
-          ficheSec('Cible présente', '<p>' + esc(e.cible) + ' · ' + (f.participants ? esc(f.participants) : todo('Nombre de participants attendus')) + '</p>') +
-          ficheSec('Partenaires visés', '<p>' + (f.partenairesVises ? esc(f.partenairesVises) : todo('Profils de partenaires pour qui cette cible est stratégique')) + '</p>') +
-          ficheSec(e.nouveau ? 'Intervenants pressentis ' + YEAR : 'Intervenants ' + (YEAR - 1) + ' et pressentis ' + YEAR, '<ul class="lo-speakers">' + spHTML + '</ul>') +
+          ficheSec('Cible présente', '<p>' + esc(f.cible || e.cible) + ' · ' + (f.participants ? esc(f.participants) : todo('Nombre de participants attendus')) + '</p>') +
+          ficheSec('Partenaires visés', vises.length ? vises.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') : '<p>' + todo('Profils de partenaires pour qui cette cible est stratégique') + '</p>') +
+          ficheSec(e.nouveau || (f.intervenantsTexte && !speakers.length) ? 'Intervenants pressentis ' + YEAR : 'Intervenants ' + (YEAR - 1) + ' et pressentis ' + YEAR,
+            f.intervenantsTexte && !speakers.length ? '<p>' + esc(f.intervenantsTexte) + '</p>' : '<ul class="lo-speakers">' + spHTML + '</ul>') +
           (e.nouveau ? '' : ficheSec('Partenaires ' + (YEAR - 1), logos)) +
         '</div>' +
         '<aside class="lo-fiche-side" aria-label="Votre sélection">' +
