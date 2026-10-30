@@ -1598,7 +1598,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       <section class="lo-step" data-step="0" aria-labelledby="lo-h-0">
         <div class="lo-hero">
         <p class="lo-kicker">Devenir partenaire Losam en 2027</p>
-        <h1 class="lo-h1" id="lo-h-0" tabindex="-1">Quels dirigeants prioritaires souhaitez&#8209;vous rencontrer en 2027&nbsp;?</h1>
+        <h1 class="lo-h1" id="lo-h-0" tabindex="-1">Quelles cibles souhaitez&#8209;vous rencontrer en 2027&nbsp;?</h1>
         <p class="lo-lead">500 événements, 210 partenaires accompagnés. Et vous, où vous situez-vous&nbsp;? Nous réunissons les plus grands dirigeants des grandes et moyennes entreprises autour de leurs enjeux, et nos partenaires autour d’eux.</p>
 
         <div class="lo-hero-cta">
@@ -1665,7 +1665,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       <!-- Étape 1 · Cibles : cibles cochées en pleine largeur avec leurs sous-communautés -->
       <section class="lo-step" data-step="1" aria-labelledby="lo-h-1" hidden>
         <p class="lo-kicker">Agenda Losam 2027</p>
-        <h1 class="lo-h1" id="lo-h-1" tabindex="-1">Quels dirigeants voulez-vous rencontrer en 2027&nbsp;?</h1>
+        <h1 class="lo-h1" id="lo-h-1" tabindex="-1">Quelles cibles souhaitez-vous rencontrer en 2027&nbsp;?</h1>
         <p class="lo-lead">Choisissez une ou plusieurs cibles, puis décochez les sous-communautés qui ne vous concernent pas.</p>
         <div class="lo-targets" id="lo-targets"></div>
         <h2 class="lo-h2 lo-others-h" id="lo-others-h" hidden>Autres cibles</h2>
@@ -2689,7 +2689,6 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           '<h2 class="lo-fiche-t" id="lo-doc-title">' + esc(e.name) + (e.nouveau ? ' <span class="lo-ev-badge">Nouveau</span>' : '') + '</h2>' +
           (pos ? ficheSec('Positionnement', '<p>' + esc(pos) + '</p>') : '') +
           ficheSec('Cible présente', '<p>' + esc(f.cible || e.cible) + (f.participants ? ' · ' + esc(f.participants) : '') + '</p>') +
-          (vises.length ? ficheSec('Partenaires visés', vises.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('')) : '') +
           (speakers.length ? ficheSec(spTitle, '<ul class="lo-speakers">' + spHTML + '</ul>') : f.intervenantsTexte ? ficheSec(spTitle, '<p>' + esc(f.intervenantsTexte) + '</p>') : '') +
           (partners.length ? ficheSec('Partenaires ' + (YEAR - 1), logos) : '') +
         '</div>' +
