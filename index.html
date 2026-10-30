@@ -172,9 +172,9 @@
     "o9": 'logos/partenaires/o9.png',
     "osapiens": 'logos/partenaires/osapiens.png'
   };
-  // Fiches identité 2027 (textes de Loïc, 30 octobre 2026). Champs : positionnement (phrase de l'agenda), positionnementLong,
-  // cible (remplace la cible courte dans la fiche), participants, partenairesVises (paragraphes), intervenantsTexte, lieu,
-  // intervenants : [{ nom, fonction, annee: '2026' ou 'pressenti 2027', photo }]. Un texte absent s'affiche entre crochets.
+  // Fiches identité 2027. Sources : fiches de Loïc (30 octobre 2026) et présentations 2027 de chaque soirée (hors prix et inscrits).
+  // Champs : positionnement (phrase de l'agenda), positionnementLong, cible, participants, partenairesVises, lieu,
+  // intervenants [{ nom, fonction, annee }], intervenantsTitre, intervenantsTexte. Une rubrique vide n'est pas affichée.
   const FICHES = {
     "audit": {
       "positionnement": "La révolution IA du contrôle interne et de l’audit interne.",
@@ -264,6 +264,455 @@
         "Les éditeurs de consolidation, de conformité fiscale (Pillar Two) et de reporting réglementaire : OneStream, CCH Tagetik, Workiva, insightsoftware, Amelkis et les spécialistes du reporting fonds. Leur promesse : adresser en une soirée les deux marchés porteurs de la place."
       ],
       "intervenantsTexte": "Des CFO de référence de la place (ArcelorMittal, SES, Cargolux, un grand gestionnaire d’actifs) et, en ouverture, le directeur général de la CSSF sur les attentes du superviseur."
+    },
+    "epm": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "Vers un pilotage de la performance plus intégré, plus résilient, plus augmenté.",
+      "positionnementLong": "Une soirée de référence pour inspirer les grandes entreprises dans leur stratégie de pilotage de la performance : panorama des grandes innovations (outils, projets, organisation, gouvernance), réflexion nourrie pour les porteurs de projets et coup de projecteur sur les entreprises les plus en avance. Au programme : plateformes unifiées et agilité, reforecast et simulation, compétences et adoption, rôle réel de l’IA dans le pilotage financier.",
+      "cible": "CFO, directeurs du contrôle de gestion et directeurs FP&A des grandes entreprises",
+      "partenairesVises": [
+        "Éditeurs de plateformes EPM, de planification et de simulation, et intégrateurs du pilotage de la performance."
+      ],
+      "intervenantsTitre": "Comité stratégique 2026",
+      "intervenants": [
+        {
+          "nom": "Michelle Cai",
+          "fonction": "Directrice Contrôle de Gestion Groupe, Altarea Cogedim",
+          "annee": "2026"
+        },
+        {
+          "nom": "Nicolas Weidenmann",
+          "fonction": "Directeur du Contrôle de Gestion, Bouygues Immobilier",
+          "annee": "2026"
+        },
+        {
+          "nom": "Vanessa Heinemann",
+          "fonction": "Group Controlling Director, L’Oréal",
+          "annee": "2026"
+        },
+        {
+          "nom": "Amandine Petitdemange",
+          "fonction": "Business Finance Center Excellence VP, Schneider Electric",
+          "annee": "2026"
+        },
+        {
+          "nom": "Jérôme Burban",
+          "fonction": "Directeur du Contrôle de Gestion, TotalEnergies",
+          "annee": "2026"
+        },
+        {
+          "nom": "Sokrat Mkhitaryan",
+          "fonction": "Directeur FP&A Groupe, Veolia",
+          "annee": "2026"
+        }
+      ]
+    },
+    "conso": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "Renouvellement des outils de consolidation : ce qui change réellement après la mise en production.",
+      "positionnementLong": "Un dîner exclusif, orienté retours d’expérience, conçu pour permettre aux éditeurs d’identifier les enjeux des directions consolidation très en amont, auprès des décisionnaires. Septième édition, pour créer un espace d’échanges stratégiques entre porteurs de projets et éditeurs structurants du marché.",
+      "cible": "CFO et directeurs consolidation du CAC 40, du SBF 120 et des ETI",
+      "participants": "100 décideurs réunis",
+      "partenairesVises": [
+        "Éditeurs structurants de la consolidation et du reporting financier."
+      ],
+      "intervenants": [
+        {
+          "nom": "Laurent Boulliat",
+          "fonction": "Directeur Comptable Groupe, Decathlon",
+          "annee": "2026"
+        },
+        {
+          "nom": "Philippe Baus",
+          "fonction": "Directeur de la consolidation, Arkema",
+          "annee": "2026"
+        },
+        {
+          "nom": "Véronique Grall",
+          "fonction": "Directrice Financière Adjointe, Groupe IDEC",
+          "annee": "2026"
+        },
+        {
+          "nom": "Antoine Chatelain",
+          "fonction": "Directeur FP&A, Consolidation et Projets Finances, InVivo",
+          "annee": "2026"
+        }
+      ]
+    },
+    "treasury": {
+      "lieu": "Ritz, Paris",
+      "positionnement": "Face à des risques accrus, un mandat élargi de la trésorerie, porté par la technologie.",
+      "positionnementLong": "Future of Treasury est une soirée de benchmark dédiée aux outils innovants de la fonction trésorerie : cash en temps réel, prévisions augmentées par la data et l’IA, paiements, gestion des risques. Une soirée pour mettre en lumière des transformations aux résultats mesurables (visibilité, sécurisation, optimisation du cash) et échanger entre pairs face aux enjeux de volatilité, de BFR et de conformité.",
+      "cible": "Directeurs trésorerie et directions financières des grandes entreprises et ETI",
+      "partenairesVises": [
+        "Éditeurs et fintechs de la trésorerie : visibilité du cash, prévisions, paiements, gestion des risques, intégration SI."
+      ],
+      "intervenants": [
+        {
+          "nom": "Nicolas Vielliard",
+          "fonction": "CISO Groupe, Danone",
+          "annee": "2026"
+        },
+        {
+          "nom": "Patrick Tristani",
+          "fonction": "Global CFO, Exel Industries",
+          "annee": "2026"
+        },
+        {
+          "nom": "Isabelle Badoux",
+          "fonction": "Head of Global Treasury Operations, Systems & Treasury Transformation, Sanofi",
+          "annee": "2026"
+        },
+        {
+          "nom": "Matthieu Meunier",
+          "fonction": "Senior Vice President Financing & Group Treasurer, Schneider Electric",
+          "annee": "2026"
+        }
+      ]
+    },
+    "ai": {
+      "lieu": "Soirée au Ritz Paris, matinale le 20 avril",
+      "positionnement": "Une soirée pour créer la relation, une matinale pour passer à l’action.",
+      "positionnementLong": "Future of AI réunit les CxO des plus grandes entreprises pour partager ce qui marche vraiment avec l’IA. En 2027, l’expérience monte d’un cran : une soirée VIP en cercle restreint (cocktail, table ronde, dîner) puis une matinale de keynotes, d’ateliers de co-construction et d’ateliers immersifs.",
+      "cible": "CxO des plus grandes entreprises : CDO, CIO, CTO, Head of AI",
+      "participants": "250 participants CxO en 2026",
+      "partenairesVises": [
+        "Éditeurs, plateformes et intégrateurs de l’IA en entreprise : ROI, adoption, passage à l’échelle, gouvernance, data, IA générative et agentique."
+      ],
+      "intervenants": [
+        {
+          "nom": "Stéphane Pallez",
+          "fonction": "Présidente-directrice générale, FDJ United",
+          "annee": "2026"
+        },
+        {
+          "nom": "Mickaël Brossard",
+          "fonction": "VP, Global Head of cortAIx Factory, Thales",
+          "annee": "2026"
+        },
+        {
+          "nom": "Guillaume Grallet",
+          "fonction": "Auteur de « Pionniers » (Grasset)",
+          "annee": "2026"
+        },
+        {
+          "nom": "Luc Barnaud",
+          "fonction": "Group Chief Data & AI Officer, BPCE",
+          "annee": "2026"
+        },
+        {
+          "nom": "Sébastien Rozanes",
+          "fonction": "Chief Digital, Data & AI Officer, FDJ United",
+          "annee": "2026"
+        },
+        {
+          "nom": "Samir Amellal",
+          "fonction": "DGA en charge de la tech, France Travail",
+          "annee": "2026"
+        },
+        {
+          "nom": "Sandy Dussottier",
+          "fonction": "Sécurité des SI Groupe, Crédit Agricole PF&M",
+          "annee": "2026"
+        },
+        {
+          "nom": "Adrien Etcheberria",
+          "fonction": "Group Head of AI, VINCI",
+          "annee": "2026"
+        }
+      ]
+    },
+    "cloud": {
+      "lieu": "Ritz, Paris",
+      "positionnement": "Le futur de l’économie du cloud : quelles leçons pour un avenir plus durable ?",
+      "positionnementLong": "Un dîner exclusif, orienté retours d’expérience, conçu pour permettre aux éditeurs d’identifier les enjeux des directions CIO et Cloud très en amont, auprès des décisionnaires. Septième édition, pour identifier les projets et priorités d’investissement et donner de la visibilité aux solutions les plus différenciantes.",
+      "cible": "CIO et Head of Cloud du CAC 40, du SBF 120 et des ETI",
+      "participants": "100 décideurs réunis",
+      "partenairesVises": [
+        "Éditeurs et fournisseurs structurants du cloud, de l’infrastructure et du FinOps."
+      ],
+      "intervenants": [
+        {
+          "nom": "Virginie Benne",
+          "fonction": "Governance IT, Group Application and Holdings CIO, LVMH",
+          "annee": "2026"
+        },
+        {
+          "nom": "Hind Cagnon",
+          "fonction": "Global Cloud Director, Sodexo",
+          "annee": "2026"
+        },
+        {
+          "nom": "Christophe Huerre",
+          "fonction": "VP CIO, Thales",
+          "annee": "2026"
+        },
+        {
+          "nom": "Vincent Lauriat",
+          "fonction": "Deputy CIO, Veolia Eau",
+          "annee": "2026"
+        }
+      ]
+    },
+    "cx": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "Réinventer l’entreprise à l’ère de l’IA : nouveaux parcours clients, nouveaux modèles, nouvelles pratiques.",
+      "positionnementLong": "Future of CX est une soirée de référence qui décrypte les transformations majeures de l’expérience client et partage les pratiques les plus avancées du marché : cas concrets d’entreprises ayant transformé leur modèle relationnel avec des résultats mesurables, et échanges entre pairs sur les leviers réellement activables dans des environnements complexes.",
+      "cible": "Directions CX, marketing, digital et service client des grandes entreprises",
+      "partenairesVises": [
+        "Éditeurs et acteurs innovants de la transformation de l’expérience client."
+      ],
+      "intervenants": [
+        {
+          "nom": "Fanny Chatelet",
+          "fonction": "Directrice Marketing Digital et e-Business, AXA",
+          "annee": "2026"
+        },
+        {
+          "nom": "Vianney Baron",
+          "fonction": "Global Head of Content & Media, Danone",
+          "annee": "2026"
+        }
+      ]
+    },
+    "cyber": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "La cyber face aux grands défis de l’IA agentique.",
+      "positionnementLong": "Future of Cyber est une soirée de benchmark dédiée aux innovations de la cybersécurité pour les grandes entreprises et ETI : Zero Trust, XDR, protection cloud, gestion des identités, IA appliquée à la détection. Une soirée pour mettre en lumière des transformations aux résultats mesurables (réduction du risque, résilience, conformité) et échanger entre pairs.",
+      "cible": "CISO et directions IT des grandes entreprises et ETI",
+      "partenairesVises": [
+        "Éditeurs de cybersécurité : Zero Trust, XDR, protection cloud, gestion des identités, détection par l’IA."
+      ],
+      "intervenants": [
+        {
+          "nom": "Arnaud Martin",
+          "fonction": "Directeur des Risques Opérationnels, Caisse des Dépôts",
+          "annee": "2026"
+        },
+        {
+          "nom": "Philippe Coué",
+          "fonction": "Group COO Cybersecurity and Risk IT, Crédit Agricole",
+          "annee": "2026"
+        },
+        {
+          "nom": "Jean-François Montagne",
+          "fonction": "CISO, EDF",
+          "annee": "2026"
+        },
+        {
+          "nom": "Henri Verdier",
+          "fonction": "Directeur Général, Fondation Inria",
+          "annee": "2026"
+        },
+        {
+          "nom": "Mickaël Brossard",
+          "fonction": "VP cortAIx Factory, AI by Thales",
+          "annee": "2026"
+        }
+      ]
+    },
+    "data": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "Accélération IA : vos fondations data au défi du passage à l’échelle.",
+      "positionnementLong": "Future of Data est une soirée de benchmark dédiée aux innovations de la donnée pour les grandes entreprises et ETI : modern data stack, gouvernance, data quality, IA et analytics avancés. Une soirée pour mettre en lumière la création de valeur et la performance décisionnelle, et nourrir la réflexion sur l’industrialisation et la monétisation de la donnée.",
+      "cible": "CDO, DSI et directions métiers des grandes entreprises et ETI",
+      "partenairesVises": [
+        "Éditeurs de plateformes data, de gouvernance, de data quality et d’analytics avancés."
+      ]
+    },
+    "industry": {
+      "lieu": "Ritz, Paris",
+      "positionnement": "Comment regagner en compétitivité face à la Chine ? Continuité numérique, robotisation, talents.",
+      "positionnementLong": "Future of Industry est une soirée de benchmark dédiée aux innovations de l’industrie 4.0 pour les grandes entreprises et ETI industrielles : digitalisation des usines, IoT, data temps réel, IA, automatisation. Une soirée pour mettre en lumière des transformations aux résultats mesurables (productivité, qualité, coûts) et échanger entre pairs sur des leviers activables en environnement multi-sites.",
+      "cible": "Directeurs industriels, directeurs de la transformation digitale industrielle, Head of Industry 4.0, Head of Manufacturing, directeurs R&D",
+      "partenairesVises": [
+        "Éditeurs et intégrateurs de l’industrie 4.0 : intégration IT/OT, IoT, data, IA, automatisation."
+      ],
+      "intervenants": [
+        {
+          "nom": "David Glijer",
+          "fonction": "CDTO, ArcelorMittal",
+          "annee": "2026"
+        },
+        {
+          "nom": "Thierry Fournier",
+          "fonction": "EVP Operational Excellence, Framatome",
+          "annee": "2026"
+        },
+        {
+          "nom": "Quentin Faucret",
+          "fonction": "Manufacturing Engineering Director, Michelin",
+          "annee": "2026"
+        },
+        {
+          "nom": "Olivier Chapel",
+          "fonction": "Global Manufacturing Digital Transformation Director, L’Oréal",
+          "annee": "2026"
+        }
+      ]
+    },
+    "legal": {
+      "lieu": "Ritz, Paris",
+      "positionnement": "Direction juridique en première ligne : arbitrer dans un environnement de crises permanentes.",
+      "positionnementLong": "Future of Legal est une soirée de benchmark dédiée aux innovations du juridique en entreprise : réduction des délais contractuels, sécurisation des engagements, productivité des équipes. Une soirée pour explorer les modèles opératoires activables (legal ops, digitalisation, gouvernance des risques juridiques) et le rôle du juridique comme levier business.",
+      "cible": "Directeurs juridiques et secrétaires généraux des grandes entreprises et ETI",
+      "partenairesVises": [
+        "Legal tech, contract management, IA juridique et pilotage de la performance juridique."
+      ],
+      "intervenants": [
+        {
+          "nom": "Carole Jais",
+          "fonction": "General Secretary, Trust & Ethics Director, membre du comité exécutif, Groupe Bel",
+          "annee": "2026"
+        },
+        {
+          "nom": "Dominique Bourrinet",
+          "fonction": "General Counsel, Directeur Juridique Groupe, Société Générale",
+          "annee": "2026"
+        },
+        {
+          "nom": "Alexander Lunshof",
+          "fonction": "Directeur Juridique Groupe et Secrétaire du Conseil, EssilorLuxottica",
+          "annee": "2026"
+        }
+      ]
+    },
+    "p2p": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "Construire sa stratégie IA dans un contexte de transformation forcée.",
+      "positionnementLong": "Future of P2P est une soirée de benchmark dédiée aux innovations du procure-to-pay : automatisation de bout en bout, dématérialisation des factures, IA pour le matching, pilotage des dépenses. Une soirée pour mettre en lumière des résultats mesurables (réduction des coûts, fiabilité des processus, optimisation du BFR) face aux enjeux de conformité et d’intégration SI.",
+      "cible": "Directions Finance et Achats, directeurs P2P et comptabilité fournisseurs des grandes entreprises et ETI",
+      "partenairesVises": [
+        "Plateformes procure-to-pay, de dématérialisation des factures et d’automatisation des comptes fournisseurs."
+      ],
+      "intervenants": [
+        {
+          "nom": "Nawal El Habbouli",
+          "fonction": "VP Master Data & GBS Digital Innovation, Danone",
+          "annee": "2026"
+        },
+        {
+          "nom": "Pierre Laugier",
+          "fonction": "Head of Finance Processes, Edenred",
+          "annee": "2026"
+        },
+        {
+          "nom": "Jérôme Grignon",
+          "fonction": "Associé, Deloitte",
+          "annee": "2026"
+        }
+      ]
+    },
+    "procurement": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "Les achats à l’ère de l’IA : un levier stratégique pour les comex.",
+      "positionnementLong": "Future of Procurement est une soirée de référence pour inspirer les décideurs Achats dans leur transformation digitale : panorama des innovations de la fonction (outils, projets, organisation, gouvernance), coup de projecteur sur les entreprises les plus en avance et échanges entre CPO, directeurs et responsables Achats.",
+      "cible": "CPO, directeurs et responsables Achats des grandes entreprises",
+      "partenairesVises": [
+        "Éditeurs des achats : IA, data, gestion des risques fournisseurs, RSE."
+      ],
+      "intervenants": [
+        {
+          "nom": "Olivier Ponton",
+          "fonction": "Chief Procurement Officer Europe, Air Liquide",
+          "annee": "2026"
+        },
+        {
+          "nom": "Florence Baiget",
+          "fonction": "Chief Procurement Officer, Veolia",
+          "annee": "2026"
+        },
+        {
+          "nom": "Magdalena Fiedorczuk",
+          "fonction": "Group VP Procurement, CPO, Bureau Veritas",
+          "annee": "2026"
+        },
+        {
+          "nom": "Carine Pichon",
+          "fonction": "CEO Western Europe & Africa, Coface",
+          "annee": "2026"
+        }
+      ]
+    },
+    "pe": {
+      "positionnement": "Le private equity entre dans une phase de mutation profonde : faire émerger des consensus de place.",
+      "positionnementLong": "Sous l’impulsion de Deloitte, le programme Future of Private Equity fait émerger des consensus de place sur les grandes transformations du secteur, en deux temps : des ateliers en comité restreint avec les principaux dirigeants du secteur, puis une soirée de gala réservée aux dirigeants des plus grands fonds français, où ces transformations sont projetées devant le marché lors de tables rondes.",
+      "cible": "Partners, Managing Directors et Managing Partners des plus grands fonds de private equity en France",
+      "participants": "150+ dirigeants de fonds attendus",
+      "intervenants": [
+        {
+          "nom": "Aurélien Klein",
+          "fonction": "Managing Partner, Chequers Capital",
+          "annee": "2026"
+        },
+        {
+          "nom": "François-Xavier Mauron",
+          "fonction": "Partner, Andera Midcap",
+          "annee": "2026"
+        },
+        {
+          "nom": "Arnaud Dufer",
+          "fonction": "Head of Expansion France & Managing Director, Ardian",
+          "annee": "2026"
+        },
+        {
+          "nom": "Olivier Boyadjian",
+          "fonction": "Managing Director, Head of Paris & Madrid Offices, HIG Capital Partners",
+          "annee": "2026"
+        },
+        {
+          "nom": "Olivier Nemsguern",
+          "fonction": "Head of Bridgepoint Development Capital, Bridgepoint",
+          "annee": "2026"
+        },
+        {
+          "nom": "Magdalena Svensson",
+          "fonction": "Partner, IK Partners",
+          "annee": "2026"
+        }
+      ]
+    },
+    "risk": {
+      "lieu": "Ritz, Paris",
+      "positionnement": "Fraude augmentée, contrôles dépassés ?",
+      "positionnementLong": "Future of Risk & Fraud est une soirée de benchmark dédiée aux innovations des risques et de la fraude : détection augmentée par l’IA, surveillance en temps réel, KYC/KYB, lutte anti-blanchiment, contrôle interne digitalisé. Une soirée pour mettre en lumière des résultats mesurables (réduction des pertes, maîtrise du risque, conformité renforcée).",
+      "cible": "Directions Risques, Conformité, Finance et Audit des grandes entreprises et ETI",
+      "partenairesVises": [
+        "Éditeurs de détection de la fraude, KYC/KYB, lutte anti-blanchiment et contrôle interne digitalisé."
+      ],
+      "intervenants": [
+        {
+          "nom": "Davy Msika",
+          "fonction": "Head of Fraud, Back Market",
+          "annee": "2026"
+        },
+        {
+          "nom": "Nadim Chidiac",
+          "fonction": "Head of Lending Western Europe, Revolut",
+          "annee": "2026"
+        }
+      ]
+    },
+    "supplychain": {
+      "lieu": "Four Seasons George V, Paris",
+      "positionnement": "Décrypter les enjeux qui redessinent la supply chain.",
+      "positionnementLong": "Future of Supply Chain est une soirée de benchmark dédiée aux innovations de la supply chain pour les grandes entreprises et ETI : digitalisation, IoT, data temps réel, IA, automatisation. Une soirée pour nourrir la réflexion des directions Supply Chain face à la volatilité, à la décarbonation et à la performance globale.",
+      "cible": "Directeurs supply chain et CSCO des grandes entreprises et ETI",
+      "partenairesVises": [
+        "Éditeurs de planification, d’exécution et d’automatisation de la supply chain."
+      ],
+      "intervenants": [
+        {
+          "nom": "Marjorie Vanhoucke",
+          "fonction": "Corporate General Manager Process Engineering, Services and Logistics Vehicles, Renault Group",
+          "annee": "2026"
+        },
+        {
+          "nom": "Olivier Romanet",
+          "fonction": "Global Supply Chain Operational Planning VP, Schneider Electric",
+          "annee": "2026"
+        }
+      ]
     }
   };
   const PHOTOS = [
@@ -1055,6 +1504,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-speakers { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
 .lo-speaker { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
 .lo-speaker img, .lo-speaker-ph { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--sand); object-fit: cover; }
+.lo-speaker-ph { display: grid; place-items: center; font-family: var(--font-display); font-stretch: 125%; font-size: 15px; font-weight: 600; color: var(--teal); }
 .lo-speaker p { min-width: 0; font-size: 13.5px; line-height: 1.35; }
 .lo-speaker strong { display: block; font-size: 14.5px; }
 .lo-speaker p > span { color: var(--ink-2); }
@@ -1337,7 +1787,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     <div class="lo-wrap lo-footer-in">
       <span class="lo-logo" role="img" aria-label="Losam"></span>
       <p class="lo-footer-tag">Le premier réseau de communautés de dirigeants dédié à la transformation des entreprises et de l’économie.</p>
-      <p class="lo-footer-addr">57 avenue Pierre 1<sup>er</sup> de Serbie, 75008 Paris · <a href="https://losam.fr" target="_blank" rel="noopener">losam.fr</a></p>
+      <p class="lo-footer-addr">37 avenue Pierre 1<sup>er</sup> de Serbie, 75008 Paris · <a href="https://losam.fr" target="_blank" rel="noopener">losam.fr</a></p>
     </div>
   </footer>
 </div>
@@ -2209,11 +2659,9 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       : ';background-image:url(' + fond + ')';
     const partners = PARTENAIRES_2026[e.id] || [];
     const speakers = (f.intervenants || []).filter(function (s) { return s && s.nom; });
-    const spHTML = speakers.length ? speakers.map(function (s) {
-      return '<li class="lo-speaker">' + (s.photo ? '<img src="' + esc(s.photo) + '" alt="" loading="lazy" decoding="async">' : '<span class="lo-speaker-ph" aria-hidden="true"></span>') +
-        '<p><strong>' + esc(s.nom) + '</strong><span>' + esc(s.fonction || '') + (s.annee ? ' · ' + esc(s.annee) : '') + '</span></p></li>';
-    }).join('') : (e.nouveau ? ['pressenti ' + YEAR, 'pressenti ' + YEAR, 'pressenti ' + YEAR] : [String(YEAR - 1), String(YEAR - 1), 'pressenti ' + YEAR]).map(function (a) {
-      return '<li class="lo-speaker"><span class="lo-speaker-ph" aria-hidden="true"></span><p><strong>' + todo('Prénom Nom') + '</strong><span>' + todo('Fonction, société') + ' · ' + esc(a) + '</span></p></li>';
+    const spHTML = speakers.map(function (s) {
+      return '<li class="lo-speaker">' + (s.photo ? '<img src="' + esc(s.photo) + '" alt="" loading="lazy" decoding="async">' : '<span class="lo-speaker-ph" aria-hidden="true">' + esc(s.nom.split(' ').map(function (w) { return w.charAt(0); }).slice(0, 2).join('')) + '</span>') +
+        '<p><strong>' + esc(s.nom) + '</strong><span>' + esc(s.fonction || '') + '</span></p></li>';
     }).join('');
     const logos = partners.length ? '<ul class="lo-logos">' + partners.map(function (n) {
       const src = LOGOS_PARTENAIRES[n];
@@ -2221,6 +2669,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     }).join('') + '</ul>' : '<p>' + todo('Logos des partenaires ' + (YEAR - 1)) + '</p>';
     const pos = f.positionnementLong || f.positionnement;
     const vises = [].concat(f.partenairesVises || []).filter(Boolean);
+    const spTitle = f.intervenantsTitre || (speakers.length && speakers.every(function (s) { return s.annee === String(YEAR - 1); }) ? 'Intervenants ' + (YEAR - 1)
+      : speakers.length ? 'Intervenants ' + (YEAR - 1) + ' et pressentis ' + YEAR : 'Intervenants pressentis ' + YEAR);
 
     $('#lo-doc-body').innerHTML =
       '<div class="lo-doc-hero' + (shots.length ? ' has-photos' : '') + '" style="--prog:' + P.primary + ';--pale:' + P.pale + heroBg + '">' +
@@ -2235,14 +2685,13 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       '<div class="lo-fiche">' +
         '<div class="lo-fiche-main">' +
           '<p class="lo-fiche-meta"><strong>' + (e.dated ? esc(cap(e.dateLong)) + ' ' + YEAR : 'Hors calendrier ' + YEAR) + '</strong>' + (e.d2 ? ' · sur deux jours' : '') +
-            ' · ' + esc(e.prefix) + ' · ' + (f.lieu ? esc(f.lieu) : todo('Lieu à confirmer')) + '</p>' +
+            ' · ' + esc(e.prefix) + (f.lieu ? ' · ' + esc(f.lieu) : '') + '</p>' +
           '<h2 class="lo-fiche-t" id="lo-doc-title">' + esc(e.name) + (e.nouveau ? ' <span class="lo-ev-badge">Nouveau</span>' : '') + '</h2>' +
-          ficheSec('Positionnement', '<p>' + (pos ? esc(pos) : todo('Deux phrases : l’enjeu traité en ' + YEAR + ' et ce que la soirée apporte à sa cible. Reprendre la fiche identité ' + (YEAR - 1) + '.')) + '</p>') +
-          ficheSec('Cible présente', '<p>' + esc(f.cible || e.cible) + ' · ' + (f.participants ? esc(f.participants) : todo('Nombre de participants attendus')) + '</p>') +
-          ficheSec('Partenaires visés', vises.length ? vises.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') : '<p>' + todo('Profils de partenaires pour qui cette cible est stratégique') + '</p>') +
-          ficheSec(e.nouveau || (f.intervenantsTexte && !speakers.length) ? 'Intervenants pressentis ' + YEAR : 'Intervenants ' + (YEAR - 1) + ' et pressentis ' + YEAR,
-            f.intervenantsTexte && !speakers.length ? '<p>' + esc(f.intervenantsTexte) + '</p>' : '<ul class="lo-speakers">' + spHTML + '</ul>') +
-          (e.nouveau ? '' : ficheSec('Partenaires ' + (YEAR - 1), logos)) +
+          (pos ? ficheSec('Positionnement', '<p>' + esc(pos) + '</p>') : '') +
+          ficheSec('Cible présente', '<p>' + esc(f.cible || e.cible) + (f.participants ? ' · ' + esc(f.participants) : '') + '</p>') +
+          (vises.length ? ficheSec('Partenaires visés', vises.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('')) : '') +
+          (speakers.length ? ficheSec(spTitle, '<ul class="lo-speakers">' + spHTML + '</ul>') : f.intervenantsTexte ? ficheSec(spTitle, '<p>' + esc(f.intervenantsTexte) + '</p>') : '') +
+          (partners.length ? ficheSec('Partenaires ' + (YEAR - 1), logos) : '') +
         '</div>' +
         '<aside class="lo-fiche-side" aria-label="Votre sélection">' +
           '<p class="lo-fiche-side-t">Cet événement vous intéresse&nbsp;?</p>' +
