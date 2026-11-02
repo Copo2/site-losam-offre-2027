@@ -1403,6 +1403,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 /* ---------- Refonte du parcours 2027 (brief UX du 25 octobre 2026) : bandeau bas, cibles, agenda, fiche, échange ---------- */
 .lo-todo { color: var(--ink-2); font-style: italic; text-decoration: underline dotted var(--line-strong); text-underline-offset: 3px; }
 
+.lo-logo-btn { flex: none; display: flex; align-items: center; min-height: 44px; padding: 0; background: none; border: 0; cursor: pointer; }
+.lo-logo-btn:hover .lo-logo { opacity: .8; }
 /* Bandeau fixe en bas d'écran */
 .lo-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--surface); border-top: 1px solid var(--line-strong); box-shadow: 0 -12px 30px -22px rgba(32,58,58,.45); }
 .lo-bar-in { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; min-height: 76px; padding-block: 12px; }
@@ -1578,7 +1580,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
   <header class="lo-header">
     <div class="lo-wrap lo-header-in">
-      <span class="lo-logo" role="img" aria-label="Losam"></span>
+      <button type="button" class="lo-logo-btn" data-go="0" aria-label="Losam : retour à l’accueil"><span class="lo-logo" aria-hidden="true"></span></button>
       <nav class="lo-steps" aria-label="Étapes du parcours">
         <ol>
           <li><button type="button" class="lo-step-btn" data-go="1"><span class="n">1 ·</span><span class="l">Cibles</span></button></li>
