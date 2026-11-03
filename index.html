@@ -1405,6 +1405,24 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
 .lo-logo-btn { flex: none; display: flex; align-items: center; min-height: 44px; padding: 0; background: none; border: 0; cursor: pointer; }
 .lo-logo-btn:hover .lo-logo { opacity: .8; }
+.lo-grid--compact { gap: 12px; margin-top: 40px; }
+.lo-grid--compact .lo-card { padding: 16px 48px 16px 18px; }
+.lo-grid--compact .lo-card:hover { transform: none; }
+.lo-grid--compact .lo-card-ico { width: 34px; height: 34px; margin-bottom: 10px; }
+.lo-grid--compact .lo-card-ico svg { width: 17px; height: 17px; }
+.lo-grid--compact .lo-card-title { font-size: 17px; }
+.lo-grid--compact .lo-card-desc { margin-top: 4px; font-size: 14px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.lo-grid--compact .lo-card-meta { padding-top: 10px; font-size: 13px; }
+.lo-grid--compact .lo-card-check { top: 16px; right: 16px; }
+.lo-others-h + .lo-targets { margin-top: 16px; }
+@media (max-width: 760px) {
+  .lo-grid--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 28px; }
+  .lo-grid--compact .lo-card { padding: 12px 30px 12px 14px; }
+  .lo-grid--compact .lo-card-ico, .lo-grid--compact .lo-card-desc, .lo-grid--compact .lo-card-meta svg { display: none; }
+  .lo-grid--compact .lo-card-title { font-size: 14px; letter-spacing: -.01em; }
+  .lo-grid--compact .lo-card-meta { display: block; margin-top: 6px; padding-top: 0; font-size: 12.5px; font-weight: 500; line-height: 1.35; color: var(--ink-2); }
+  .lo-grid--compact .lo-card-check { top: 10px; right: 8px; width: 20px; height: 20px; }
+}
 /* Bandeau fixe en bas d'écran */
 .lo-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--surface); border-top: 1px solid var(--line-strong); box-shadow: 0 -12px 30px -22px rgba(32,58,58,.45); }
 .lo-bar-in { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; min-height: 76px; padding-block: 12px; }
@@ -1430,11 +1448,6 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-target-n { margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--ink); }
 .lo-others-h { margin: 48px 0 0; }
 .lo-others-h + .lo-grid, .lo-targets:empty + .lo-others-h + .lo-grid { margin-top: 18px; }
-.lo-grid--compact .lo-card { padding: 22px 56px 22px 22px; }
-.lo-grid--compact .lo-card-ico { width: 40px; height: 40px; margin-bottom: 14px; }
-.lo-grid--compact .lo-card-ico svg { width: 19px; height: 19px; }
-.lo-grid--compact .lo-card-check { top: 20px; right: 20px; }
-.lo-grid--compact .lo-card-meta { padding-top: 14px; }
 
 /* Étape 2 · Agenda 2027 */
 .lo-agenda-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 32px; }
@@ -1588,7 +1601,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           <li><button type="button" class="lo-step-btn" data-go="3"><span class="n">3 ·</span><span class="l">Échange</span></button></li>
         </ol>
       </nav>
-      <div class="lo-header-actions"><button type="button" class="lo-btn lo-btn--sand" data-action="rdv">Parler à un Partenaire Losam</button></div>
+      <div class="lo-header-actions"><button type="button" class="lo-btn lo-btn--sand" data-action="rdv">Parler à un commercial LOSAM</button></div>
     </div>
   </header>
 
@@ -1669,9 +1682,14 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         <p class="lo-kicker">Agenda Losam 2027</p>
         <h1 class="lo-h1" id="lo-h-1" tabindex="-1">Quelles cibles souhaitez-vous rencontrer en 2027&nbsp;?</h1>
         <p class="lo-lead">Choisissez une ou plusieurs cibles, puis décochez les sous-communautés qui ne vous concernent pas.</p>
+        <ul class="lo-grid lo-grid--3 lo-grid--compact" id="lo-houses" aria-label="Cibles LOSAM"></ul>
+        <h2 class="lo-h2 lo-others-h" id="lo-others-h" hidden>Vos sous-communautés</h2>
         <div class="lo-targets" id="lo-targets"></div>
-        <h2 class="lo-h2 lo-others-h" id="lo-others-h" hidden>Autres cibles</h2>
-        <ul class="lo-grid lo-grid--3 lo-grid--compact" id="lo-houses" aria-label="Cibles Losam"></ul>
+        <label class="lo-content-card" for="lo-content">
+          <span class="lo-content-covers" aria-hidden="true"><img src="photos/content-livre-blanc.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-manifeste.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-ebook.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="lo-content-txt"><span class="lo-content-k">Pour toutes vos cibles</span><strong>Souhaitez-vous échanger sur notre offre contenu&nbsp;?</strong><span>Webinars, baromètres, manifestes, livres blancs, podcasts&nbsp;: un contenu à votre nom, diffusé auprès de vos décideurs prioritaires.</span></span>
+          <span class="lo-content-check"><input type="checkbox" id="lo-content" name="contenu" value="oui"><span>Ça m’intéresse</span></span>
+        </label>
       </section>
 
       <!-- Étape 2 · Agenda 2027 : liste par mois (vue par défaut) ou frise -->
@@ -1696,13 +1714,13 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         <div class="lo-agenda" id="lo-agenda"></div>
         <div class="lo-timeline" id="lo-timeline" hidden></div>
         <p class="lo-off-note" id="lo-off-note" hidden></p>
-        <p class="lo-note"><span data-icon="info"></span>Calendrier 2027 prévisionnel&nbsp;: les dates peuvent encore évoluer, votre Partenaire Losam vous les confirme.</p>
+        <p class="lo-note"><span data-icon="info"></span>Calendrier 2027 prévisionnel&nbsp;: les dates peuvent encore évoluer, votre commercial LOSAM vous les confirme.</p>
       </section>
 
       <!-- Étape 3 · Échange : formulaire et sélection sur un seul écran -->
       <section class="lo-step" data-step="3" aria-labelledby="lo-h-3" hidden>
         <p class="lo-kicker">Dernière étape</p>
-        <h1 class="lo-h1" id="lo-h-3" tabindex="-1">Votre Partenaire Losam vous présente ces rendez-vous</h1>
+        <h1 class="lo-h1" id="lo-h-3" tabindex="-1">Votre commercial LOSAM vous présente ces rendez-vous</h1>
         <p class="lo-lead">Présentations détaillées, profil des participants et modalités de partenariat vous sont remis lors de cet échange, sous 48&nbsp;h.</p>
 
         <form class="lo-form" id="lo-form" novalidate>
@@ -2130,7 +2148,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     const list = names.length > 4 ? names.slice(0, 3).join(', ') + ' et ' + (names.length - 3) + ' autres' : names.join(', ');
     t.innerHTML = '<strong>' + plural(picked.length, 'rendez-vous', 'rendez-vous') + '</strong> ' + (picked.length > 1 ? 'retenus' : 'retenu') +
       '<span class="lo-bar-names"> · ' + (picked.length ? esc(list) : 'cliquez sur un rendez-vous pour le retenir') + '</span>';
-    btn.innerHTML = 'Échanger avec Losam<span class="lo-i-next">' + svg('next') + '</span>';
+    btn.innerHTML = 'Échanger avec LOSAM<span class="lo-i-next">' + svg('next') + '</span>';
     btn.dataset.go = '3';
     btn.disabled = false;
   }
@@ -2148,7 +2166,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     } else state.houses.delete(id);
     if (state.step === 1) {
       renderTargets();
-      const f = adding ? $('#lo-tgx-' + id) : $('.lo-card[data-id="' + id + '"]');
+      const f = $('.lo-card[data-id="' + id + '"]');
       if (f) f.focus();
     }
     renderStepper();
@@ -2166,6 +2184,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     state.houses.clear(); state.excluded.clear(); state.picked.clear(); state.formats.clear();
     Object.assign(state, { view: 'list', pickHouses: false, sentVia: null, mailto: '' });
     form.reset();
+    $('#lo-content').checked = false;
     $$('.lo-input').forEach(function (i) { i.removeAttribute('aria-invalid'); });
     $$('.lo-error').forEach(function (e) { e.hidden = true; });
     go(0);
@@ -2173,7 +2192,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 
   /* ---------- Étape 1 · Cibles ---------- */
   function card(o) {
-    return '<li><button type="button" class="lo-card" data-group="' + o.group + '" data-id="' + o.id + '" aria-pressed="false">' +
+    return '<li><button type="button" class="lo-card" data-group="' + o.group + '" data-id="' + o.id + '" aria-pressed="' + !!o.pressed + '">' +
       '<span class="lo-card-ico">' + svg(o.icon) + '</span>' +
       '<span class="lo-card-title">' + esc(o.title) + '</span>' +
       '<span class="lo-card-desc">' + esc(o.desc) + '</span>' +
@@ -2211,7 +2230,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   }
 
   function renderTargets() {
-    const sel = selHouses(), others = HOUSES.filter(function (h) { return !state.houses.has(h.id); });
+    const sel = selHouses();
     $('#lo-targets').innerHTML = sel.map(function (h) {
       return '<section class="lo-target" aria-labelledby="lo-tg-' + h.id + '">' +
         '<div class="lo-target-h"><h2 class="lo-target-p"><span class="lo-target-t" id="lo-tg-' + h.id + '">' + esc(h.label) + '</span><span class="lo-target-r"> · ' + esc(h.roles) + '</span></h2>' +
@@ -2221,11 +2240,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         '<p class="lo-target-n" data-count="' + h.id + '">' + esc(houseCount(h)) + '</p>' +
       '</section>';
     }).join('');
-    $('#lo-others-h').hidden = !sel.length || !others.length;
-    $('#lo-houses').innerHTML = others.map(function (h) {
+    $('#lo-others-h').hidden = !sel.length;
+    $('#lo-houses').innerHTML = HOUSES.map(function (h) {
       const dated = datedOnly(houseEvents(h)), nNew = dated.filter(function (e) { return e.nouveau; }).length;
       return card({
-        group: 'house', id: h.id, icon: h.icon, title: h.label, desc: h.roles,
+        group: 'house', id: h.id, icon: h.icon, title: h.label, desc: h.roles, pressed: state.houses.has(h.id),
         meta: plural(dated.length, 'rendez-vous', 'rendez-vous') + ' en ' + YEAR + (nNew ? ', dont ' + plural(nNew, 'nouveauté', 'nouveautés') : '')
       });
     }).join('');
@@ -2327,7 +2346,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     const note = $('#lo-off-note');
     note.hidden = !offOut.length;
     note.innerHTML = offOut.length ? '<strong>Hors calendrier ' + YEAR + '&nbsp;:</strong> ' + esc(joinFr(offOut.map(function (e) { return e.name; }))) +
-      '. La communauté existe, parlons-en avec votre Partenaire Losam.' : '';
+      '. La communauté existe, parlons-en avec votre commercial LOSAM.' : '';
   }
 
   function togglePick(id) {
@@ -2696,9 +2715,9 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         '</div>' +
         '<aside class="lo-fiche-side" aria-label="Votre sélection">' +
           '<p class="lo-fiche-side-t">Cet événement vous intéresse&nbsp;?</p>' +
-          '<p>La présentation détaillée, les modalités de partenariat et le profil des participants vous sont présentés par votre Partenaire Losam.</p>' +
+          '<p>La présentation détaillée, les modalités de partenariat et le profil des participants vous sont présentés par votre commercial LOSAM.</p>' +
           '<button type="button" class="lo-btn lo-btn--pick" data-action="pick-doc" aria-pressed="' + on + '">' + pickLabel(on) + '</button>' +
-          '<button type="button" class="lo-btn lo-btn--primary" data-action="rdv">Échanger avec Losam</button>' +
+          '<button type="button" class="lo-btn lo-btn--primary" data-action="rdv">Échanger avec LOSAM</button>' +
         '</aside>' +
       '</div>';
     initCarousel($('#lo-doc-body .lo-car'));
@@ -2742,7 +2761,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         ? '<ul class="lo-recap-list">' + picked.map(function (e) {
             return '<li><strong>' + (e.dated ? esc(shortDate(e)) : 'Hors calendrier') + '</strong> · ' + esc(e.name) + '</li>';
           }).join('') + '</ul>'
-        : '<p class="lo-recap-s">Aucun rendez-vous retenu&nbsp;: votre Partenaire Losam vous présente l’agenda de vos cibles (' + plural(n, 'rendez-vous', 'rendez-vous') + ').</p>';
+        : '<p class="lo-recap-s">Aucun rendez-vous retenu&nbsp;: votre commercial LOSAM vous présente l’agenda de vos cibles (' + plural(n, 'rendez-vous', 'rendez-vous') + ').</p>';
     }
     html += '<p class="lo-recap-k2" id="lo-fmt-h">Autres formats qui vous intéressent</p><ul class="lo-pills" aria-labelledby="lo-fmt-h">' + FORMATS.map(function (f) {
       return '<li><button type="button" class="lo-pill lo-pill--line" data-format="' + f.id + '" aria-pressed="' + state.formats.has(f.id) + '">' + esc(f.label) + '</button></li>';
@@ -2794,7 +2813,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     const houses = selHouses(), agenda = selEvents(), picked = pickedEvents();
     const fm = FORMATS.filter(function (f) { return state.formats.has(f.id); });
     const lines = ['Demande d’échange : agenda Losam ' + YEAR,
-      '• Cibles : ' + (houses.length ? houses.map(function (h) { return h.label + ' (' + h.roles + ')'; }).join(' ; ') : 'à définir avec le Partenaire Losam')];
+      '• Cibles : ' + (houses.length ? houses.map(function (h) { return h.label + ' (' + h.roles + ')'; }).join(' ; ') : 'à définir avec le commercial LOSAM')];
     if (picked.length) {
       lines.push('• Rendez-vous retenus (' + picked.length + ') :');
       picked.forEach(function (e) { lines.push('   – ' + eventLine(e)); });
@@ -2883,7 +2902,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   function renderDone() {
     $('#lo-done-extra').innerHTML = '';
     $('.lo-done-ico').innerHTML = svg(state.sentVia === 'manual' ? 'mail' : 'check');
-    $('#lo-h-4').textContent = 'Merci, votre Partenaire Losam revient vers vous sous 48 h.';
+    $('#lo-h-4').textContent = 'Merci, votre commercial LOSAM revient vers vous sous 48 h.';
     if (state.sentVia === 'manual') {
       // Rien n'est envoyé par la page : le visiteur copie sa demande ou l'ouvre dans sa messagerie.
       const p = state.payload;
@@ -2891,7 +2910,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       $('#lo-h-4').textContent = 'Envoyez votre demande à l’équipe Losam';
       $('#lo-done-text').innerHTML = (inClaude
         ? 'Copiez votre demande ci-dessous et envoyez-la depuis votre messagerie. '
-        : 'Votre e-mail est prêt&nbsp;: ouvrez-le dans votre messagerie et envoyez-le. Rien ne s’ouvre&nbsp;? Copiez votre demande ci-dessous. ') + 'Votre Partenaire Losam revient vers vous sous 48&nbsp;h.';
+        : 'Votre e-mail est prêt&nbsp;: ouvrez-le dans votre messagerie et envoyez-le. Rien ne s’ouvre&nbsp;? Copiez votre demande ci-dessous. ') + 'Votre commercial LOSAM revient vers vous sous 48&nbsp;h.';
       $('#lo-done-extra').innerHTML = '<div class="lo-copybox">' +
         '<dl><dt>À</dt><dd class="lo-addr">' + esc(p.to.join(', ')) + '</dd><dt>Objet</dt><dd>' + esc(p.subject) + '</dd></dl>' +
         '<pre id="lo-copy-text">' + esc(p.body) + '</pre>' +
@@ -2980,7 +2999,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     const name = e.target.name;
     if (RULES[name] && e.target.getAttribute('aria-invalid') === 'true') validateField(name);
   });
-  // Cibles cochées depuis l'écran Échange (visiteur arrivé par « Parler à un Partenaire Losam »).
+  // Cibles cochées depuis l'écran Échange (visiteur arrivé par « Parler à un commercial LOSAM »).
   form.addEventListener('change', function (e) {
     const t = e.target;
     if (t.dataset.pick !== 'houses') return;
@@ -3003,6 +3022,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       const id = t.dataset.format;
       if (state.formats.has(id)) state.formats.delete(id); else state.formats.add(id);
       t.setAttribute('aria-pressed', String(state.formats.has(id)));
+      if (id === 'content') $('#lo-content').checked = state.formats.has('content');
       return;
     }
     if (t.dataset.go != null) { go(Number(t.dataset.go)); return; }
@@ -3061,6 +3081,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
       });
     }
   }
+
+  // Offre contenu (étape Cibles) : même choix que la pastille « Content » de l'écran Échange.
+  $('#lo-content').addEventListener('change', function (e) {
+    if (e.target.checked) state.formats.add('content'); else state.formats.delete('content');
+  });
 
   /* ---------- Initialisation ---------- */
   $$('[data-icon]').forEach(function (el) { el.innerHTML = svg(el.dataset.icon); });
