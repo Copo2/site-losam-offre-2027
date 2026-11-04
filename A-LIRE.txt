@@ -8,6 +8,12 @@ Contenu du dossier
 Aucune présentation, liste d'inscrits ni adresse interne ne doit être déposée avec la page : les présentations,
 le profil des participants et les modalités de partenariat sont remis par le Partenaire Losam lors de l'échange.
 
+Deux versions de la page
+- index.html : version autonome, avec son propre en-tête (logo, barre d'étapes, bouton commercial) et son pied de page.
+- integration.html : même parcours, sans en-tête ni pied de page, pour une page losam.fr qui garde l'en-tête et le pied
+  du site. La barre d'étapes s'affiche en haut du contenu (masquée sur l'accueil). Elle ne force pas le fond ni les
+  marges de la page WordPress. Les deux fichiers utilisent les mêmes dossiers photos/ et logos/.
+
 Parcours
 Accueil → 1 · Cibles → 2 · Agenda 2027 (liste par mois ou frise, fiche de chaque rendez-vous) → 3 · Échange.
 
