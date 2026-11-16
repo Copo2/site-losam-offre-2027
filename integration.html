@@ -1649,6 +1649,16 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   .lo-subgrid .lo-chip > span:first-child { padding-left: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .lo-card, .lo-subgrid .lo-chip { transition: none; } }
+
+/* Bandeau des thèmes de l'agenda : plus léger (retours Michaël) */
+.lo-filter { padding: 18px 24px 12px; border: 0; border-radius: var(--r-card, 16px); box-shadow: 0 1px 2px rgba(32,58,58,.05), 0 10px 24px -16px rgba(32,58,58,.2); }
+.lo-filter-k { font-family: var(--font-display); font-stretch: 125%; font-size: 15px; font-weight: 600; color: var(--teal); }
+.lo-pill { min-height: 34px; padding: 0 14px; background: var(--soft, #EFEFEF); color: var(--teal); font-weight: 500; font-size: 14px;
+  transition: background-color .3s var(--smooth, ease), color .3s var(--smooth, ease), border-color .3s var(--smooth, ease); }
+.lo-pill:hover { background: #E4E6E4; }
+.lo-pill[aria-pressed="false"] { background: transparent; border: 1px dashed var(--soft-line, #D6D6D3); color: #8A9493; text-decoration: line-through; text-decoration-color: #B5BCBB; }
+.lo-pill[aria-pressed="false"]:hover { border-color: var(--teal); color: var(--teal); }
+.lo-filter-foot { margin-top: 10px; padding-top: 6px; border-top-color: #ECECEA; font-size: 13.5px; color: #7A8584; }
 </style>
 </head>
 <body>
