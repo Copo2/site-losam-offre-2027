@@ -1659,6 +1659,22 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-ag-fiche:hover { color: var(--prog-ink, #fff); transform: translateY(-2px); box-shadow: 0 10px 20px -10px var(--prog, rgba(32,58,58,.6)); filter: brightness(1.06); }
 .lo-ag.is-picked .lo-ag-fiche { border-left: 0; }
 @media (max-width: 640px) { .lo-ag-fiche { align-self: stretch; width: auto; height: 44px; margin: 0 14px 14px; flex-direction: row; justify-content: center; border-top: 0; } }
+
+/* Fiche : encart « Cet événement vous intéresse ? » équilibré, bouton à la couleur de l'événement, sections aérées */
+@media (min-width: 1041px) { .lo-fiche { grid-template-columns: minmax(0, 1fr) 320px; gap: 28px 48px; } }
+.lo-fiche-k { margin: 40px 0 12px; }
+.lo-fiche-main > p, .lo-fiche-main > .lo-fiche-k + p { line-height: 1.65; }
+.lo-fiche-side { gap: 0; padding: 28px 26px 26px; border: 0; border-radius: var(--r-card, 16px); background: var(--soft, #EFEFEF); }
+.lo-fiche-side-t { font-family: var(--font-display); font-stretch: 125%; font-size: 19px; line-height: 1.3; font-weight: 600; color: var(--teal); text-wrap: balance; }
+.lo-fiche-side p:not(.lo-fiche-side-t) { margin: 12px 0 22px; font-size: 14.5px; line-height: 1.6; text-wrap: pretty; }
+.lo-fiche-side .lo-btn { min-height: 50px; padding: 0 18px; border-radius: 12px; font-size: 15px; font-weight: 600; white-space: nowrap; gap: 10px; }
+.lo-fiche-side .lo-btn + .lo-btn { margin-top: 10px; }
+.lo-fiche-side .lo-btn svg { flex: none; width: 17px; height: 17px; }
+.lo-btn--pick { background: #fff; border-color: transparent; box-shadow: inset 0 0 0 1.5px var(--prog, var(--teal)); color: var(--teal); }
+.lo-btn--pick:hover, .lo-btn--pick[aria-pressed="true"] { background: #fff; box-shadow: inset 0 0 0 2px var(--prog, var(--teal)); }
+.lo-btn--prog, .lo a.lo-btn--prog { background: var(--prog, var(--teal)); color: var(--prog-ink, #fff); }
+.lo-btn--prog:hover { background: var(--prog, var(--teal)); filter: brightness(1.08); }
+@media (max-width: 1100px) { .lo-fiche-side .lo-btn { white-space: normal; } }
 </style>
 </head>
 <body>
@@ -2740,6 +2756,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   const docDialog = document.getElementById('lo-doc');
   let docEventId = null;
 
+  const inkOn = function (h) { const n = parseInt(h.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255 > 0.62 ? '#203A3A' : '#fff'; };
   const pickLabel = function (on) { return on ? svg('check') + 'Retenu dans ma sélection' : svg('plus') + 'Retenir dans ma sélection'; };
   const ficheSec = function (title, body) { return '<h3 class="lo-fiche-k">' + title + '</h3>' + body; };
 
@@ -2777,7 +2794,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
             (e.logoSuffix ? '<span class="lo-doc-suffix">' + esc(e.logoSuffix) + '</span>' : '') + '</p>'
           : (P.family ? '<img class="lo-doc-family" src="' + BRAND_IMG[P.family] + '" alt="">' : '')) +
       '</div>' +
-      '<div class="lo-fiche">' +
+      '<div class="lo-fiche" style="--prog:' + P.primary + ';--prog-ink:' + inkOn(P.primary) + '">' +
         '<div class="lo-fiche-main">' +
           '<p class="lo-fiche-meta"><strong>' + (e.dated ? esc(cap(e.dateLong)) + ' ' + YEAR : 'Hors calendrier ' + YEAR) + '</strong>' + (e.d2 ? ' · sur deux jours' : '') +
             ' · ' + esc(e.prefix) + (f.lieu ? ' · ' + esc(f.lieu) : '') + '</p>' +
@@ -2791,7 +2808,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           '<p class="lo-fiche-side-t">Cet événement vous intéresse&nbsp;?</p>' +
           '<p>La présentation détaillée, les modalités de partenariat et le profil des participants vous sont présentés par votre commercial LOSAM.</p>' +
           '<button type="button" class="lo-btn lo-btn--pick" data-action="pick-doc" aria-pressed="' + on + '">' + pickLabel(on) + '</button>' +
-          '<button type="button" class="lo-btn lo-btn--primary" data-action="rdv">Échanger avec LOSAM</button>' +
+          '<button type="button" class="lo-btn lo-btn--primary lo-btn--prog" data-action="rdv">Échanger avec LOSAM</button>' +
         '</aside>' +
       '</div>';
     initCarousel($('#lo-doc-body .lo-car'));
