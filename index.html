@@ -1647,6 +1647,18 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-offer-kpi strong.is-word { font-size: 18px; line-height: 1.15; white-space: normal; }
 .lo-offer-kpi span { font-size: 14.5px; line-height: 1.4; }
 @media (max-width: 640px) { .lo-offer-kpi { grid-template-columns: 6.4em minmax(0, 1fr); } .lo-offer-kpi strong { font-size: 26px; } }
+
+/* Agenda en liste : bouton « Fiche » dans un carré à la couleur de l'événement (charte de chaque programme) */
+.lo-ag { border-radius: var(--r-card, 16px); align-items: stretch; }
+.lo-ag-ph { border-radius: 10px; }
+.lo-ag-check { border-radius: 50%; }
+.lo-ag-fiche { align-self: center; flex-direction: column; justify-content: center; gap: 6px; width: 88px; height: 76px; margin: 12px 12px 12px 4px; padding: 0;
+  border: 0; border-radius: 12px; background: var(--prog, var(--teal)); color: var(--prog-ink, #fff); font-size: 13.5px; font-weight: 700; letter-spacing: .02em; text-decoration: none;
+  transition: transform .3s var(--smooth, ease), box-shadow .3s var(--smooth, ease), filter .3s var(--smooth, ease); }
+.lo-ag-fiche svg { width: 18px; height: 18px; }
+.lo-ag-fiche:hover { color: var(--prog-ink, #fff); transform: translateY(-2px); box-shadow: 0 10px 20px -10px var(--prog, rgba(32,58,58,.6)); filter: brightness(1.06); }
+.lo-ag.is-picked .lo-ag-fiche { border-left: 0; }
+@media (max-width: 640px) { .lo-ag-fiche { align-self: stretch; width: auto; height: 44px; margin: 0 14px 14px; flex-direction: row; justify-content: center; border-top: 0; } }
 </style>
 </head>
 <body>
@@ -2366,7 +2378,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   // Bloc d'un rendez-vous : le bloc entier le retient (second clic : le retire) ; « Fiche » ouvre sa fiche identité.
   function agBlock(e, fresh) {
     const on = state.picked.has(e.id), f = ficheOf(e), pl = partnersLine(e);
-    return '<li class="lo-ag' + (on ? ' is-picked' : '') + (fresh ? ' is-new' : '') + '">' +
+    const pc = e.prog.primary, lum = (function (h) { const n = parseInt(h.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255; })(pc);
+    return '<li class="lo-ag' + (on ? ' is-picked' : '') + (fresh ? ' is-new' : '') + '" style="--prog:' + pc + ';--prog-ink:' + (lum > 0.62 ? '#203A3A' : '#fff') + '">' +
       '<button type="button" class="lo-ag-pick" data-retain="' + e.id + '" aria-pressed="' + on + '">' +
         thumb(e) +
         '<span class="lo-ag-b">' +
