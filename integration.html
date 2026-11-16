@@ -1606,6 +1606,49 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   .lo-steps--inline .lo-step-btn { gap: 4px; font-size: 10.5px; letter-spacing: .06em; }
   .lo-steps--inline li + li::before { width: 14px; margin: 0 8px; }
 }
+
+/* ---------- Cibles et rendez-vous : version arrondie (retours Michaël, nov. 2026) ---------- */
+.lo { --soft: #EFEFEF; --soft-line: #D6D6D3; --r-card: 16px; --r-row: 14px; --smooth: cubic-bezier(.22, .61, .36, 1); }
+.lo-card { border: 0; border-radius: var(--r-card); box-shadow: 0 1px 2px rgba(32,58,58,.06), 0 6px 18px -10px rgba(32,58,58,.18);
+  transition: box-shadow .35s var(--smooth), transform .35s var(--smooth), background .35s var(--smooth), color .35s var(--smooth); }
+.lo-card:hover { box-shadow: 0 2px 4px rgba(32,58,58,.06), 0 16px 32px -14px rgba(32,58,58,.28); transform: translateY(-3px); }
+.lo-card-ico { border-radius: 12px; background: var(--soft); transition: background .35s var(--smooth), color .35s var(--smooth); }
+.lo-card-check { border-radius: 8px; transition: background .3s var(--smooth), border-color .3s var(--smooth); }
+.lo-card-subs > span { background: var(--soft); border-color: transparent; border-radius: 999px; }
+.lo-card[aria-pressed="true"] { color: #fff; border: 0; box-shadow: 0 18px 36px -18px rgba(32,58,58,.55);
+  background: linear-gradient(172deg, #1F3A3A 0%, #2B4F4D 58%, #5E8380 100%); }
+.lo-card[aria-pressed="true"]:hover { box-shadow: 0 22px 40px -18px rgba(32,58,58,.6); }
+.lo-card[aria-pressed="true"] .lo-card-title { color: #fff; }
+.lo-card[aria-pressed="true"] .lo-card-desc { color: rgba(255,255,255,.82); }
+.lo-card[aria-pressed="true"] .lo-card-meta { color: #fff; }
+.lo-card[aria-pressed="true"] .lo-card-meta svg { color: var(--sand); }
+.lo-card[aria-pressed="true"] .lo-card-ico { background: rgba(255,255,255,.12); color: #fff; }
+.lo-card[aria-pressed="true"] .lo-card-check { background: #fff; border-color: #fff; color: var(--teal); }
+.lo-card[aria-pressed="true"] .lo-card-subs > span { background: rgba(255,255,255,.14); border-color: transparent; color: #fff; }
+
+.lo-target { border: 0; border-radius: 20px; padding: 26px 28px 24px; box-shadow: 0 1px 2px rgba(32,58,58,.06), 0 20px 40px -24px rgba(32,58,58,.3); }
+.lo-target-x { transition: background .3s var(--smooth); }
+.lo-subgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; counter-reset: lo-ev; }
+.lo-subgrid > li { counter-increment: lo-ev; }
+.lo-subgrid .lo-chip { gap: 0; min-height: 72px; padding: 14px 18px 14px 20px; background: var(--soft); border: 0; border-radius: var(--r-row); box-shadow: none;
+  transition: background .3s var(--smooth), opacity .3s var(--smooth), transform .3s var(--smooth); }
+.lo-subgrid .lo-chip::before { content: "•" counter(lo-ev, decimal-leading-zero); flex: none; width: 68px; font-family: var(--font-display); font-size: 26px; font-weight: 500; line-height: 1; color: var(--teal); }
+.lo-subgrid .lo-chip > span:first-child { flex: 1 1 auto; min-width: 0; padding: 4px 16px 4px 20px; border-left: 1px solid var(--soft-line); }
+.lo-subgrid .lo-chip .lo-chip-t { font-weight: 600; }
+.lo-subgrid .lo-chip:hover { background: #E7E7E4; box-shadow: none; transform: translateY(-1px); }
+.lo-subgrid .lo-chip[aria-pressed="true"] { background: var(--soft); box-shadow: none; }
+.lo-subgrid .lo-chip[aria-pressed="false"] { opacity: .55; }
+.lo-subgrid .lo-chip[aria-pressed="false"]::before { color: var(--ink-2); }
+.lo-subgrid .lo-chip-state { flex: none; width: 24px; height: 24px; border-radius: 50%; transition: background .3s var(--smooth), border-color .3s var(--smooth); }
+.lo-content-card { border-radius: var(--r-card); }
+@media (max-width: 900px) { .lo-subgrid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) {
+  .lo-target { padding: 20px 16px 18px; border-radius: 16px; }
+  .lo-subgrid .lo-chip { min-height: 64px; padding: 12px 14px 12px 14px; }
+  .lo-subgrid .lo-chip::before { width: 52px; font-size: 22px; }
+  .lo-subgrid .lo-chip > span:first-child { padding-left: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .lo-card, .lo-subgrid .lo-chip { transition: none; } }
 </style>
 </head>
 <body>
