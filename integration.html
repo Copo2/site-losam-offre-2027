@@ -1659,6 +1659,16 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-pill[aria-pressed="false"] { background: transparent; border: 1px dashed var(--soft-line, #D6D6D3); color: #8A9493; text-decoration: line-through; text-decoration-color: #B5BCBB; }
 .lo-pill[aria-pressed="false"]:hover { border-color: var(--teal); color: var(--teal); }
 .lo-filter-foot { margin-top: 10px; padding-top: 6px; border-top-color: #ECECEA; font-size: 13.5px; color: #7A8584; }
+
+/* Chiffres clés des offres : plus grands, alignés à droite, texte à gauche (retours Michaël) */
+.lo-offer-kpi { grid-template-columns: 7.2em minmax(0, 1fr); align-items: center; gap: 14px 18px; padding-top: 20px; }
+.lo-offer-kpi strong { justify-self: end; display: inline-flex; flex-direction: column; align-items: flex-end; text-align: right; font-size: 30px; font-weight: 600; line-height: 1; letter-spacing: -.01em; }
+.lo-offer-kpi strong small { display: block; margin-top: 4px; font-family: var(--font); font-stretch: normal; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--copper-ink); }
+.lo-offer-kpi strong small.lo-kpi-mid { display: inline; margin: 0 .25em; font-size: 15px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+.lo-offer-kpi strong:has(.lo-kpi-mid) { flex-direction: row; align-items: baseline; }
+.lo-offer-kpi strong.is-word { font-size: 18px; line-height: 1.15; white-space: normal; }
+.lo-offer-kpi span { font-size: 14.5px; line-height: 1.4; }
+@media (max-width: 640px) { .lo-offer-kpi { grid-template-columns: 6.4em minmax(0, 1fr); } .lo-offer-kpi strong { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -1717,27 +1727,27 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
           <ul class="lo-offers">
             <li class="lo-offer">
               <div class="lo-offer-ph"><span class="lo-offer-badge">Offre phare</span><img src="photos/format-think-tank.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Think Tank sur-mesure</h3><p class="lo-offer-d">Des laboratoires à idées entre pairs, pour être intégré en amont des réflexions de votre cible. Plus de 115 think tanks déjà animés.</p><ul class="lo-offer-kpi"><li><strong>12 mois</strong><span>durée du dispositif</span></li><li><strong>5 rencontres</strong><span>1 dîner fondateur et 4 workshops de 15 à 25 dirigeants</span></li><li><strong>25 à 40</strong><span>rendez-vous one-to-one avec vos cibles</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Think Tank sur-mesure</h3><p class="lo-offer-d">Des laboratoires à idées entre pairs, pour être intégré en amont des réflexions de votre cible. Plus de 115 think tanks déjà animés.</p><ul class="lo-offer-kpi"><li><strong>12<small>mois</small></strong><span>durée du dispositif</span></li><li><strong>5<small>rencontres</small></strong><span>1 dîner fondateur et 4 workshops de 15 à 25 dirigeants</span></li><li><strong>25<small class="lo-kpi-mid">à</small>40</strong><span>rendez-vous one-to-one avec vos cibles</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/format-task-force.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Task Force</h3><p class="lo-offer-d">Des porteurs de projets réunis pour résoudre une problématique précise, jusqu’à un rapport de préconisations.</p><ul class="lo-offer-kpi"><li><strong>6 mois</strong><span>durée du dispositif</span></li><li><strong>3 rencontres</strong><span>1 dîner fondateur et 2 workshops de 12 à 20 participants</span></li><li><strong>1</strong><span>rapport de préconisations co-signé avec vos cibles</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Task Force</h3><p class="lo-offer-d">Des porteurs de projets réunis pour résoudre une problématique précise, jusqu’à un rapport de préconisations.</p><ul class="lo-offer-kpi"><li><strong>6<small>mois</small></strong><span>durée du dispositif</span></li><li><strong>3<small>rencontres</small></strong><span>1 dîner fondateur et 2 workshops de 12 à 20 participants</span></li><li><strong>1</strong><span>rapport de préconisations co-signé avec vos cibles</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph lo-offer-ph--covers"><img src="photos/content-livre-blanc.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-manifeste.jpg" alt="" loading="lazy" decoding="async"><img src="photos/content-ebook.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Content</h3><p class="lo-offer-d">Livres blancs, manifestes, baromètres&nbsp;: un contenu de haut niveau, rédigé par d’anciens consultants et journalistes et diffusé auprès de vos cibles.</p><ul class="lo-offer-kpi"><li><strong>1</strong><span>livrable à votre nom</span></li><li><strong>Ciblé</strong><span>diffusé auprès de vos décideurs prioritaires</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Content</h3><p class="lo-offer-d">Livres blancs, manifestes, baromètres&nbsp;: un contenu de haut niveau, rédigé par d’anciens consultants et journalistes et diffusé auprès de vos cibles.</p><ul class="lo-offer-kpi"><li><strong>1</strong><span>livrable à votre nom</span></li><li><strong class="is-word">Ciblé</strong><span>diffusé auprès de vos décideurs prioritaires</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/diner-entre-pairs.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Soirées de benchmark</h3><p class="lo-offer-d">Un cadre confidentiel et exclusif pour présenter votre solution à des porteurs de projets de transformation.</p><ul class="lo-offer-kpi"><li><strong>100</strong><span>décideurs réunis</span></li><li><strong>8 à 12</strong><span>décideurs par table</span></li><li><strong>16</strong><span>décideurs rencontrés à vos tables</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Soirées de benchmark</h3><p class="lo-offer-d">Un cadre confidentiel et exclusif pour présenter votre solution à des porteurs de projets de transformation.</p><ul class="lo-offer-kpi"><li><strong>100</strong><span>décideurs réunis</span></li><li><strong>8<small class="lo-kpi-mid">à</small>12</strong><span>décideurs par table</span></li><li><strong>16</strong><span>décideurs rencontrés à vos tables</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/pleniere.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Summits et conférences</h3><p class="lo-offer-d">Fédérer votre écosystème et projeter votre vision devant une large audience de décideurs.</p><ul class="lo-offer-kpi"><li><strong>1&#8239;000</strong><span>participants au maximum</span></li><li><strong>250</strong><span>CxO à Future of AI 2026</span></li><li><strong>Scène</strong><span>prise de parole devant votre cible</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Summits et conférences</h3><p class="lo-offer-d">Fédérer votre écosystème et projeter votre vision devant une large audience de décideurs.</p><ul class="lo-offer-kpi"><li><strong>1&#8239;000</strong><span>participants au maximum</span></li><li><strong>250</strong><span>CxO à Future of AI 2026</span></li><li><strong class="is-word">Scène</strong><span>prise de parole devant votre cible</span></li></ul></div>
             </li>
             <li class="lo-offer">
               <div class="lo-offer-ph"><img src="photos/format-diner-exec.jpg" alt="" loading="lazy" decoding="async"></div>
-              <div class="lo-offer-b"><h3 class="lo-offer-t">Exec dinners</h3><p class="lo-offer-d">Des dîners qui réunissent des dirigeants exécutifs, à des tables sur mesure aux côtés de vos cibles prioritaires&nbsp;: une seule discussion par table, animée par vous.</p><ul class="lo-offer-kpi"><li><strong>8</strong><span>décideurs à votre table</span></li><li><strong>Sur mesure</strong><span>vos cibles prioritaires, choisies par vous</span></li></ul></div>
+              <div class="lo-offer-b"><h3 class="lo-offer-t">Exec dinners</h3><p class="lo-offer-d">Des dîners qui réunissent des dirigeants exécutifs, à des tables sur mesure aux côtés de vos cibles prioritaires&nbsp;: une seule discussion par table, animée par vous.</p><ul class="lo-offer-kpi"><li><strong>8</strong><span>décideurs à votre table</span></li><li><strong class="is-word">Sur mesure</strong><span>vos cibles prioritaires, choisies par vous</span></li></ul></div>
             </li>
           </ul>
         </div>
