@@ -1701,6 +1701,18 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 /* Mention sous le logo (& Fraud, Maroc, Exec dinner…) : alignée sur « FUTURE OF », pas sur le monogramme */
 .lo-doc-title .lo-doc-suffix { margin: 6px 0 0 calc(var(--logo-h, 40px) * var(--txt-x, 1.2)); font-size: 13px; letter-spacing: .2em; color: #fff; }
 @media (max-width: 760px) { .lo-doc-title .lo-doc-suffix { margin-left: calc(var(--logo-h, 40px) * .8 * var(--txt-x, 1.2)); font-size: 11.5px; } }
+
+/* Vignettes sans logo (Sales & Revenue, Communication & Média…) : titre aligné à gauche, deux lignes au plus */
+.lo-ag-ph--brand { border-radius: 10px; }
+.lo-ag-ph--brand:has(> span) { place-items: center start; padding: 10px 12px; }
+.lo-ag-ph--brand > span { display: block; width: 100%; text-align: left; font-size: 8.5px; letter-spacing: .14em; line-height: 1.2; }
+.lo-ag-ph--brand > span strong { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin-top: 3px; font-size: 11px; line-height: 1.2; letter-spacing: .02em; overflow-wrap: anywhere; hyphens: auto; }
+@media (max-width: 760px) { .lo-ag-ph--brand:has(> span) { padding: 8px; } .lo-ag-ph--brand > span strong { font-size: 9.5px; } .lo-ag-ph--brand > span { font-size: 7px; } }
+
+.lo-ag-ph--brand > span { container-type: inline-size; white-space: nowrap; }
+@media (max-width: 760px) { .lo-ag-ph--brand > span { font-size: 6.5px; letter-spacing: .1em; } }
+.lo-ag-ph--brand > span strong { display: block; -webkit-line-clamp: unset; overflow: visible; overflow-wrap: normal; hyphens: none; white-space: nowrap;
+  font-size: min(12px, calc(100cqw / (var(--chars, 10) * .74))); }
 </style>
 </head>
 <body>
@@ -2405,7 +2417,18 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     const own = PHOTOS.filter(function (p) { return (p.soirees || []).indexOf(e.id) !== -1; })[0];
     if (own) return '<span class="lo-ag-ph"><img src="' + esc(own.src) + '" alt="" loading="lazy" decoding="async"' + (own.pos ? ' style="object-position:' + esc(own.pos) + '"' : '') + '></span>';
     return '<span class="lo-ag-ph lo-ag-ph--brand" style="--prog:' + e.prog.primary + '">' +
-      (e.logo ? '<img src="' + e.logo + '" alt="">' : '<span>' + esc(e.prefix) + '<strong>' + esc(e.topic) + '</strong></span>') + '</span>';
+      (e.logo ? '<img src="' + e.logo + '" alt="">' : thumbTitle(e)) + '</span>';
+  }
+
+  // Titre d'une vignette sans logo : deux lignes au plus, coupées entre deux mots, taille ajustée à la ligne la plus longue.
+  function thumbTitle(e) {
+    const w = e.topic.split(' ');
+    let best = [e.topic, ''], len = e.topic.length;
+    for (let i = 1; i < w.length; i++) {
+      const a = w.slice(0, i).join(' '), b = w.slice(i).join(' '), m = Math.max(a.length, b.length);
+      if (m < len) { len = m; best = [a, b]; }
+    }
+    return '<span style="--chars:' + Math.max(len, 8) + '">' + esc(e.prefix) + '<strong>' + esc(best[0]) + (best[1] ? '<br>' + esc(best[1]) : '') + '</strong></span>';
   }
 
   // Bloc d'un rendez-vous : le bloc entier le retient (second clic : le retire) ; « Fiche » ouvre sa fiche identité.
