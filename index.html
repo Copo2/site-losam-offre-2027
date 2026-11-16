@@ -1691,6 +1691,36 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 @media (max-width: 760px) { .lo-ag-ph--brand > span { font-size: 6.5px; letter-spacing: .1em; } }
 .lo-ag-ph--brand > span strong { display: block; -webkit-line-clamp: unset; overflow: visible; overflow-wrap: normal; hyphens: none; white-space: nowrap;
   font-size: min(12px, calc(100cqw / (var(--chars, 10) * .74))); }
+
+/* Frise en cartes (modèle charte : cartes grises arrondies, flèches, aplat teal) */
+.lo-fr { position: relative; margin-inline: calc(50% - 50vw); padding: 8px 0 0; }
+.lo-fr::before { content: ""; position: absolute; left: 0; right: 0; top: 46%; bottom: 0; z-index: 0;
+  background: linear-gradient(180deg, #8FA3A0 0%, #2B4A49 34%, #203A3A 60%); border-radius: 22px 22px 0 0; }
+.lo .lo-fr-list { position: relative; z-index: 1; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: max(20px, calc(50vw - 600px)); padding: 0 max(20px, calc(50vw - 600px)) 56px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.4) transparent; }
+.lo-fr-item { position: relative; flex: none; width: 216px; scroll-snap-align: start; }
+.lo-fr-item.is-new { animation: lo-pop .45s var(--ease) both; }
+.lo-fr-card { display: flex; flex-direction: column; align-items: flex-start; width: 100%; height: 100%; min-height: 330px; padding: 28px 26px 24px; text-align: left;
+  background: #F2F3F2; border: 0; border-radius: 18px; box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: transform .35s var(--smooth, ease), box-shadow .35s var(--smooth, ease); }
+.lo-fr-card:hover { transform: translateY(-4px); box-shadow: 0 18px 32px -18px rgba(0,0,0,.45); }
+.lo-fr-card.is-picked { box-shadow: inset 0 0 0 2px var(--prog); }
+.lo-fr-pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border-radius: 999px; background: var(--teal); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.lo-fr-pill::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+.lo-fr-name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin-top: 14px; min-height: 2.5em; font-size: 15px; line-height: 1.25; font-weight: 700; color: var(--prog); }
+.lo-fr-name .lo-ev-badge { vertical-align: 2px; }
+.lo-fr-date { display: flex; flex-direction: column; margin-top: 18px; font-family: var(--font-display); font-stretch: 125%; font-size: 22px; line-height: 1.18; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: var(--teal); }
+.lo-fr-place > span:not([class]) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.lo-fr-place { scroll-margin: 0; display: flex; align-items: center; gap: 6px; margin-top: auto; padding: 12px 14px; min-height: 50px; width: 100%; background: #fff; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,.05); font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--ink-2); }
+.lo-fr-card.is-picked .lo-fr-place { color: var(--teal); }
+.lo-fr-place svg { flex: none; width: 15px; height: 15px; color: var(--prog); }
+.lo-fr-arrow { position: absolute; z-index: 2; left: -30px; top: 50%; display: grid; place-items: center; width: 52px; height: 52px; margin-top: -26px; border-radius: 50%; background: #fff; color: var(--teal); box-shadow: 0 4px 14px -6px rgba(0,0,0,.35); pointer-events: none; }
+.lo-fr-arrow svg { width: 18px; height: 18px; }
+.lo-fr + .lo-tl-hint { margin-top: 14px; }
+@media (max-width: 760px) {
+  .lo-fr-item { width: 190px; }
+  .lo-fr-card { min-height: 300px; padding: 22px 20px 18px; }
+  .lo-fr-date { font-size: 19px; }
+  .lo-fr-arrow { width: 40px; height: 40px; margin-top: -20px; left: -24px; }
+}
 </style>
 </head>
 <body>
@@ -2502,12 +2532,30 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     const fresh = freshIds || [];
     const items = datedOnly(selEvents()).map(function (e) { return { ev: e, isNew: fresh.indexOf(e.id) !== -1 }; });
     if (!items.length) host.innerHTML = '<p class="lo-empty">Aucun rendez-vous daté dans votre agenda. Cliquez sur un thème ci-dessus pour le rajouter.</p>';
-    else if (mqMobile.matches) renderVertical(host, items);
-    else renderHorizontal(host, items);
+    else renderCards(host, items);
     const off = selEvents().filter(function (e) { return !e.dated; });
     if (off.length) host.insertAdjacentHTML('beforeend', '<div class="lo-off"><h2 class="lo-off-h">Hors calendrier ' + YEAR + '</h2><ul class="lo-off-list">' +
       off.map(function (e) { return '<li>' + evCard(e) + '</li>'; }).join('') + '</ul></div>');
     lastTimelineWidth = host.clientWidth;
+  }
+
+  /* Frise en cartes (modèle « Calendrier prévisionnel » de la charte) : une carte par rendez-vous, reliées par des flèches,
+     sur un aplat teal ; défilement horizontal quand l'agenda est long. Un clic ouvre la fiche. */
+  function renderCards(host, items) {
+    const card = function (it, i) {
+      const e = it.ev, f = ficheOf(e), picked = state.picked.has(e.id);
+      const day = e.d2 ? e.d + '-' + e.d2 : String(e.d);
+      return '<li class="lo-fr-item' + (it.isNew ? ' is-new' : '') + '">' +
+        (i ? '<span class="lo-fr-arrow" aria-hidden="true">' + svg('next') + '</span>' : '') +
+        '<button type="button" class="lo-fr-card' + (picked ? ' is-picked' : '') + '" data-doc="' + e.id + '" aria-haspopup="dialog" style="--prog:' + e.prog.primary + ';--prog-ink:' + inkOn(e.prog.primary) + '">' +
+          '<span class="lo-fr-pill">' + esc(e.prefix) + '</span>' +
+          '<span class="lo-fr-name">' + esc(e.topic) + (e.nouveau ? ' <span class="lo-ev-badge">Nouveau</span>' : '') + '</span>' +
+          '<span class="lo-fr-date"><span>' + esc(day) + '</span><span>' + esc(MONTHS_FULL[e.m]) + '</span><span>' + YEAR + '</span></span>' +
+          '<span class="lo-fr-place">' + (picked ? svg('check') + '<span>Retenu</span>' : '<span>' + esc(f.lieu || 'Lieu à venir') + '</span>') + '</span>' +
+        '</button></li>';
+    };
+    host.innerHTML = '<div class="lo-fr"><ol class="lo-fr-list">' + items.map(card).join('') + '</ol></div>' +
+      (items.length > 3 ? '<p class="lo-tl-hint">' + svg('next') + 'Faites défiler pour voir toute l’année. Cliquez sur une carte pour ouvrir sa fiche.</p>' : '');
   }
 
   /* Placement horizontal : chaque carte est ancrée à sa date, au-dessus ou au-dessous de la barre.
