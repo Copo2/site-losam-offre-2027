@@ -983,12 +983,10 @@ html, body { margin: 0; background: #F3EFE7; }
 .lo-offer-kpi strong { font-family: var(--font-display); font-stretch: 125%; font-size: 16px; font-weight: 600; color: var(--copper-ink); white-space: nowrap; }
 /* Content : trois couvertures de livrables en éventail */
 .lo-offer-ph--covers { background: radial-gradient(circle at 50% 120%, #2E5050 0%, var(--teal) 70%); }
-.lo-offer-ph--covers img { position: absolute; left: 50%; top: 50%; width: 34%; height: auto; border-radius: 2px; box-shadow: 0 14px 30px -10px rgba(0,0,0,.55); transition: transform .8s var(--ease); }
+.lo-offer-ph--covers img { position: absolute; left: 50%; top: 50%; width: 34%; height: auto; border-radius: 2px; box-shadow: 0 14px 30px -10px rgba(0,0,0,.55); }
 .lo-offer-ph--covers img:nth-child(1) { transform: translate(-118%, -46%) rotate(-9deg); }
 .lo-offer-ph--covers img:nth-child(2) { z-index: 1; transform: translate(-50%, -54%); }
 .lo-offer-ph--covers img:nth-child(3) { transform: translate(18%, -46%) rotate(9deg); }
-.lo-offer:hover .lo-offer-ph--covers img:nth-child(1) { transform: translate(-128%, -48%) rotate(-12deg); }
-.lo-offer:hover .lo-offer-ph--covers img:nth-child(3) { transform: translate(28%, -48%) rotate(12deg); }
 
 /* Cartes des maisons : sélection multiple */
 .lo-grid { display: grid; gap: 16px; margin-top: 56px; }
@@ -1721,6 +1719,8 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
   .lo-fr-date { font-size: 19px; }
   .lo-fr-arrow { width: 40px; height: 40px; margin-top: -20px; left: -24px; }
 }
+/* Content : visuels fixes, sans animation au survol (retours Michaël) */
+.lo-offer:hover .lo-offer-ph--covers img { transition: none; }
 </style>
 </head>
 <body>
