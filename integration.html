@@ -1697,6 +1697,10 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
 .lo-btn--prog, .lo a.lo-btn--prog { background: var(--prog, var(--teal)); color: var(--prog-ink, #fff); }
 .lo-btn--prog:hover { background: var(--prog, var(--teal)); filter: brightness(1.08); }
 @media (max-width: 1100px) { .lo-fiche-side .lo-btn { white-space: normal; } }
+
+/* Mention sous le logo (& Fraud, Maroc, Exec dinner…) : alignée sur « FUTURE OF », pas sur le monogramme */
+.lo-doc-title .lo-doc-suffix { margin: 6px 0 0 calc(var(--logo-h, 40px) * var(--txt-x, 1.2)); font-size: 13px; letter-spacing: .2em; color: #fff; }
+@media (max-width: 760px) { .lo-doc-title .lo-doc-suffix { margin-left: calc(var(--logo-h, 40px) * .8 * var(--txt-x, 1.2)); font-size: 11.5px; } }
 </style>
 </head>
 <body>
@@ -2060,8 +2064,11 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     p2p: { name: 'Future of P2P', primary: '#7D300F', pale: '#D28D74', logo: 'logo-p2p', logoH: 64, fond: 'fond-p2p', photo: true }
   };
   // Logos propres à une soirée : EPM (présentation 2026), Conso et Treasury (même dessin), executive dinner Finance (logo FoF).
-  const EVENT_LOGO = { 'epm': 'logo-epm', 'conso': 'logo-conso', 'treasury': 'logo-treasury', 'exec-fi': 'logo-finance' };
-  const LOGO_SUFFIX = { 'risk': '& Fraud', 'exec-fi': 'Exec dinner' };
+  const EVENT_LOGO = { 'epm': 'logo-epm', 'conso': 'logo-conso', 'treasury': 'logo-treasury', 'exec-fi': 'logo-finance',
+    'exec-rh': 'logo-hr', 'exec-ai': 'logo-ai', 'exec-ai-maroc': 'logo-ai', 'exec-fraude': 'logo-risk' };
+  // Début du texte « FUTURE OF » dans chaque logo, en hauteurs de logo : la mention (& Fraud, Maroc, Exec dinner…) s'aligne dessous.
+  const LOGO_TEXT_X = { 'logo-risk': 1.208, 'logo-ai': 1.319, 'logo-finance': 1.181, 'logo-hr': 1.236 };
+  const LOGO_SUFFIX = { 'risk': '& Fraud', 'exec-fi': 'Exec dinner', 'exec-rh': 'Exec dinner', 'exec-ai': 'Exec dinner', 'exec-ai-maroc': 'Exec dinner · Maroc', 'exec-fraude': 'Exec dinner · Fraude' };
   // Programme de chaque soirée (les autres prennent les couleurs Losam).
   const PROGRAMME_OF = {
     'ai': 'ai', 'ai-eti': 'ai', 'exec-ai': 'ai', 'exec-ai-maroc': 'ai', 'cloud': 'cloud', 'cx': 'cx', 'cyber': 'cyber', 'data': 'data',
@@ -2120,6 +2127,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
     // Logo du programme pour les soirées « Future of » ; la mention d'édition (Maroc, ETI…) s'affiche dessous.
     e.logo = EVENT_LOGO[e.id] ? BRAND_IMG[EVENT_LOGO[e.id]] : (e.kind === 'fo' && e.prog.logo ? BRAND_IMG[e.prog.logo] : '');
     e.logoSuffix = LOGO_SUFFIX[e.id] || (e.topic.split(' · ')[1] || '');
+    e.logoTextX = LOGO_TEXT_X[EVENT_LOGO[e.id] || e.prog.logo] || 1.2;
     e.logoAlt = EVENT_LOGO[e.id] && e.kind === 'fo' ? e.name : e.prog.name;
     e.dated = e.m != null;
     if (!e.dated) return;
@@ -2800,7 +2808,7 @@ textarea.lo-input { min-height: 136px; resize: vertical; }
         '<button type="button" class="lo-dialog-x" data-action="close-doc" autofocus>' + svg('close') + '<span class="lo-sr">Fermer</span></button>' +
         (e.logo
           ? '<p class="lo-doc-title" aria-hidden="true"><img class="lo-doc-logo" src="' + e.logo + '" alt=""' + (P.logoH ? ' style="--logo-h:' + P.logoH + 'px"' : '') + '>' +
-            (e.logoSuffix ? '<span class="lo-doc-suffix">' + esc(e.logoSuffix) + '</span>' : '') + '</p>'
+            (e.logoSuffix ? '<span class="lo-doc-suffix" style="--txt-x:' + e.logoTextX + '">' + esc(e.logoSuffix) + '</span>' : '') + '</p>'
           : (P.family ? '<img class="lo-doc-family" src="' + BRAND_IMG[P.family] + '" alt="">' : '')) +
       '</div>' +
       '<div class="lo-fiche" style="--prog:' + P.primary + ';--prog-ink:' + inkOn(P.primary) + '">' +
